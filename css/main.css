@@ -1256,7 +1256,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #c767ff;
+  background: #1b6c52;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2572,7 +2572,7 @@ body {
 }
 //侧边框的透明度设置
 .sidebar {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 
@@ -2587,6 +2587,16 @@ body {
 }
 
 .post-block {
-	background: rgba(255,255,255,1.0) none repeat scroll !important;
+	background: rgba(255,255,255,0.7) none repeat scroll !important;
 }
-*/
+
+
+	// 主页文章添加阴影效果
+.post {
+   margin-top: 60px;
+   padding: 20px;
+   margin-bottom: 60px;
+   -webkit-box-shadow: 0 0 5px rgba(120, 128, 114, 1.5);
+   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+
