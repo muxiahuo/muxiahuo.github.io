@@ -28,16 +28,16 @@
   <entry>
     <title>tplmap</title>
     <url>/2024/06/06/tplmap/</url>
-    <content><![CDATA[<h2 id="tplmap"><a href="#tplmap" class="headerlink" title="tplmap"></a>tplmap</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)实用指数⭐⭐⭐</p>
+    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
 <h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
 
 <p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
 
-<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
+<p><img data-src="/images/tplmap.jpg" alt="tplmap"></p>
 <p>&emsp;&emsp;如图所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
 <p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
