@@ -26,21 +26,6 @@
       </tags>
   </entry>
   <entry>
-    <title>in_array</title>
-    <url>/2024/07/13/in-array/</url>
-    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
-<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hackbar</title>
     <url>/2024/07/13/hackbar/</url>
     <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
@@ -53,35 +38,12 @@
       </tags>
   </entry>
   <entry>
-    <title>intval</title>
-    <url>/2024/07/12/intval/</url>
-    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+    <title>in_array</title>
+    <url>/2024/07/13/in-array/</url>
+    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
+<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -128,6 +90,44 @@
       </categories>
       <tags>
         <tag>文件包含</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intval</title>
+    <url>/2024/07/12/intval/</url>
+    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
+<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
+<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -211,6 +211,49 @@
       </tags>
   </entry>
   <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php入门</title>
+    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
+<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
+<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>preg_replace</title>
     <url>/2024/07/12/preg-replace/</url>
     <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
@@ -228,35 +271,6 @@
       </categories>
       <tags>
         <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php入门</title>
-    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php/php-cookies.html">https://www.runoob.com/php/php-cookies.html</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
-<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
-<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
       </tags>
   </entry>
   <entry>
@@ -279,20 +293,6 @@
 ]]></content>
       <categories>
         <category>SSTI</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
