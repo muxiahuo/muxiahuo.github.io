@@ -227,4 +227,24 @@
         <tag>PHP</tag>
       </tags>
   </entry>
+  <entry>
+    <title>include&amp;require</title>
+    <url>/2024/07/13/include-require/</url>
+    <content><![CDATA[<p>&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）<br>&emsp;&emsp;<strong>include和require语句是相同的，除了错误处理方面</strong></p>
+<ul>
+<li>require会生成致命错误（E_COMPILE_ERROR）并停止脚本  </li>
+<li>include只生成警告（E_WARNING）并且脚本会继续<br>&emsp;&emsp;因此，如果希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的PHP 应用程序编程中，请始终使用 reguire 向执行流用关键文件。这在某个关键文件意外丢失的情况下,有助于提高应用程序的安全性和完整性。<br>&emsp;&emsp;像是这样的文件包含函数还有  <figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">include_once</span><br><span class="line">require_once</span><br><span class="line">highlight_file</span><br><span class="line">show_source</span><br><span class="line"><span class="keyword">file</span></span><br><span class="line">readfile</span><br><span class="line">file_get_contents</span><br><span class="line">file_put_contents</span><br><span class="line"><span class="keyword">fopen</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>&emsp;&emsp;在此之前我们要知道，文件包含函数并不在意被包含的文件是什么类型，只要有php代码，都会被解析出来，利用这个特性，我们可以读取一下包含敏感信息的文件，一些文件上传的漏洞也是因此而出来的。  </p>
+<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p>&emsp;&emsp;既然include等函数能包含本地文件并回显出来，那么我们可以利用它去读取一些本地固有的文件，用得最多的是phpinfo();<br>&emsp;&emsp;出此之外，我们可以读取一些系统本地的敏感信息，例如__C:\Windows\system.ini__ ,这是属于<strong>绝对路径读取</strong>。 <strong>相对路径读取</strong>是通过.&#x2F; 表示当前位置路径，..&#x2F;表示上一级路径位置（在Linux中同样适用），例如当前页面所在路径为__C:\Apache24\htdocs_<em>,我们需要使用..&#x2F;推到C盘再进行访问，构造路径如下：</em><em>..&#x2F;..&#x2F;windows&#x2F;system.ini</em>_ 后面的路径穿越就是利用的这个原理，硕以说基础还是有必要学一学的。<br>&emsp;&emsp;一些常见的敏感目录信息路径  </p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">Windows系统：  </span><br><span class="line">C:<span class="type"></span>\boot.ini <span class="literal">_</span>查看系统版本<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\windows\system32\inetsrv\MetaBase.xml _IIS配置文件<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\windows\repair\sam <span class="literal">_</span>存储Windows系统初次安装的密码<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\ProgramFiles\mysql\my.ini _Mysql配置<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\ProgramFiles\mysql\data\mysql\user.MYD _MySQL root密码<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\windows\php.ini _php配置信息<span class="literal">_</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">Linux/Unix系统：</span><br><span class="line"><span class="regexp">/etc/</span>password _账户信息_</span><br><span class="line"><span class="regexp">/etc/</span>shadow _账户密码信息_</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>httpd.conf _Apache2默认配置文件_</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>extra/httpd-vhost.conf _虚拟网站配置_</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>php5<span class="regexp">/lib/</span>php.ini _PHP相关配置_</span><br><span class="line"><span class="regexp">/etc/</span>httpd<span class="regexp">/conf/</span>httpd.conf _Apache配置文件_</span><br><span class="line"><span class="regexp">/etc/my</span>.conf _mysql配置文件_</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>文件包含</category>
+        <category>区别</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
 </search>

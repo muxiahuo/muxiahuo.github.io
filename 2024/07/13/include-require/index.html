@@ -21,30 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"muxiahuo.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownBigOut"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：&emsp;1.转换整数时，返回整数本身&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0   数组绕过&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0   123$b[]&#x3D;1;ech">
+    <meta name="description" content="&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）&emsp;&emsp;include和require语句是相同的，除了错误处理方面  require会生成致命错误（E_COMPILE_ERROR）并停止脚本   include只生成警告（E_WARNING）并且脚本会继续&emsp;&emsp;因此，如果希望继续执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="intval">
-<meta property="og:url" content="https://muxiahuo.github.io/2024/07/12/intval/index.html">
+<meta property="og:title" content="include&amp;require">
+<meta property="og:url" content="https://muxiahuo.github.io/2024/07/13/include-require/index.html">
 <meta property="og:site_name" content="一只鼍的博客 | Glory&#39;s blog">
-<meta property="og:description" content="&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：&emsp;1.转换整数时，返回整数本身&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0   数组绕过&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0   123$b[]&#x3D;1;ech">
+<meta property="og:description" content="&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）&emsp;&emsp;include和require语句是相同的，除了错误处理方面  require会生成致命错误（E_COMPILE_ERROR）并停止脚本   include只生成警告（E_WARNING）并且脚本会继续&emsp;&emsp;因此，如果希望继续执行">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://muxiahuo.github.io/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png">
-<meta property="article:published_time" content="2024-07-12T11:49:53.000Z">
-<meta property="article:modified_time" content="2024-07-12T13:09:20.513Z">
+<meta property="article:published_time" content="2024-07-13T13:30:37.000Z">
+<meta property="article:modified_time" content="2024-07-14T01:41:59.556Z">
 <meta property="article:author" content="muxiahuo">
 <meta property="article:tag" content="PHP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://muxiahuo.github.io/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png">
 
 
-<link rel="canonical" href="https://muxiahuo.github.io/2024/07/12/intval/">
+<link rel="canonical" href="https://muxiahuo.github.io/2024/07/13/include-require/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/12/intval/","path":"2024/07/12/intval/","title":"intval"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/13/include-require/","path":"2024/07/13/include-require/","title":"include&require"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>intval | 一只鼍的博客 | Glory's blog</title>
+<title>include&require | 一只鼍的博客 | Glory's blog</title>
   
 
 
@@ -117,7 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87"><span class="nav-number">1.</span> <span class="nav-text">数组绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%95%E8%BF%87"><span class="nav-number">2.</span> <span class="nav-text">字符串绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B-%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87"><span class="nav-number">3.</span> <span class="nav-text">字符串类型&amp;进制绕过</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">1.</span> <span class="nav-text">文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地文件包含漏洞（LFI）</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -170,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/12/intval/">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/13/include-require/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -183,12 +181,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="intval | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="name" content="include&require | 一只鼍的博客 | Glory's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          intval
+          include&require
         </h1>
 
         <div class="post-meta-container">
@@ -198,9 +196,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-07-12 19:49:53 / 修改时间：21:09:20" itemprop="dateCreated datePublished" datetime="2024-07-12T19:49:53+08:00">2024-07-12</time>
+      <time title="创建时间：2024-07-13 21:30:37" itemprop="dateCreated datePublished" datetime="2024-07-13T21:30:37+08:00">2024-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-14 09:41:59" itemprop="dateModified" datetime="2024-07-14T09:41:59+08:00">2024-07-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -208,7 +212,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BB%95%E8%BF%87/" itemprop="url" rel="index"><span itemprop="name">绕过</span></a>
+          <a href="/categories/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" itemprop="url" rel="index"><span itemprop="name">文件包含</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/%E5%8C%BA%E5%88%AB/" itemprop="url" rel="index"><span itemprop="name">区别</span></a>
         </span>
     </span>
 
@@ -226,7 +234,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>388</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -243,15 +251,15 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
-
+    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）<br>&emsp;&emsp;<strong>include和require语句是相同的，除了错误处理方面</strong></p>
+<ul>
+<li>require会生成致命错误（E_COMPILE_ERROR）并停止脚本  </li>
+<li>include只生成警告（E_WARNING）并且脚本会继续<br>&emsp;&emsp;因此，如果希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的PHP 应用程序编程中，请始终使用 reguire 向执行流用关键文件。这在某个关键文件意外丢失的情况下,有助于提高应用程序的安全性和完整性。<br>&emsp;&emsp;像是这样的文件包含函数还有  <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">include_once</span><br><span class="line">require_once</span><br><span class="line">highlight_file</span><br><span class="line">show_source</span><br><span class="line"><span class="keyword">file</span></span><br><span class="line">readfile</span><br><span class="line">file_get_contents</span><br><span class="line">file_put_contents</span><br><span class="line"><span class="keyword">fopen</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>&emsp;&emsp;在此之前我们要知道，文件包含函数并不在意被包含的文件是什么类型，只要有php代码，都会被解析出来，利用这个特性，我们可以读取一下包含敏感信息的文件，一些文件上传的漏洞也是因此而出来的。  </p>
+<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p>&emsp;&emsp;既然include等函数能包含本地文件并回显出来，那么我们可以利用它去读取一些本地固有的文件，用得最多的是phpinfo();<br>&emsp;&emsp;出此之外，我们可以读取一些系统本地的敏感信息，例如__C:\Windows\system.ini__ ,这是属于<strong>绝对路径读取</strong>。 <strong>相对路径读取</strong>是通过.&#x2F; 表示当前位置路径，..&#x2F;表示上一级路径位置（在Linux中同样适用），例如当前页面所在路径为__C:\Apache24\htdocs_<em>,我们需要使用..&#x2F;推到C盘再进行访问，构造路径如下：</em><em>..&#x2F;..&#x2F;windows&#x2F;system.ini</em>_ 后面的路径穿越就是利用的这个原理，硕以说基础还是有必要学一学的。<br>&emsp;&emsp;一些常见的敏感目录信息路径  </p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Windows系统：  </span><br><span class="line">C:<span class="type"></span>\boot.ini <span class="literal">_</span>查看系统版本<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\windows\system32\inetsrv\MetaBase.xml _IIS配置文件<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\windows\repair\sam <span class="literal">_</span>存储Windows系统初次安装的密码<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\ProgramFiles\mysql\my.ini _Mysql配置<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\ProgramFiles\mysql\data\mysql\user.MYD _MySQL root密码<span class="literal">_</span></span><br><span class="line">C:<span class="type"></span>\windows\php.ini _php配置信息<span class="literal">_</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Linux/Unix系统：</span><br><span class="line"><span class="regexp">/etc/</span>password _账户信息_</span><br><span class="line"><span class="regexp">/etc/</span>shadow _账户密码信息_</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>httpd.conf _Apache2默认配置文件_</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>extra/httpd-vhost.conf _虚拟网站配置_</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>php5<span class="regexp">/lib/</span>php.ini _PHP相关配置_</span><br><span class="line"><span class="regexp">/etc/</span>httpd<span class="regexp">/conf/</span>httpd.conf _Apache配置文件_</span><br><span class="line"><span class="regexp">/etc/my</span>.conf _mysql配置文件_</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -267,14 +275,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/06/12/preg-match/" rel="prev" title="preg_match">
-                  <i class="fa fa-angle-left"></i> preg_match
+                <a href="/2024/07/13/print-print-r/" rel="prev" title="print&print_r">
+                  <i class="fa fa-angle-left"></i> print&print_r
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/07/12/preg-replace/" rel="next" title="preg_replace">
-                  preg_replace <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
