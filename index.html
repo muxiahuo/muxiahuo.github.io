@@ -296,7 +296,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-14 16:50:50" itemprop="dateModified" datetime="2024-07-14T16:50:50+08:00">2024-07-14</time>
+      <time title="修改时间：2024-07-14 16:56:33" itemprop="dateModified" datetime="2024-07-14T16:56:33+08:00">2024-07-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -360,7 +360,7 @@
 
 <h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p>&emsp;&emsp;当我们无法读取到有用信息或者不知道读取哪个php文件时，我们可以利用流写入一句话木马进去，详情请转到<a href="/2024/07/14/php-filter-chain-generator/">php_filter_chain_generator</a>脚本参考</p>
 <h4 id="php-input"><a href="#php-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h4><p>&emsp;&emsp;可以访问请求的原始数据的只读流,<strong>将post请求的数据当作php代码执行</strong>,当传入的参数作为文件名打开时，可以<strong>将参数设为php:&#x2F;&#x2F;input</strong>,同时<strong>post写入想要执行的php代码</strong>，php执行时会将post内容当作文件内容，从而导致任意代码执行。</p>
-<h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，_data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D;_不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
+<h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，*data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D;*不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
 <h3 id="唠会嗑"><a href="#唠会嗑" class="headerlink" title="唠会嗑"></a>唠会嗑</h3><p>&emsp;&emsp;剩下的伪协议不常见也不常考（至少我还没遇到( ͡°❥ ͡°)），能学到这已经很不错了，重点在于实操去做题，两个字：沉淀，这些知识点在网上有很多资料都可以查到，我写的很多都是网上照抄的（(ฅ•﹏•ฅ)），我写在blog里一来是为了引导学习路线，写的不详细或者看不懂的地方可以复制目录去搜索相关知识点，二来就是自己整理知识点，加强印象。希望各位师傅们能够在web道路上走得更快更远ヾ(❀╹◡╹)ﾉﾞ❀~</p>
 
       
