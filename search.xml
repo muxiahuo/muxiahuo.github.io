@@ -241,7 +241,6 @@
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">Linux/Unix系统：</span><br><span class="line"><span class="regexp">/etc/</span>password __账户信息__</span><br><span class="line"><span class="regexp">/etc/</span>shadow __账户密码信息__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>httpd.conf __Apache2默认配置文件__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>extra/httpd-vhost.conf __虚拟网站配置__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>php5<span class="regexp">/lib/</span>php.ini __PHP相关配置__</span><br><span class="line"><span class="regexp">/etc/</span>httpd<span class="regexp">/conf/</span>httpd.conf __Apache配置文件__</span><br><span class="line"><span class="regexp">/etc/my</span>.conf __mysql配置文件__</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>文件包含</category>
-        <category>区别</category>
       </categories>
       <tags>
         <tag>PHP</tag>
