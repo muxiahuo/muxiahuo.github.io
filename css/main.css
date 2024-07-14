@@ -1256,7 +1256,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #25b936;
+  background: #ffa686;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2572,7 +2572,7 @@ body {
   opacity: 0.8;
 }
 .post-block {
-  background: rgba(255,255,255,0.7) none repeat scroll !important;
+  background: rgba(255,255,255,0.4) none repeat scroll !important;
 }
 .post {
   margin-top: 60px;
