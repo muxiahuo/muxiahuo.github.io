@@ -194,7 +194,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-07-16 20:02:49 / 修改时间：21:29:00" itemprop="dateCreated datePublished" datetime="2024-07-16T20:02:49+08:00">2024-07-16</time>
+      <time title="创建时间：2024-07-16 20:02:49 / 修改时间：21:31:50" itemprop="dateCreated datePublished" datetime="2024-07-16T20:02:49+08:00">2024-07-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
 <h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
 <h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
 <h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
-<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br>![反引号][反引号.png]  </p>
+<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br>![反引号][&#x2F;images&#x2F;反引号.png]  </p>
 <h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
 <figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1234,7 +1234,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">15 分钟</span>
+    <span title="站点阅读时长">16 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
