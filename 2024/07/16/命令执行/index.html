@@ -21,28 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"muxiahuo.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownBigOut"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  https:&#x2F;&#x2F;www.runoob.com&#x2F;php&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ） GET方法&emsp;&emsp;也是生怕你们不看，单拎出来给">
+    <meta name="description" content="&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑) 常见函数system&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是system(“ls”);确认一下flag所在文件名，然后system(“cat flag.php”);注">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php入门">
-<meta property="og:url" content="https://muxiahuo.github.io/2024/07/14/php%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:title" content="命令执行">
+<meta property="og:url" content="https://muxiahuo.github.io/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
 <meta property="og:site_name" content="一只鼍的博客 | Glory&#39;s blog">
-<meta property="og:description" content="&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  https:&#x2F;&#x2F;www.runoob.com&#x2F;php&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ） GET方法&emsp;&emsp;也是生怕你们不看，单拎出来给">
+<meta property="og:description" content="&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑) 常见函数system&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是system(“ls”);确认一下flag所在文件名，然后system(“cat flag.php”);注">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-14T12:40:29.000Z">
-<meta property="article:modified_time" content="2024-07-14T13:22:35.832Z">
+<meta property="article:published_time" content="2024-07-16T12:02:49.000Z">
+<meta property="article:modified_time" content="2024-07-16T13:29:00.762Z">
 <meta property="article:author" content="muxiahuo">
-<meta property="article:tag" content="基础">
+<meta property="article:tag" content="命令执行">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://muxiahuo.github.io/2024/07/14/php%E5%85%A5%E9%97%A8/">
+<link rel="canonical" href="https://muxiahuo.github.io/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/14/php%E5%85%A5%E9%97%A8/","path":"2024/07/14/php入门/","title":"php入门"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","path":"2024/07/16/命令执行/","title":"命令执行"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>php入门 | 一只鼍的博客 | Glory's blog</title>
+<title>命令执行 | 一只鼍的博客 | Glory's blog</title>
   
 
 
@@ -115,7 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">GET方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">POST方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">3.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">常见函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#system"><span class="nav-number">1.1.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exec"><span class="nav-number">1.2.</span> <span class="nav-text">exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#passthru"><span class="nav-number">1.3.</span> <span class="nav-text">passthru</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-exec"><span class="nav-number">1.4.</span> <span class="nav-text">shell_exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7"><span class="nav-number">1.5.</span> <span class="nav-text">反引号 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#popen"><span class="nav-number">1.6.</span> <span class="nav-text">popen</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/14/php%E5%85%A5%E9%97%A8/">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -181,12 +181,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="php入门 | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="name" content="命令执行 | 一只鼍的博客 | Glory's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          php入门
+          命令执行
         </h1>
 
         <div class="post-meta-container">
@@ -198,7 +198,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-07-14 20:40:29 / 修改时间：21:22:35" itemprop="dateCreated datePublished" datetime="2024-07-14T20:40:29+08:00">2024-07-14</time>
+      <time title="创建时间：2024-07-16 20:02:49 / 修改时间：21:29:00" itemprop="dateCreated datePublished" datetime="2024-07-16T20:02:49+08:00">2024-07-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -206,7 +206,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
+          <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
         </span>
     </span>
 
@@ -224,7 +224,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>717</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -241,12 +241,14 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a target="_blank" rel="noopener" href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
-<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a target="_blank" rel="noopener" href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
-<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
+<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
+<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
+<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
+<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br>![反引号][反引号.png]  </p>
+<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -256,21 +258,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="tag"># 命令执行</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/07/14/php-filter-chain-generator/" rel="prev" title="php_filter_chain_generator">
-                  <i class="fa fa-angle-left"></i> php_filter_chain_generator
+                <a href="/2024/07/14/php%E5%85%A5%E9%97%A8/" rel="prev" title="php入门">
+                  <i class="fa fa-angle-left"></i> php入门
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" rel="next" title="命令执行">
-                  命令执行 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

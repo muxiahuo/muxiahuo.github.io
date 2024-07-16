@@ -23,28 +23,28 @@
 
     <meta name="description" content="&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）&emsp;&emsp;include和require语句是相同的，除了错误处理方面  require会生成致命错误（E_COMPILE_ERROR）并停止脚本   include只生成警告（E_WARNING）并且脚本会继续&emsp;&emsp;因此，如果希望继续执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="include&amp;require">
-<meta property="og:url" content="https://muxiahuo.github.io/2024/07/13/include-require/index.html">
+<meta property="og:title" content="文件包含">
+<meta property="og:url" content="https://muxiahuo.github.io/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/index.html">
 <meta property="og:site_name" content="一只鼍的博客 | Glory&#39;s blog">
 <meta property="og:description" content="&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）&emsp;&emsp;include和require语句是相同的，除了错误处理方面  require会生成致命错误（E_COMPILE_ERROR）并停止脚本   include只生成警告（E_WARNING）并且脚本会继续&emsp;&emsp;因此，如果希望继续执行">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://muxiahuo.github.io/images/access.log.png">
 <meta property="article:published_time" content="2024-07-13T13:30:37.000Z">
-<meta property="article:modified_time" content="2024-07-14T09:10:15.475Z">
+<meta property="article:modified_time" content="2024-07-16T12:09:49.898Z">
 <meta property="article:author" content="muxiahuo">
 <meta property="article:tag" content="文件包含">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://muxiahuo.github.io/images/access.log.png">
 
 
-<link rel="canonical" href="https://muxiahuo.github.io/2024/07/13/include-require/">
+<link rel="canonical" href="https://muxiahuo.github.io/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/13/include-require/","path":"2024/07/13/include-require/","title":"include&require"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/","path":"2024/07/13/文件包含/","title":"文件包含"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>include&require | 一只鼍的博客 | Glory's blog</title>
+<title>文件包含 | 一只鼍的博客 | Glory's blog</title>
   
 
 
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">1.</span> <span class="nav-text">文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地文件包含漏洞（LFI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LFI%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.2.</span> <span class="nav-text">LFI漏洞利用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E5%90%88%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">配合文件上传使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABApache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">包含Apache日志文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABSESSION%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.3.</span> <span class="nav-text">包含SESSION文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.4.</span> <span class="nav-text">包含临时文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88RFI%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">远程文件包含（RFI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.</span> <span class="nav-text">PHP伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php-filter"><span class="nav-number">1.4.1.</span> <span class="nav-text">php:&#x2F;&#x2F;filter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">扩展</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php-input"><span class="nav-number">1.4.2.</span> <span class="nav-text">php:&#x2F;&#x2F;input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-text-plain"><span class="nav-number">1.4.3.</span> <span class="nav-text">data:&#x2F;&#x2F;text&#x2F;plain</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%94%A0%E4%BC%9A%E5%97%91"><span class="nav-number">1.5.</span> <span class="nav-text">唠会嗑</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">1.</span> <span class="nav-text">文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">本地文件包含漏洞（LFI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LFI%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.2.</span> <span class="nav-text">LFI漏洞利用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E5%90%88%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">配合文件上传使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABApache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">包含Apache日志文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%ABSESSION%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.3.</span> <span class="nav-text">包含SESSION文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.4.</span> <span class="nav-text">包含临时文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88RFI%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">远程文件包含（RFI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.</span> <span class="nav-text">PHP伪协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#php-filter"><span class="nav-number">1.4.1.</span> <span class="nav-text">php:&#x2F;&#x2F;filter</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">扩展</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php-input"><span class="nav-number">1.4.2.</span> <span class="nav-text">php:&#x2F;&#x2F;input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-text-plain"><span class="nav-number">1.4.3.</span> <span class="nav-text">data:&#x2F;&#x2F;text&#x2F;plain</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">1.5.</span> <span class="nav-text">结语</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -132,7 +132,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -143,7 +143,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -170,7 +170,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/13/include-require/">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -183,12 +183,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="include&require | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="name" content="文件包含 | 一只鼍的博客 | Glory's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          include&require
+          文件包含
         </h1>
 
         <div class="post-meta-container">
@@ -206,7 +206,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-14 17:10:15" itemprop="dateModified" datetime="2024-07-14T17:10:15+08:00">2024-07-14</time>
+      <time title="修改时间：2024-07-16 20:09:49" itemprop="dateModified" datetime="2024-07-16T20:09:49+08:00">2024-07-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,12 +272,12 @@
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">file:</span><span class="comment">// — 访问本地文件系统</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line"><span class="symbol">ftp:</span><span class="comment">// — 访问 FTP(s) URLs</span></span><br><span class="line"><span class="symbol">php:</span><span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line"><span class="symbol">zlib:</span><span class="comment">// — 压缩流</span></span><br><span class="line"><span class="symbol">data:</span><span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line"><span class="symbol">glob:</span><span class="comment">// — 查找匹配的文件路径模式</span></span><br><span class="line"><span class="symbol">phar:</span><span class="comment">// — PHP 归档</span></span><br><span class="line"><span class="symbol">ssh2:</span><span class="comment">// — Secure Shell 2</span></span><br><span class="line"><span class="symbol">rar:</span><span class="comment">// — RAR</span></span><br><span class="line"><span class="symbol">ogg:</span><span class="comment">// — 音频流</span></span><br><span class="line"><span class="symbol">expect:</span><span class="comment">// — 处理交互式的流</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;需要熟练掌握的有  </p>
 <h4 id="php-filter"><a href="#php-filter" class="headerlink" title="php:&#x2F;&#x2F;filter"></a>php:&#x2F;&#x2F;filter</h4><p>&emsp;&emsp;是一种元封装器，类似readfile(),file()等，可以获取指定文件源码（要知道，通常来说不会有人直接把源码放出来的，除了打比赛），所以我们需要用它来完成获取，php:&#x2F;&#x2F;filter流会被当做php文件执行，所以我们一般对其进行编码，让其不执行。从而导致任意文件读取。<br>&emsp;&emsp;最常用也是最好用的payload  </p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/<span class="built_in">read</span>=<span class="built_in">convert</span>.base64-encode/resoure=flag.php</span><br><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/resource=index.php</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/<span class="built_in">read</span>=<span class="built_in">convert</span>.base64-encode/resource=flag.php</span><br><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/resource=index.php</span><br></pre></td></tr></table></figure>
 
 <h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p>&emsp;&emsp;当我们无法读取到有用信息或者不知道读取哪个php文件时，我们可以利用流写入一句话木马进去，详情请转到<a href="/2024/07/14/php-filter-chain-generator/">php_filter_chain_generator</a>脚本参考</p>
 <h4 id="php-input"><a href="#php-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h4><p>&emsp;&emsp;可以访问请求的原始数据的只读流,<strong>将post请求的数据当作php代码执行</strong>,当传入的参数作为文件名打开时，可以<strong>将参数设为php:&#x2F;&#x2F;input</strong>,同时<strong>post写入想要执行的php代码</strong>，php执行时会将post内容当作文件内容，从而导致任意代码执行。</p>
 <h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D; 这个不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
-<h3 id="唠会嗑"><a href="#唠会嗑" class="headerlink" title="唠会嗑"></a>唠会嗑</h3><p>&emsp;&emsp;剩下的伪协议不常见也不常考（至少我还没遇到( ͡°❥ ͡°)），能学到这已经很不错了，重点在于实操去做题，两个字：沉淀，这些知识点在网上有很多资料都可以查到，我写的很多都是网上照抄的（(ฅ•﹏•ฅ)），我写在blog里一来是为了引导学习路线，写的不详细或者看不懂的地方可以复制目录去搜索相关知识点，二来就是自己整理知识点，加强印象。希望各位师傅们能够在web道路上走得更快更远ヾ(❀╹◡╹)ﾉﾞ❀~</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;剩下的伪协议不常见也不常考（至少我还没遇到( ͡°❥ ͡°)），能学到这已经很不错了，重点在于实操去做题，两个字：沉淀，这些知识点在网上有很多资料都可以查到，我写的很多都是网上照抄的（(ฅ•﹏•ฅ)），我写在blog里一来是为了引导学习路线，写的不详细或者看不懂的地方可以复制目录去搜索相关知识点，二来就是自己整理知识点，加强印象。希望各位师傅们能够在web道路上走得更快更远ヾ(❀╹◡╹)ﾉﾞ❀~</p>
 
     </div>
 
@@ -332,13 +332,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">16k</span>
+    <span title="站点总字数">17k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
