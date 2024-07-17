@@ -17,6 +17,31 @@
       </tags>
   </entry>
   <entry>
+    <title>fenjing</title>
+    <url>/2024/06/05/fenjing/</url>
+    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
+
+<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
+<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
+]]></content>
+      <categories>
+        <category>SSTI</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hackbar</title>
     <url>/2024/07/13/hackbar/</url>
     <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
@@ -44,31 +69,6 @@
       </tags>
   </entry>
   <entry>
-    <title>fenjing</title>
-    <url>/2024/06/05/fenjing/</url>
-    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
-
-<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
-<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
-]]></content>
-      <categories>
-        <category>SSTI</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>intval</title>
     <url>/2024/07/12/intval/</url>
     <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
@@ -85,39 +85,6 @@
       </categories>
       <tags>
         <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -153,6 +120,39 @@
 <figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">array<span class="number">1</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span><span class="variable">%7</span>FF<span class="variable">%DC</span><span class="variable">%93</span><span class="variable">%A6</span><span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%01</span><span class="variable">%3</span>B<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%AA</span><span class="variable">%1</span>D<span class="variable">%B2V</span><span class="variable">%0</span>BE<span class="variable">%CAg</span><span class="variable">%D6</span><span class="variable">%88</span><span class="variable">%C7</span><span class="variable">%F8K</span><span class="variable">%8</span>CLy<span class="variable">%1</span>F<span class="variable">%E0</span><span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%F6</span><span class="variable">%14</span><span class="variable">%F8m</span><span class="variable">%B1i</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%C5kE</span><span class="variable">%C1S</span><span class="variable">%0</span>A<span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B7</span><span class="variable">%608</span><span class="variable">%E9rr</span>/<span class="variable">%E7</span><span class="variable">%ADr</span><span class="variable">%8</span>F<span class="variable">%0</span>EI<span class="variable">%04</span><span class="variable">%E0F</span><span class="variable">%C20W</span><span class="variable">%0</span>F<span class="variable">%E9</span><span class="variable">%D4</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%AB</span><span class="variable">%E1.</span><span class="variable">%F5</span><span class="variable">%BC</span><span class="variable">%94</span><span class="variable">%2</span>B<span class="variable">%E35B</span><span class="variable">%A4</span><span class="variable">%80</span>-<span class="variable">%98</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%0</span>F<span class="variable">%2</span>A<span class="number">3</span>.<span class="variable">%C3</span><span class="variable">%7</span>F<span class="variable">%AC5</span><span class="variable">%14</span><span class="variable">%E7M</span><span class="variable">%DC</span><span class="variable">%0</span>F<span class="variable">%2</span>C<span class="variable">%C1</span><span class="variable">%A8t</span><span class="variable">%CD</span><span class="variable">%0</span>Cx<span class="number">0</span>Z<span class="variable">%21</span>Vda<span class="number">0</span><span class="variable">%97</span><span class="variable">%89</span><span class="variable">%60</span>k<span class="variable">%D0</span><span class="variable">%BF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A8</span><span class="variable">%04</span>F<span class="variable">%29</span><span class="variable">%A1</span></span><br><span class="line"></span><br><span class="line">array<span class="number">2</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span>sF<span class="variable">%DC</span><span class="variable">%91</span>f<span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%11</span><span class="variable">%8</span>F<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%B6</span><span class="variable">%21</span><span class="variable">%B2V</span><span class="variable">%0</span>F<span class="variable">%F9</span><span class="variable">%CAg</span><span class="variable">%CC</span><span class="variable">%A8</span><span class="variable">%C7</span><span class="variable">%F8</span><span class="variable">%5</span>B<span class="variable">%A8Ly</span><span class="variable">%03</span><span class="variable">%0</span>C<span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%E2</span><span class="variable">%18</span><span class="variable">%F8m</span><span class="variable">%B3</span><span class="variable">%A9</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%D5</span><span class="variable">%DFE</span><span class="variable">%C1O</span><span class="variable">%26</span><span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B3</span><span class="variable">%DC8</span><span class="variable">%E9j</span><span class="variable">%C2</span>/<span class="variable">%E7</span><span class="variable">%BDr</span><span class="variable">%8</span>F<span class="variable">%0</span>EE<span class="variable">%BC</span><span class="variable">%E0F</span><span class="variable">%D2</span><span class="variable">%3</span>CW<span class="variable">%0</span>F<span class="variable">%EB</span><span class="variable">%14</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%BBU.</span><span class="variable">%F5</span><span class="variable">%A0</span><span class="variable">%A8</span><span class="variable">%2</span>B<span class="variable">%E31</span><span class="variable">%FE</span><span class="variable">%A4</span><span class="variable">%807</span><span class="variable">%B8</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%1</span>F<span class="variable">%0</span>E<span class="number">3</span>.<span class="variable">%DF</span><span class="variable">%93</span><span class="variable">%AC5</span><span class="variable">%00</span><span class="variable">%EBM</span><span class="variable">%DC</span><span class="variable">%0</span>D<span class="variable">%EC</span><span class="variable">%C1</span><span class="variable">%A8dy</span><span class="variable">%0</span>Cx<span class="variable">%2</span>Cv<span class="variable">%21</span>V<span class="variable">%60</span><span class="variable">%DD0</span><span class="variable">%97</span><span class="variable">%91</span><span class="variable">%D0k</span><span class="variable">%D0</span><span class="variable">%AF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A4</span><span class="variable">%BCF</span><span class="variable">%29</span><span class="variable">%B1</span></span><br></pre></td></tr></table></figure>
 
 
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
 ]]></content>
       <categories>
         <category>PHP</category>
