@@ -17,25 +17,12 @@
       </tags>
   </entry>
   <entry>
-    <title>fenjing</title>
-    <url>/2024/06/05/fenjing/</url>
-    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
-
-<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
-<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
 ]]></content>
       <categories>
-        <category>SSTI</category>
+        <category>WEB</category>
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
@@ -57,12 +44,25 @@
       </tags>
   </entry>
   <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+    <title>fenjing</title>
+    <url>/2024/06/05/fenjing/</url>
+    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
+
+<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
+<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
 ]]></content>
       <categories>
-        <category>WEB</category>
+        <category>SSTI</category>
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
@@ -218,6 +218,18 @@
       </tags>
   </entry>
   <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>preg_replace</title>
     <url>/2024/07/12/preg-replace/</url>
     <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
@@ -238,15 +250,49 @@
       </tags>
   </entry>
   <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+    <title>tplmap</title>
+    <url>/2024/06/06/tplmap/</url>
+    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
+<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
+<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SSTI</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>命令执行</title>
+    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
+    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
+<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
+<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
+<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
+<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
+<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>区别</tag>
+        <tag>命令执行</tag>
       </tags>
   </entry>
   <entry>
@@ -287,51 +333,6 @@
       </categories>
       <tags>
         <tag>文件包含</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>tplmap</title>
-    <url>/2024/06/06/tplmap/</url>
-    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
-<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
-<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SSTI</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>命令执行</title>
-    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
-    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
-<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
-<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
-<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
-<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
-<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
-<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
       </tags>
   </entry>
 </search>
