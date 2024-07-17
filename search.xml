@@ -42,18 +42,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>in_array</title>
     <url>/2024/07/13/in-array/</url>
     <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
@@ -85,6 +73,51 @@
       </categories>
       <tags>
         <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -120,39 +153,6 @@
 <figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">array<span class="number">1</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span><span class="variable">%7</span>FF<span class="variable">%DC</span><span class="variable">%93</span><span class="variable">%A6</span><span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%01</span><span class="variable">%3</span>B<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%AA</span><span class="variable">%1</span>D<span class="variable">%B2V</span><span class="variable">%0</span>BE<span class="variable">%CAg</span><span class="variable">%D6</span><span class="variable">%88</span><span class="variable">%C7</span><span class="variable">%F8K</span><span class="variable">%8</span>CLy<span class="variable">%1</span>F<span class="variable">%E0</span><span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%F6</span><span class="variable">%14</span><span class="variable">%F8m</span><span class="variable">%B1i</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%C5kE</span><span class="variable">%C1S</span><span class="variable">%0</span>A<span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B7</span><span class="variable">%608</span><span class="variable">%E9rr</span>/<span class="variable">%E7</span><span class="variable">%ADr</span><span class="variable">%8</span>F<span class="variable">%0</span>EI<span class="variable">%04</span><span class="variable">%E0F</span><span class="variable">%C20W</span><span class="variable">%0</span>F<span class="variable">%E9</span><span class="variable">%D4</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%AB</span><span class="variable">%E1.</span><span class="variable">%F5</span><span class="variable">%BC</span><span class="variable">%94</span><span class="variable">%2</span>B<span class="variable">%E35B</span><span class="variable">%A4</span><span class="variable">%80</span>-<span class="variable">%98</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%0</span>F<span class="variable">%2</span>A<span class="number">3</span>.<span class="variable">%C3</span><span class="variable">%7</span>F<span class="variable">%AC5</span><span class="variable">%14</span><span class="variable">%E7M</span><span class="variable">%DC</span><span class="variable">%0</span>F<span class="variable">%2</span>C<span class="variable">%C1</span><span class="variable">%A8t</span><span class="variable">%CD</span><span class="variable">%0</span>Cx<span class="number">0</span>Z<span class="variable">%21</span>Vda<span class="number">0</span><span class="variable">%97</span><span class="variable">%89</span><span class="variable">%60</span>k<span class="variable">%D0</span><span class="variable">%BF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A8</span><span class="variable">%04</span>F<span class="variable">%29</span><span class="variable">%A1</span></span><br><span class="line"></span><br><span class="line">array<span class="number">2</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span>sF<span class="variable">%DC</span><span class="variable">%91</span>f<span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%11</span><span class="variable">%8</span>F<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%B6</span><span class="variable">%21</span><span class="variable">%B2V</span><span class="variable">%0</span>F<span class="variable">%F9</span><span class="variable">%CAg</span><span class="variable">%CC</span><span class="variable">%A8</span><span class="variable">%C7</span><span class="variable">%F8</span><span class="variable">%5</span>B<span class="variable">%A8Ly</span><span class="variable">%03</span><span class="variable">%0</span>C<span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%E2</span><span class="variable">%18</span><span class="variable">%F8m</span><span class="variable">%B3</span><span class="variable">%A9</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%D5</span><span class="variable">%DFE</span><span class="variable">%C1O</span><span class="variable">%26</span><span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B3</span><span class="variable">%DC8</span><span class="variable">%E9j</span><span class="variable">%C2</span>/<span class="variable">%E7</span><span class="variable">%BDr</span><span class="variable">%8</span>F<span class="variable">%0</span>EE<span class="variable">%BC</span><span class="variable">%E0F</span><span class="variable">%D2</span><span class="variable">%3</span>CW<span class="variable">%0</span>F<span class="variable">%EB</span><span class="variable">%14</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%BBU.</span><span class="variable">%F5</span><span class="variable">%A0</span><span class="variable">%A8</span><span class="variable">%2</span>B<span class="variable">%E31</span><span class="variable">%FE</span><span class="variable">%A4</span><span class="variable">%807</span><span class="variable">%B8</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%1</span>F<span class="variable">%0</span>E<span class="number">3</span>.<span class="variable">%DF</span><span class="variable">%93</span><span class="variable">%AC5</span><span class="variable">%00</span><span class="variable">%EBM</span><span class="variable">%DC</span><span class="variable">%0</span>D<span class="variable">%EC</span><span class="variable">%C1</span><span class="variable">%A8dy</span><span class="variable">%0</span>Cx<span class="variable">%2</span>Cv<span class="variable">%21</span>V<span class="variable">%60</span><span class="variable">%DD0</span><span class="variable">%97</span><span class="variable">%91</span><span class="variable">%D0k</span><span class="variable">%D0</span><span class="variable">%AF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A4</span><span class="variable">%BCF</span><span class="variable">%29</span><span class="variable">%B1</span></span><br></pre></td></tr></table></figure>
 
 
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -218,18 +218,6 @@
       </tags>
   </entry>
   <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>preg_replace</title>
     <url>/2024/07/12/preg-replace/</url>
     <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
@@ -247,6 +235,54 @@
       </categories>
       <tags>
         <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>命令执行</title>
+    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
+    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
+<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
+<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
+<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
+<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
+<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
+<h3 id="常见文件读取命令"><a href="#常见文件读取命令" class="headerlink" title="常见文件读取命令"></a>常见文件读取命令</h3><p>&emsp;&emsp;下面的命令建议打开你的kali或者linux去实践一下，印象更深更明白。在web下，要跟上面的函数搭配使用才是正解。  </p>
+<h4 id="ls和cat"><a href="#ls和cat" class="headerlink" title="ls和cat"></a>ls和cat</h4><p>&emsp;&emsp;最常用的一组命令，dddd  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cat</span> /flag</span><br></pre></td></tr></table></figure>
+
+<h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>&emsp;&emsp;与cat功能类似，只不过是反向显示（从表面上看就知道，就是cat的reverse）。例如：<font color=bule>tac flag.txt</font></p>
+<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>&emsp;&emsp;more:一页一页的输出，等同cat，区别自己实践一下。<br>&emsp;&emsp;less: 同上。  </p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">more flag.php</span><br><span class="line"><span class="keyword">less</span> flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>&emsp;&emsp; 显示文件的最后几行（默认显示最后10行），例如：<font color=red>tail flag.php</font>  </p>
+<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>&emsp;&emsp;显示的时候，顺便输出行号,例如：<font color=bule>nl flag.php</font></p>
+<h4 id="od和xxd"><a href="#od和xxd" class="headerlink" title="od和xxd"></a>od和xxd</h4><p>&emsp;&emsp;od:以二进制的方式读取档案内容<br>&emsp;&emsp;xxd:读取二进制文件,很显然，有二进制，通常和passthru进行搭配使用</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;od -A d -c flag.php&quot;</span>);</span></span><br><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;xxd flag.php&quot;</span>);</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="/images/xxd.png" alt="xxd"></p>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>&emsp;&emsp;主要用于排序文件，但也能达成目的，例如:<font color=red>sort flag.txt</font></p>
+<h3 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h3><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/imagse/grep.png" alt="grep"></p>
+<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3>]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
       </tags>
   </entry>
   <entry>
@@ -272,27 +308,6 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>命令执行</title>
-    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
-    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
-<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
-<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
-<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
-<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
-<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
-<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
       </tags>
   </entry>
   <entry>
