@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://muxiahuo.github.io/images/xxd.png">
 <meta property="og:image" content="https://muxiahuo.github.io/imagse/grep.png">
 <meta property="article:published_time" content="2024-07-16T12:02:49.000Z">
-<meta property="article:modified_time" content="2024-07-17T12:43:21.115Z">
+<meta property="article:modified_time" content="2024-07-18T13:18:52.822Z">
 <meta property="article:author" content="muxiahuo">
 <meta property="article:tag" content="命令执行">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">常见函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#system"><span class="nav-number">2.1.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exec"><span class="nav-number">2.2.</span> <span class="nav-text">exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#passthru"><span class="nav-number">2.3.</span> <span class="nav-text">passthru</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-exec"><span class="nav-number">2.4.</span> <span class="nav-text">shell_exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7"><span class="nav-number">2.5.</span> <span class="nav-text">反引号 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#popen"><span class="nav-number">2.6.</span> <span class="nav-text">popen</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">常见文件读取命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls%E5%92%8Ccat"><span class="nav-number">3.1.</span> <span class="nav-text">ls和cat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tac"><span class="nav-number">3.2.</span> <span class="nav-text">tac</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more%E5%92%8Cless"><span class="nav-number">3.3.</span> <span class="nav-text">more和less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tail"><span class="nav-number">3.4.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nl"><span class="nav-number">3.5.</span> <span class="nav-text">nl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#od%E5%92%8Cxxd"><span class="nav-number">3.6.</span> <span class="nav-text">od和xxd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort"><span class="nav-number">3.7.</span> <span class="nav-text">sort</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniq-file-f-grep"><span class="nav-number">4.</span> <span class="nav-text">uniq | file -f | grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%95%E8%BF%87"><span class="nav-number">5.</span> <span class="nav-text">绕过</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">常见函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#system"><span class="nav-number">2.1.</span> <span class="nav-text">system</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exec"><span class="nav-number">2.2.</span> <span class="nav-text">exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#passthru"><span class="nav-number">2.3.</span> <span class="nav-text">passthru</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-exec"><span class="nav-number">2.4.</span> <span class="nav-text">shell_exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%95%E5%8F%B7"><span class="nav-number">2.5.</span> <span class="nav-text">反引号 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#popen"><span class="nav-number">2.6.</span> <span class="nav-text">popen</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">常见文件读取命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ls%E5%92%8Ccat"><span class="nav-number">3.1.</span> <span class="nav-text">ls和cat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tac"><span class="nav-number">3.2.</span> <span class="nav-text">tac</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#more%E5%92%8Cless"><span class="nav-number">3.3.</span> <span class="nav-text">more和less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tail"><span class="nav-number">3.4.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nl"><span class="nav-number">3.5.</span> <span class="nav-text">nl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#od%E5%92%8Cxxd"><span class="nav-number">3.6.</span> <span class="nav-text">od和xxd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort"><span class="nav-number">3.7.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uniq-file-f-grep"><span class="nav-number">3.8.</span> <span class="nav-text">uniq | file -f | grep</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%93%BE%E6%8E%A5%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">操作系统链接符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">4.1.</span> <span class="nav-text">;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-number">4.2.</span> <span class="nav-text">&amp;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-2"><span class="nav-number">4.3.</span> <span class="nav-text">&amp;&amp;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-3"><span class="nav-number">4.4.</span> <span class="nav-text">|</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-4"><span class="nav-number">4.5.</span> <span class="nav-text">||</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%95%E8%BF%87"><span class="nav-number">5.</span> <span class="nav-text">绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87"><span class="nav-number">5.1.</span> <span class="nav-text">替换函数绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E6%A0%BC%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="nav-number">5.2.</span> <span class="nav-text">空格过滤绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="nav-number">5.2.1.</span> <span class="nav-text">大括号{}</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IFS-%E4%BB%A3%E6%9B%BF%E7%A9%BA%E6%A0%BC"><span class="nav-number">5.2.2.</span> <span class="nav-text">$IFS 代替空格</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#URL%E7%BC%96%E7%A0%81"><span class="nav-number">5.2.3.</span> <span class="nav-text">URL编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%AD%97%E7%AC%A6"><span class="nav-number">5.2.4.</span> <span class="nav-text">重定向字符&lt;,&lt;&gt;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4"><span class="nav-number">5.3.</span> <span class="nav-text">.过滤</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -206,7 +206,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-17 20:43:21" itemprop="dateModified" datetime="2024-07-17T20:43:21+08:00">2024-07-17</time>
+      <time title="修改时间：2024-07-18 21:18:52" itemprop="dateModified" datetime="2024-07-18T21:18:52+08:00">2024-07-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,14 +232,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
+      <span>3.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -274,8 +274,23 @@
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;od -A d -c flag.php&quot;</span>);</span></span><br><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;xxd flag.php&quot;</span>);</span></span><br></pre></td></tr></table></figure>
 <p><img data-src="/images/xxd.png" alt="xxd"></p>
 <h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>&emsp;&emsp;主要用于排序文件，但也能达成目的，例如:<font color=red>sort flag.txt</font></p>
-<h3 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h3><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/imagse/grep.png" alt="grep"></p>
-<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3>
+<h4 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h4><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/imagse/grep.png" alt="grep"></p>
+<h3 id="操作系统链接符"><a href="#操作系统链接符" class="headerlink" title="操作系统链接符"></a>操作系统链接符</h3><h4 id=""><a href="#" class="headerlink" title=";"></a>;</h4><p>&emsp;&emsp;这个应该都知道，代表这条语句的结束，后面可以继续跟命令，可以使多个命令按顺序执行，自行去kali试一下，<font color=red>id;ls;pwd</font></p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="&amp;"></a>&amp;</h4><p>&emsp;&emsp;一样的效果，使命令在后台运行，这样就可以同时执行多条命令，注意在GET传参的时候<code>必须URL编码</code>,&amp;的URL为%26。例如<font color=blue>?c&#x3D;%26cat flag.php</font></p>
+<h4 id="-2"><a href="#-2" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h4><p>&emsp;&emsp;和逻辑与的语法一样，两边为命令的时候，前面的命令执行成功才会执行后面的命令，反之则不会执行后面的命令，同上，<code>必须URL编码</code>,例如<font color=red>?c&#x3D;ls%26%26cat flag.php</font></p>
+<h4 id="-3"><a href="#-3" class="headerlink" title="|"></a>|</h4><p>&emsp;&emsp;将前面命令的输出作为后面命令的输入，把前面命令的结果当成后面命令的参数；是不是看起来有点生涩？没关系，看个例题就明白了。<br>&emsp;&emsp;<font color=blue>echo “ls -l”</font>这个是只显示”ls -l”,而不是命令。<br>&emsp;&emsp;<font color=red>echo “ls -l” | &#x2F;bin&#x2F;bash</font>这个是&#x2F;bin&#x2F;bash把”ls -l”当成参数执行，也就是执行了ls -l这条命令。  </p>
+<h4 id="-4"><a href="#-4" class="headerlink" title="||"></a>||</h4><p>&emsp;&emsp;继承了逻辑或的语法，还有短路原则，换个更容易理解的就是相当于if else语句，若前面的命令执行成功，后面的命令就不会执行，反之执行后面的命令；例如<br>&emsp;&emsp;<font color=blue>ls || &gt;dev&#x2F;null 2&gt;&amp;1</font>后者相当于一个垃圾桶，你的所有输出都会被丢进去,”&gt;”代表的是重定向，还有2和1具体代表什么感兴趣的可以再去看一下，目前只要知道这样的格式代表的是垃圾桶就好。好，回归正题，如果没有||，作为顺序输出的话，就不会有回显；反之，ls正常输出，后面就不会执行了。</p>
+<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="替换函数绕过"><a href="#替换函数绕过" class="headerlink" title="替换函数绕过"></a>替换函数绕过</h4><p>&emsp;&emsp;之所以介绍这么多常见的命令和函数就是为了达成这个目的，看黑名单内没有其中的哪些（个）函数和命令就可以用它实现一样的效果。例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!preg_match(<span class="string">&quot;/exec/system/popen/proc_open|\`/i&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;很明显，对照上面的函数，还有passthru没有过滤，就可以使用该函数，<font color=blue>?c&#x3D;passthru(“ls”);</font></p>
+<h4 id="空格过滤绕过"><a href="#空格过滤绕过" class="headerlink" title="空格过滤绕过"></a>空格过滤绕过</h4><p>&emsp;&emsp;空格过滤是属于比较烦的一种，尤其在SQL注入中┻┻︵⁞&#x3D;༎ຶ﹏༎ຶ&#x3D;⁞︵┻┻，算了，我们先看这里的。</p>
+<h5 id="大括号"><a href="#大括号" class="headerlink" title="大括号{}"></a>大括号{}</h5><p>&emsp;&emsp;顾名思义就是用大括号将命令括起来，中间用，分割，例如<font color=red>{cat,flag.txt};</font>  </p>
+<h5 id="IFS-代替空格"><a href="#IFS-代替空格" class="headerlink" title="$IFS 代替空格"></a>$IFS 代替空格</h5><p>&emsp;&emsp;这个建议去kali用一下，原理就是Linux下有一个特殊的环境变量叫做IFS，叫做内部字段分隔符，既然是分隔符，就能起到空格的作用。通常能单纯的$IFS会被当作变量名，就加一对{}固定变量名所以就是${IFS}，例如<font color=blue>ls${IFS}-l</font><br>&emsp;&emsp;再者就是$IFS$9，后面加个$和{}类似，起截断作用，$9是当前系统shell进程的第九个参数，代表这空字符串，所以这也是一种,例如<font color=red>ls$IFS$9-l</font><br>&emsp;&emsp;这两个在题目中最常用也最好用了，要知道。  </p>
+<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h5><p>&emsp;&emsp;就是使用空格和制表符的URL编码代替空格，在执行是会自动转换为空格使用，%09（tab）%20（space），例如<font color=blue>cat%09flag.php</font></p>
+<h5 id="重定向字符"><a href="#重定向字符" class="headerlink" title="重定向字符&lt;,&lt;&gt;"></a>重定向字符&lt;,&lt;&gt;</h5><p>&emsp;&emsp;上面也提过一嘴，就是把&lt;后面跟的文件取代键盘作为新的输入设备，具体原理我也不清楚（谁会了到时候指导我一下ヾ(❀╹◡╹)ﾉﾞ❀~），不推荐使用，用法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span>&lt;flag.php</span><br><span class="line"><span class="built_in">cat</span>&lt;&gt;flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="过滤"><a href="#过滤" class="headerlink" title=".过滤"></a>.过滤</h4>
     </div>
 
     
@@ -329,13 +344,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">20k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">17 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
