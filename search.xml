@@ -42,6 +42,18 @@
       </tags>
   </entry>
   <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>in_array</title>
     <url>/2024/07/13/in-array/</url>
     <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
@@ -73,18 +85,6 @@
       </categories>
       <tags>
         <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -238,69 +238,6 @@
       </tags>
   </entry>
   <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>命令执行</title>
-    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
-    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
-<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
-<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
-<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
-<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
-<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
-<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
-<h3 id="常见文件读取命令"><a href="#常见文件读取命令" class="headerlink" title="常见文件读取命令"></a>常见文件读取命令</h3><p>&emsp;&emsp;下面的命令建议打开你的kali或者linux去实践一下，印象更深更明白。在web下，要跟上面的函数搭配使用才是正解。  </p>
-<h4 id="ls和cat"><a href="#ls和cat" class="headerlink" title="ls和cat"></a>ls和cat</h4><p>&emsp;&emsp;最常用的一组命令，dddd  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cat</span> /flag</span><br></pre></td></tr></table></figure>
-
-<h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>&emsp;&emsp;与cat功能类似，只不过是反向显示（从表面上看就知道，就是cat的reverse）。例如：<font color=bule>tac flag.txt</font></p>
-<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>&emsp;&emsp;more:一页一页的输出，等同cat，区别自己实践一下。<br>&emsp;&emsp;less: 同上。  </p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">more flag.php</span><br><span class="line"><span class="keyword">less</span> flag.php</span><br></pre></td></tr></table></figure>
-
-<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>&emsp;&emsp; 显示文件的最后几行（默认显示最后10行），例如：<font color=red>tail flag.php</font>  </p>
-<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>&emsp;&emsp;显示的时候，顺便输出行号,例如：<font color=bule>nl flag.php</font></p>
-<h4 id="od和xxd"><a href="#od和xxd" class="headerlink" title="od和xxd"></a>od和xxd</h4><p>&emsp;&emsp;od:以二进制的方式读取档案内容<br>&emsp;&emsp;xxd:读取二进制文件,很显然，有二进制，通常和passthru进行搭配使用</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;od -A d -c flag.php&quot;</span>);</span></span><br><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;xxd flag.php&quot;</span>);</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="/images/xxd.png" alt="xxd"></p>
-<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>&emsp;&emsp;主要用于排序文件，但也能达成目的，例如:<font color=red>sort flag.txt</font></p>
-<h4 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h4><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/imagse/grep.png" alt="grep"></p>
-<h3 id="操作系统链接符"><a href="#操作系统链接符" class="headerlink" title="操作系统链接符"></a>操作系统链接符</h3><h4 id=""><a href="#" class="headerlink" title=";"></a>;</h4><p>&emsp;&emsp;这个应该都知道，代表这条语句的结束，后面可以继续跟命令，可以使多个命令按顺序执行，自行去kali试一下，<font color=red>id;ls;pwd</font></p>
-<h4 id="-1"><a href="#-1" class="headerlink" title="&amp;"></a>&amp;</h4><p>&emsp;&emsp;一样的效果，使命令在后台运行，这样就可以同时执行多条命令，注意在GET传参的时候<code>必须URL编码</code>,&amp;的URL为%26。例如<font color=blue>?c&#x3D;%26cat flag.php</font></p>
-<h4 id="-2"><a href="#-2" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h4><p>&emsp;&emsp;和逻辑与的语法一样，两边为命令的时候，前面的命令执行成功才会执行后面的命令，反之则不会执行后面的命令，同上，<code>必须URL编码</code>,例如<font color=red>?c&#x3D;ls%26%26cat flag.php</font></p>
-<h4 id="-3"><a href="#-3" class="headerlink" title="|"></a>|</h4><p>&emsp;&emsp;将前面命令的输出作为后面命令的输入，把前面命令的结果当成后面命令的参数；是不是看起来有点生涩？没关系，看个例题就明白了。<br>&emsp;&emsp;<font color=blue>echo “ls -l”</font>这个是只显示”ls -l”,而不是命令。<br>&emsp;&emsp;<font color=red>echo “ls -l” | &#x2F;bin&#x2F;bash</font>这个是&#x2F;bin&#x2F;bash把”ls -l”当成参数执行，也就是执行了ls -l这条命令。  </p>
-<h4 id="-4"><a href="#-4" class="headerlink" title="||"></a>||</h4><p>&emsp;&emsp;继承了逻辑或的语法，还有短路原则，换个更容易理解的就是相当于if else语句，若前面的命令执行成功，后面的命令就不会执行，反之执行后面的命令；例如<br>&emsp;&emsp;<font color=blue>ls || &gt;dev&#x2F;null 2&gt;&amp;1</font>后者相当于一个垃圾桶，你的所有输出都会被丢进去,”&gt;”代表的是重定向，还有2和1具体代表什么感兴趣的可以再去看一下，目前只要知道这样的格式代表的是垃圾桶就好。好，回归正题，如果没有||，作为顺序输出的话，就不会有回显；反之，ls正常输出，后面就不会执行了。</p>
-<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="替换函数绕过"><a href="#替换函数绕过" class="headerlink" title="替换函数绕过"></a>替换函数绕过</h4><p>&emsp;&emsp;之所以介绍这么多常见的命令和函数就是为了达成这个目的，看黑名单内没有其中的哪些（个）函数和命令就可以用它实现一样的效果。例如</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!preg_match(<span class="string">&quot;/exec/system/popen/proc_open|\`/i&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;很明显，对照上面的函数，还有passthru没有过滤，就可以使用该函数，<font color=blue>?c&#x3D;passthru(“ls”);</font></p>
-<h4 id="空格过滤绕过"><a href="#空格过滤绕过" class="headerlink" title="空格过滤绕过"></a>空格过滤绕过</h4><p>&emsp;&emsp;空格过滤是属于比较烦的一种，尤其在SQL注入中┻┻︵⁞&#x3D;༎ຶ﹏༎ຶ&#x3D;⁞︵┻┻，算了，我们先看这里的。</p>
-<h5 id="大括号"><a href="#大括号" class="headerlink" title="大括号{}"></a>大括号{}</h5><p>&emsp;&emsp;顾名思义就是用大括号将命令括起来，中间用，分割，例如<font color=red>{cat,flag.txt};</font>  </p>
-<h5 id="IFS-代替空格"><a href="#IFS-代替空格" class="headerlink" title="$IFS 代替空格"></a>$IFS 代替空格</h5><p>&emsp;&emsp;这个建议去kali用一下，原理就是Linux下有一个特殊的环境变量叫做IFS，叫做内部字段分隔符，既然是分隔符，就能起到空格的作用。通常能单纯的$IFS会被当作变量名，就加一对{}固定变量名所以就是${IFS}，例如<font color=blue>ls${IFS}-l</font><br>&emsp;&emsp;再者就是$IFS$9，后面加个$和{}类似，起截断作用，$9是当前系统shell进程的第九个参数，代表这空字符串，所以这也是一种,例如<font color=red>ls$IFS$9-l</font><br>&emsp;&emsp;这两个在题目中最常用也最好用了，要知道。  </p>
-<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h5><p>&emsp;&emsp;就是使用空格和制表符的URL编码代替空格，在执行是会自动转换为空格使用，%09（tab）%20（space），例如<font color=blue>cat%09flag.php</font></p>
-<h5 id="重定向字符"><a href="#重定向字符" class="headerlink" title="重定向字符&lt;,&lt;&gt;"></a>重定向字符&lt;,&lt;&gt;</h5><p>&emsp;&emsp;上面也提过一嘴，就是把&lt;后面跟的文件取代键盘作为新的输入设备，具体原理我也不清楚（谁会了到时候指导我一下ヾ(❀╹◡╹)ﾉﾞ❀~），不推荐使用，用法：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span>&lt;flag.php</span><br><span class="line"><span class="built_in">cat</span>&lt;&gt;flag.php</span><br></pre></td></tr></table></figure>
-
-<h4 id="过滤"><a href="#过滤" class="headerlink" title=".过滤"></a>.过滤</h4>]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>tplmap</title>
     <url>/2024/06/06/tplmap/</url>
     <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
@@ -323,6 +260,18 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
       </tags>
   </entry>
   <entry>
@@ -363,6 +312,57 @@
       </categories>
       <tags>
         <tag>文件包含</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>命令执行</title>
+    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
+    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
+<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
+<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
+<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
+<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号 "></a>反引号<code> </code></h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
+<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
+<h3 id="常见文件读取命令"><a href="#常见文件读取命令" class="headerlink" title="常见文件读取命令"></a>常见文件读取命令</h3><p>&emsp;&emsp;下面的命令建议打开你的kali或者linux去实践一下，印象更深更明白。在web下，要跟上面的函数搭配使用才是正解。  </p>
+<h4 id="ls和cat"><a href="#ls和cat" class="headerlink" title="ls和cat"></a>ls和cat</h4><p>&emsp;&emsp;最常用的一组命令，dddd  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cat</span> /flag</span><br></pre></td></tr></table></figure>
+
+<h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>&emsp;&emsp;与cat功能类似，只不过是反向显示（从表面上看就知道，就是cat的reverse）。例如：<font color=bule>tac flag.txt</font></p>
+<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>&emsp;&emsp;more:一页一页的输出，等同cat，区别自己实践一下。<br>&emsp;&emsp;less: 同上。  </p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">more flag.php</span><br><span class="line"><span class="keyword">less</span> flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>&emsp;&emsp; 显示文件的最后几行（默认显示最后10行），例如：<font color=red>tail flag.php</font>  </p>
+<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>&emsp;&emsp;显示的时候，顺便输出行号,例如：<font color=blue>nl flag.php</font></p>
+<h4 id="od和xxd"><a href="#od和xxd" class="headerlink" title="od和xxd"></a>od和xxd</h4><p>&emsp;&emsp;od:以二进制的方式读取档案内容<br>&emsp;&emsp;xxd:读取二进制文件,很显然，有二进制，通常和passthru进行搭配使用</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;od -A d -c flag.php&quot;</span>);</span></span><br><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;xxd flag.php&quot;</span>);</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="/images/xxd.png" alt="xxd"></p>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>&emsp;&emsp;主要用于排序文件，但也能达成目的，例如:<font color=red>sort flag.txt</font></p>
+<h4 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h4><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/images/grep.png" alt="grep"></p>
+<h3 id="操作系统链接符"><a href="#操作系统链接符" class="headerlink" title="操作系统链接符"></a>操作系统链接符</h3><h4 id=""><a href="#" class="headerlink" title=";"></a>;</h4><p>&emsp;&emsp;这个应该都知道，代表这条语句的结束，后面可以继续跟命令，可以使多个命令按顺序执行，自行去kali试一下，<font color=red>id;ls;pwd</font></p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="&amp;"></a>&amp;</h4><p>&emsp;&emsp;一样的效果，使命令在后台运行，这样就可以同时执行多条命令，注意在GET传参的时候<code>必须URL编码</code>,&amp;的URL为%26。例如<font color=blue>?c&#x3D;%26cat flag.php</font></p>
+<h4 id="-2"><a href="#-2" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h4><p>&emsp;&emsp;和逻辑与的语法一样，两边为命令的时候，前面的命令执行成功才会执行后面的命令，反之则不会执行后面的命令，同上，<code>必须URL编码</code>,例如<font color=red>?c&#x3D;ls%26%26cat flag.php</font></p>
+<h4 id="-3"><a href="#-3" class="headerlink" title="|"></a>|</h4><p>&emsp;&emsp;将前面命令的输出作为后面命令的输入，把前面命令的结果当成后面命令的参数；是不是看起来有点生涩？没关系，看个例题就明白了。<br>&emsp;&emsp;<font color=blue>echo “ls -l”</font>这个是只显示”ls -l”,而不是命令。<br>&emsp;&emsp;<font color=red>echo “ls -l” | &#x2F;bin&#x2F;bash</font>这个是&#x2F;bin&#x2F;bash把”ls -l”当成参数执行，也就是执行了ls -l这条命令。  </p>
+<h4 id="-4"><a href="#-4" class="headerlink" title="||"></a>||</h4><p>&emsp;&emsp;继承了逻辑或的语法，还有短路原则，换个更容易理解的就是相当于if else语句，若前面的命令执行成功，后面的命令就不会执行，反之执行后面的命令；例如<br>&emsp;&emsp;<font color=blue>ls || &gt;dev&#x2F;null 2&gt;&amp;1</font>后者相当于一个垃圾桶，你的所有输出都会被丢进去,”&gt;”代表的是重定向，还有2和1具体代表什么感兴趣的可以再去看一下，目前只要知道这样的格式代表的是垃圾桶就好。好，回归正题，如果没有||，作为顺序输出的话，就不会有回显；反之，ls正常输出，后面就不会执行了。</p>
+<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="替换函数绕过"><a href="#替换函数绕过" class="headerlink" title="替换函数绕过"></a>替换函数绕过</h4><p>&emsp;&emsp;之所以介绍这么多常见的命令和函数就是为了达成这个目的，看黑名单内没有其中的哪些（个）函数和命令就可以用它实现一样的效果。例如</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!preg_match(<span class="string">&quot;/exec/system/popen/proc_open|\`/i&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;很明显，对照上面的函数，还有passthru没有过滤，就可以使用该函数，<font color=blue>?c&#x3D;passthru(“ls”);</font></p>
+<h4 id="空格过滤绕过"><a href="#空格过滤绕过" class="headerlink" title="空格过滤绕过"></a>空格过滤绕过</h4><p>&emsp;&emsp;空格过滤是属于比较烦的一种，尤其在SQL注入中┻┻︵⁞&#x3D;༎ຶ﹏༎ຶ&#x3D;⁞︵┻┻，算了，我们先看这里的。</p>
+<h5 id="大括号"><a href="#大括号" class="headerlink" title="大括号{}"></a>大括号{}</h5><p>&emsp;&emsp;顾名思义就是用大括号将命令括起来，中间用，分割，例如<font color=red>{cat,flag.txt};</font>  </p>
+<h5 id="IFS-代替空格"><a href="#IFS-代替空格" class="headerlink" title="$IFS 代替空格"></a>$IFS 代替空格</h5><p>&emsp;&emsp;这个建议去kali用一下，原理就是Linux下有一个特殊的环境变量叫做IFS，叫做内部字段分隔符，既然是分隔符，就能起到空格的作用。通常能单纯的$IFS会被当作变量名，就加一对{}固定变量名所以就是${IFS}，例如<font color=blue>ls${IFS}-l</font><br>&emsp;&emsp;再者就是$IFS$9，后面加个$和{}类似，起截断作用，$9是当前系统shell进程的第九个参数，代表这空字符串，所以这也是一种,例如<font color=red>ls$IFS$9-l</font><br>&emsp;&emsp;这两个在题目中最常用也最好用了，要知道。  </p>
+<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h5><p>&emsp;&emsp;就是使用空格和制表符的URL编码代替空格，在执行是会自动转换为空格使用，%09（tab）%20（space），例如<font color=blue>cat%09flag.php</font></p>
+<h5 id="重定向字符"><a href="#重定向字符" class="headerlink" title="重定向字符&lt;,&lt;&gt;"></a>重定向字符&lt;,&lt;&gt;</h5><p>&emsp;&emsp;上面也提过一嘴，就是把&lt;后面跟的文件取代键盘作为新的输入设备，具体原理我也不清楚（谁会了到时候指导我一下ヾ(❀╹◡╹)ﾉﾞ❀~），不推荐使用，用法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span>&lt;flag.php</span><br><span class="line"><span class="built_in">cat</span>&lt;&gt;flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="过滤"><a href="#过滤" class="headerlink" title=".过滤"></a>.过滤</h4>]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
       </tags>
   </entry>
 </search>
