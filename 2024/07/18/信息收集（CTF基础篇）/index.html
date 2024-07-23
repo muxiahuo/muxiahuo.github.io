@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"muxiahuo.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownBigOut"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有   123456ctrl+U 查看源代码F12  查看js脚本robots.txt 文件泄露,在URL后面加上&#x2F;robot.txt,可能会给出flag或所在路径www.zip   压缩包，同上用法dirsearch或御剑   扫描文件，转至BurpSuite  抓包找响应头，转至 &emsp;&emsp;基本思">
+    <meta name="description" content="&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有   123456ctrl+U 查看源代码F12  查看js脚本robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径www.zip   压缩包，同上用法dirsearch   扫描文件，转至BurpSuite  抓包找响应头，转至 &emsp;&emsp;基本思路就">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信息收集（CTF基础篇）">
 <meta property="og:url" content="https://muxiahuo.github.io/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/index.html">
 <meta property="og:site_name" content="一只鼍的博客 | Glory&#39;s blog">
-<meta property="og:description" content="&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有   123456ctrl+U 查看源代码F12  查看js脚本robots.txt 文件泄露,在URL后面加上&#x2F;robot.txt,可能会给出flag或所在路径www.zip   压缩包，同上用法dirsearch或御剑   扫描文件，转至BurpSuite  抓包找响应头，转至 &emsp;&emsp;基本思">
+<meta property="og:description" content="&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有   123456ctrl+U 查看源代码F12  查看js脚本robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径www.zip   压缩包，同上用法dirsearch   扫描文件，转至BurpSuite  抓包找响应头，转至 &emsp;&emsp;基本思路就">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-18T13:42:03.000Z">
-<meta property="article:modified_time" content="2024-07-18T13:53:01.261Z">
+<meta property="article:modified_time" content="2024-07-23T12:31:22.709Z">
 <meta property="article:author" content="muxiahuo">
 <meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -195,9 +195,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-07-18 21:42:03 / 修改时间：21:53:01" itemprop="dateCreated datePublished" datetime="2024-07-18T21:42:03+08:00">2024-07-18</time>
+      <time title="创建时间：2024-07-18 21:42:03" itemprop="dateCreated datePublished" datetime="2024-07-18T21:42:03+08:00">2024-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-23 20:31:22" itemprop="dateModified" datetime="2024-07-23T20:31:22+08:00">2024-07-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -223,7 +229,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>208</span>
+      <span>206</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -241,7 +247,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有  </p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl+U 查看源代码</span><br><span class="line">F12  查看js脚本</span><br><span class="line">robots<span class="selector-class">.txt</span> 文件泄露,在URL后面加上/robot<span class="selector-class">.txt</span>,可能会给出flag或所在路径</span><br><span class="line">www<span class="selector-class">.zip</span>   压缩包，同上用法</span><br><span class="line">dirsearch或御剑   扫描文件，转至</span><br><span class="line">BurpSuite  抓包找响应头，转至</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl+U 查看源代码</span><br><span class="line">F12  查看js脚本</span><br><span class="line">robots<span class="selector-class">.txt</span> 文件泄露,在URL后面加上/robots<span class="selector-class">.txt</span>,可能会给出flag或所在路径</span><br><span class="line">www<span class="selector-class">.zip</span>   压缩包，同上用法</span><br><span class="line">dirsearch   扫描文件，转至</span><br><span class="line">BurpSuite  抓包找响应头，转至</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
 
     </div>
