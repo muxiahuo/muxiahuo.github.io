@@ -28,7 +28,7 @@
   <entry>
     <title>dirsearch</title>
     <url>/2024/07/23/dirsearch/</url>
-    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，kali安装:</p>
+    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;安装完之后就是安装依赖</p>
 <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
@@ -97,7 +97,7 @@
   <entry>
     <title>php_filter_chain_generator</title>
     <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
 <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
 <p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
 ]]></content>
@@ -309,7 +309,29 @@
   <entry>
     <title>文件上传</title>
     <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
+<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地<font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
+<ul>
+<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
+<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至</li>
+</ul>
+<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
+<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞"><a href="#解析漏洞" class="headerlink" title="解析漏洞"></a>解析漏洞</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
+
+<h5 id="截断上传"><a href="#截断上传" class="headerlink" title="截断上传"></a>截断上传</h5><ul>
+<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
+<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
+<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
+</ul>
+<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+<h3 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h3><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
+
+<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
+]]></content>
       <categories>
         <category>PHP</category>
       </categories>
