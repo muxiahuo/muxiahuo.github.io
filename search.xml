@@ -20,6 +20,22 @@
       </tags>
   </entry>
   <entry>
+    <title>eregi</title>
+    <url>/2024/07/17/eregi/</url>
+    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
+<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>fenjing</title>
     <url>/2024/06/05/fenjing/</url>
     <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
@@ -45,74 +61,12 @@
       </tags>
   </entry>
   <entry>
-    <title>eregi</title>
-    <url>/2024/07/17/eregi/</url>
-    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
-<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>in_array</title>
     <url>/2024/07/13/in-array/</url>
     <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
 <h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -138,6 +92,19 @@
       </categories>
       <tags>
         <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -182,6 +149,56 @@
       </tags>
   </entry>
   <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php入门</title>
+    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
+<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
+<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>preg_match</title>
     <url>/2024/06/12/preg-match/</url>
     <content><![CDATA[<p>&emsp;&emsp;正则匹配也是php中最常见的一种，一般用来做一个<del>装饰</del>匹配作用，我们通常用以下几种绕过方式来规避正则匹配。</p>
@@ -221,23 +238,6 @@
       </tags>
   </entry>
   <entry>
-    <title>php入门</title>
-    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
-<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
-<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>print&amp;print_r</title>
     <url>/2024/07/13/print-print-r/</url>
     <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
@@ -270,6 +270,20 @@
       </tags>
   </entry>
   <entry>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">ctrl+U 查看源代码</span><br><span class="line">F12  查看js脚本</span><br><span class="line">robots<span class="selector-class">.txt</span> 文件泄露,在URL后面加上/robots<span class="selector-class">.txt</span>,可能会给出flag或所在路径</span><br><span class="line">www<span class="selector-class">.zip</span>   压缩包，同上用法</span><br><span class="line">dirsearch   扫描文件，转至\<span class="selector-attr">[dirsearch\]</span>\(/<span class="number">2024</span>/<span class="number">07</span>/<span class="number">23</span>/dirsearch/\)</span><br><span class="line">BurpSuite  抓包找响应头，转至</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tplmap</title>
     <url>/2024/06/06/tplmap/</url>
     <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
@@ -295,28 +309,43 @@
       </tags>
   </entry>
   <entry>
-    <title>文件上传</title>
-    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[]]></content>
+    <title>文件包含</title>
+    <url>/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
+    <content><![CDATA[<p>&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）<br>&emsp;&emsp;<strong>include和require语句是相同的，除了错误处理方面</strong></p>
+<ul>
+<li>require会生成致命错误（E_COMPILE_ERROR）并停止脚本  </li>
+<li>include只生成警告（E_WARNING）并且脚本会继续<br>&emsp;&emsp;因此，如果希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的PHP 应用程序编程中，请始终使用 reguire 向执行流用关键文件。这在某个关键文件意外丢失的情况下,有助于提高应用程序的安全性和完整性。<br>&emsp;&emsp;像是这样的文件包含函数还有  <figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">include_once</span><br><span class="line">require_once</span><br><span class="line">highlight_file</span><br><span class="line">show_source</span><br><span class="line"><span class="keyword">file</span></span><br><span class="line">readfile</span><br><span class="line">file_get_contents</span><br><span class="line">file_put_contents</span><br><span class="line"><span class="keyword">fopen</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>&emsp;&emsp;在此之前我们要知道，文件包含函数并不在意被包含的文件是什么类型，只要有php代码，都会被解析出来，利用这个特性，我们可以读取一下包含敏感信息的文件，一些文件上传的漏洞也是因此而出来的。  </p>
+<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p>&emsp;&emsp;既然include等函数能包含本地文件并回显出来，那么我们可以利用它去读取一些本地固有的文件，用得最多的是phpinfo();<br>&emsp;&emsp;出此之外，我们可以读取一些系统本地的敏感信息，例如__C:\Windows\system.ini__ ,这是属于<strong>绝对路径读取</strong>。 <strong>相对路径读取</strong>是通过.&#x2F; 表示当前位置路径，..&#x2F;表示上一级路径位置（在Linux中同样适用），例如当前页面所在路径为__C:\Apache24\htdocs_<em>,我们需要使用..&#x2F;推到C盘再进行访问，构造路径如下：</em><em>..&#x2F;..&#x2F;windows&#x2F;system.ini</em>_ 后面的路径穿越就是利用的这个原理，硕以说基础还是有必要学一学的。也就是打比赛找flag的时候，就用..&#x2F;..&#x2F;..&#x2F;……&#x2F;flag，推到flag所在的目录位置就可以了。<br>&emsp;&emsp;一些常见的敏感目录信息路径  </p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">Windows系统：  </span><br><span class="line">C:\boot.ini <span class="symbol">__</span>查看系统版本<span class="symbol">__</span></span><br><span class="line">C:\windows\system32\inetsrv\MetaBase.xml __IIS配置文件<span class="symbol">__</span></span><br><span class="line">C:\windows\repair\sam <span class="symbol">__</span>存储Windows系统初次安装的密码<span class="symbol">__</span></span><br><span class="line">C:\ProgramFiles\mysql\my.ini __Mysql配置<span class="symbol">__</span></span><br><span class="line">C:\ProgramFiles\mysql\data\mysql\user.MYD __MySQL root密码<span class="symbol">__</span></span><br><span class="line">C:\windows\php.ini __php配置信息<span class="symbol">__</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">Linux/Unix系统：</span><br><span class="line"><span class="regexp">/etc/</span>password __账户信息__</span><br><span class="line"><span class="regexp">/etc/</span>shadow __账户密码信息__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>httpd.conf __Apache2默认配置文件__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>extra/httpd-vhost.conf __虚拟网站配置__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>php5<span class="regexp">/lib/</span>php.ini __PHP相关配置__</span><br><span class="line"><span class="regexp">/etc/</span>httpd<span class="regexp">/conf/</span>httpd.conf __Apache配置文件__</span><br><span class="line"><span class="regexp">/etc/my</span>.conf __mysql配置文件__</span><br></pre></td></tr></table></figure>
+
+<h3 id="LFI漏洞利用技巧"><a href="#LFI漏洞利用技巧" class="headerlink" title="LFI漏洞利用技巧"></a>LFI漏洞利用技巧</h3><h4 id="配合文件上传使用"><a href="#配合文件上传使用" class="headerlink" title="配合文件上传使用"></a>配合文件上传使用</h4><p>&emsp;&emsp; 属于文件上传了那就到那里去看吧(っ’-‘)╮&#x3D;͟͟͞͞💌  </p>
+<h4 id="包含Apache日志文件"><a href="#包含Apache日志文件" class="headerlink" title="包含Apache日志文件"></a>包含Apache日志文件</h4><p>&emsp;&emsp;有些网站存在文件包含漏洞，但是却没有文件上传点。这个时候我们还可以通过利用Apache的日志文件来生成一句话木马。<font color=red>在用户发起请求时，服务器会将请求写入access.log，当发送错误时写入error.log</font>可以用BP在里面编写一句话木马，像是这样<br><img data-src="/images/access.log.png" alt="access.log">  </p>
+<h4 id="包含SESSION文件"><a href="#包含SESSION文件" class="headerlink" title="包含SESSION文件"></a>包含SESSION文件</h4><p>&emsp;&emsp;这个出现的不多，了解一下就好，就是找到SESSION文件。根据文件内容找到可控变量，在构造payload插入到文件中，最后包含就可以了。<br>&emsp;&emsp;常见的session存储路径：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/var/</span>lib<span class="regexp">/php/</span>sess_PHPSESSID</span><br><span class="line"><span class="regexp">/var/</span>lib<span class="regexp">/php/</span>sess_PHPSESSID</span><br><span class="line"><span class="regexp">/tmp/</span>sess_PHPSESSID</span><br><span class="line"><span class="regexp">/tmp/</span>sessions/sess_PHPSESSID</span><br><span class="line">session文件格式:sess_[phpsessid],而phpsessid在发送的请求的cookie字段中</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;看个题目，懂了说明你掌握了<a href="https://chybeta.github.io/2017/11/09/%E4%B8%80%E9%81%93CTF%E9%A2%98%EF%BC%9APHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">Session包含</a>  </p>
+<h4 id="包含临时文件"><a href="#包含临时文件" class="headerlink" title="包含临时文件"></a>包含临时文件</h4><p>&emsp;&emsp;php中上传文件，会创建临时文件。在linux下使用&#x2F;tmp目录，而在windows下使用C:\windows\temp目录。在临时文件被删除前，可以利用时间竞争的方式包含该临时文件。  </p>
+<p>&emsp;&emsp;由于包含需要知道包含的文件名。一种方法是进行暴力猜解，linux下使用的是随机函数有缺陷，而windows下只有65535种不同的文件名，所以这个方法是可行的。  </p>
+<p>&emsp;&emsp;另一种方法是配合phpinfo页面的php variables，可以直接获取到上传文件的存储路径和临时文件名，直接包含即可。  话不多说，看题<a href="https://chybeta.github.io/2017/08/22/XMAN%E5%A4%8F%E4%BB%A4%E8%90%A5-2017-babyweb-writeup/">时间竞争临时文件</a></p>
+<h3 id="远程文件包含（RFI）"><a href="#远程文件包含（RFI）" class="headerlink" title="远程文件包含（RFI）"></a>远程文件包含（RFI）</h3><p>&emsp;&emsp;如果PHP的配置选项allow_url_include、allow_url_fopen状态为ON的话，则include&#x2F;require函数是可以加载远程文件的，这种漏洞被称为远程文件包含(RFI),这个需要自己有个web服务器，具体使用方法可以去CSDN看看大佬的blog</p>
+<h3 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h3><p>&emsp;&emsp;文件包含的重中之重，是一定需要掌握的。可以说，看见文件包含的题目就要想到伪协议。如下  </p>
+<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">file:</span><span class="comment">// — 访问本地文件系统</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line"><span class="symbol">ftp:</span><span class="comment">// — 访问 FTP(s) URLs</span></span><br><span class="line"><span class="symbol">php:</span><span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line"><span class="symbol">zlib:</span><span class="comment">// — 压缩流</span></span><br><span class="line"><span class="symbol">data:</span><span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line"><span class="symbol">glob:</span><span class="comment">// — 查找匹配的文件路径模式</span></span><br><span class="line"><span class="symbol">phar:</span><span class="comment">// — PHP 归档</span></span><br><span class="line"><span class="symbol">ssh2:</span><span class="comment">// — Secure Shell 2</span></span><br><span class="line"><span class="symbol">rar:</span><span class="comment">// — RAR</span></span><br><span class="line"><span class="symbol">ogg:</span><span class="comment">// — 音频流</span></span><br><span class="line"><span class="symbol">expect:</span><span class="comment">// — 处理交互式的流</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;需要熟练掌握的有  </p>
+<h4 id="php-filter"><a href="#php-filter" class="headerlink" title="php:&#x2F;&#x2F;filter"></a>php:&#x2F;&#x2F;filter</h4><p>&emsp;&emsp;是一种元封装器，类似readfile(),file()等，可以获取指定文件源码（要知道，通常来说不会有人直接把源码放出来的，除了打比赛），所以我们需要用它来完成获取，php:&#x2F;&#x2F;filter流会被当做php文件执行，所以我们一般对其进行编码，让其不执行。从而导致任意文件读取。<br>&emsp;&emsp;最常用也是最好用的payload  </p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/<span class="built_in">read</span>=<span class="built_in">convert</span>.base64-encode/resource=flag.php</span><br><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/resource=index.php</span><br></pre></td></tr></table></figure>
+
+<h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p>&emsp;&emsp;当我们无法读取到有用信息或者不知道读取哪个php文件时，我们可以利用流写入一句话木马进去，详情请转到<a href="/2024/07/14/php-filter-chain-generator/">php_filter_chain_generator</a>脚本参考</p>
+<h4 id="php-input"><a href="#php-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h4><p>&emsp;&emsp;可以访问请求的原始数据的只读流,<strong>将post请求的数据当作php代码执行</strong>,当传入的参数作为文件名打开时，可以<strong>将参数设为php:&#x2F;&#x2F;input</strong>,同时<strong>post写入想要执行的php代码</strong>，php执行时会将post内容当作文件内容，从而导致任意代码执行。</p>
+<h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D; 这个不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;剩下的伪协议不常见也不常考（至少我还没遇到( ͡°❥ ͡°)），能学到这已经很不错了，重点在于实操去做题，两个字：沉淀，这些知识点在网上有很多资料都可以查到，我写的很多都是网上照抄的（(ฅ•﹏•ฅ)），我写在blog里一来是为了引导学习路线，写的不详细或者看不懂的地方可以复制目录去搜索相关知识点，二来就是自己整理知识点，加强印象。希望各位师傅们能够在web道路上走得更快更远ヾ(❀╹◡╹)ﾉﾞ❀~</p>
+]]></content>
       <categories>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">ctrl+U 查看源代码</span><br><span class="line">F12  查看js脚本</span><br><span class="line">robots<span class="selector-class">.txt</span> 文件泄露,在URL后面加上/robots<span class="selector-class">.txt</span>,可能会给出flag或所在路径</span><br><span class="line">www<span class="selector-class">.zip</span>   压缩包，同上用法</span><br><span class="line">dirsearch   扫描文件，转至<span class="selector-attr">[dirsearch]</span>(/<span class="number">2024</span>/<span class="number">07</span>/<span class="number">23</span>/dirsearch/)</span><br><span class="line">BurpSuite  抓包找响应头，转至</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
+        <tag>文件包含</tag>
       </tags>
   </entry>
   <entry>
@@ -416,43 +445,14 @@
       </tags>
   </entry>
   <entry>
-    <title>文件包含</title>
-    <url>/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
-    <content><![CDATA[<p>&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）<br>&emsp;&emsp;<strong>include和require语句是相同的，除了错误处理方面</strong></p>
-<ul>
-<li>require会生成致命错误（E_COMPILE_ERROR）并停止脚本  </li>
-<li>include只生成警告（E_WARNING）并且脚本会继续<br>&emsp;&emsp;因此，如果希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的PHP 应用程序编程中，请始终使用 reguire 向执行流用关键文件。这在某个关键文件意外丢失的情况下,有助于提高应用程序的安全性和完整性。<br>&emsp;&emsp;像是这样的文件包含函数还有  <figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">include_once</span><br><span class="line">require_once</span><br><span class="line">highlight_file</span><br><span class="line">show_source</span><br><span class="line"><span class="keyword">file</span></span><br><span class="line">readfile</span><br><span class="line">file_get_contents</span><br><span class="line">file_put_contents</span><br><span class="line"><span class="keyword">fopen</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>&emsp;&emsp;在此之前我们要知道，文件包含函数并不在意被包含的文件是什么类型，只要有php代码，都会被解析出来，利用这个特性，我们可以读取一下包含敏感信息的文件，一些文件上传的漏洞也是因此而出来的。  </p>
-<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p>&emsp;&emsp;既然include等函数能包含本地文件并回显出来，那么我们可以利用它去读取一些本地固有的文件，用得最多的是phpinfo();<br>&emsp;&emsp;出此之外，我们可以读取一些系统本地的敏感信息，例如__C:\Windows\system.ini__ ,这是属于<strong>绝对路径读取</strong>。 <strong>相对路径读取</strong>是通过.&#x2F; 表示当前位置路径，..&#x2F;表示上一级路径位置（在Linux中同样适用），例如当前页面所在路径为__C:\Apache24\htdocs_<em>,我们需要使用..&#x2F;推到C盘再进行访问，构造路径如下：</em><em>..&#x2F;..&#x2F;windows&#x2F;system.ini</em>_ 后面的路径穿越就是利用的这个原理，硕以说基础还是有必要学一学的。也就是打比赛找flag的时候，就用..&#x2F;..&#x2F;..&#x2F;……&#x2F;flag，推到flag所在的目录位置就可以了。<br>&emsp;&emsp;一些常见的敏感目录信息路径  </p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">Windows系统：  </span><br><span class="line">C:\boot.ini <span class="symbol">__</span>查看系统版本<span class="symbol">__</span></span><br><span class="line">C:\windows\system32\inetsrv\MetaBase.xml __IIS配置文件<span class="symbol">__</span></span><br><span class="line">C:\windows\repair\sam <span class="symbol">__</span>存储Windows系统初次安装的密码<span class="symbol">__</span></span><br><span class="line">C:\ProgramFiles\mysql\my.ini __Mysql配置<span class="symbol">__</span></span><br><span class="line">C:\ProgramFiles\mysql\data\mysql\user.MYD __MySQL root密码<span class="symbol">__</span></span><br><span class="line">C:\windows\php.ini __php配置信息<span class="symbol">__</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">Linux/Unix系统：</span><br><span class="line"><span class="regexp">/etc/</span>password __账户信息__</span><br><span class="line"><span class="regexp">/etc/</span>shadow __账户密码信息__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>httpd.conf __Apache2默认配置文件__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>apache2<span class="regexp">/conf/</span>extra/httpd-vhost.conf __虚拟网站配置__</span><br><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/app/</span>php5<span class="regexp">/lib/</span>php.ini __PHP相关配置__</span><br><span class="line"><span class="regexp">/etc/</span>httpd<span class="regexp">/conf/</span>httpd.conf __Apache配置文件__</span><br><span class="line"><span class="regexp">/etc/my</span>.conf __mysql配置文件__</span><br></pre></td></tr></table></figure>
-
-<h3 id="LFI漏洞利用技巧"><a href="#LFI漏洞利用技巧" class="headerlink" title="LFI漏洞利用技巧"></a>LFI漏洞利用技巧</h3><h4 id="配合文件上传使用"><a href="#配合文件上传使用" class="headerlink" title="配合文件上传使用"></a>配合文件上传使用</h4><p>&emsp;&emsp; 属于文件上传了那就到那里去看吧(っ’-‘)╮&#x3D;͟͟͞͞💌  </p>
-<h4 id="包含Apache日志文件"><a href="#包含Apache日志文件" class="headerlink" title="包含Apache日志文件"></a>包含Apache日志文件</h4><p>&emsp;&emsp;有些网站存在文件包含漏洞，但是却没有文件上传点。这个时候我们还可以通过利用Apache的日志文件来生成一句话木马。<font color=red>在用户发起请求时，服务器会将请求写入access.log，当发送错误时写入error.log</font>可以用BP在里面编写一句话木马，像是这样<br><img data-src="/images/access.log.png" alt="access.log">  </p>
-<h4 id="包含SESSION文件"><a href="#包含SESSION文件" class="headerlink" title="包含SESSION文件"></a>包含SESSION文件</h4><p>&emsp;&emsp;这个出现的不多，了解一下就好，就是找到SESSION文件。根据文件内容找到可控变量，在构造payload插入到文件中，最后包含就可以了。<br>&emsp;&emsp;常见的session存储路径：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/var/</span>lib<span class="regexp">/php/</span>sess_PHPSESSID</span><br><span class="line"><span class="regexp">/var/</span>lib<span class="regexp">/php/</span>sess_PHPSESSID</span><br><span class="line"><span class="regexp">/tmp/</span>sess_PHPSESSID</span><br><span class="line"><span class="regexp">/tmp/</span>sessions/sess_PHPSESSID</span><br><span class="line">session文件格式:sess_[phpsessid],而phpsessid在发送的请求的cookie字段中</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;看个题目，懂了说明你掌握了<a href="https://chybeta.github.io/2017/11/09/%E4%B8%80%E9%81%93CTF%E9%A2%98%EF%BC%9APHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">Session包含</a>  </p>
-<h4 id="包含临时文件"><a href="#包含临时文件" class="headerlink" title="包含临时文件"></a>包含临时文件</h4><p>&emsp;&emsp;php中上传文件，会创建临时文件。在linux下使用&#x2F;tmp目录，而在windows下使用C:\windows\temp目录。在临时文件被删除前，可以利用时间竞争的方式包含该临时文件。  </p>
-<p>&emsp;&emsp;由于包含需要知道包含的文件名。一种方法是进行暴力猜解，linux下使用的是随机函数有缺陷，而windows下只有65535种不同的文件名，所以这个方法是可行的。  </p>
-<p>&emsp;&emsp;另一种方法是配合phpinfo页面的php variables，可以直接获取到上传文件的存储路径和临时文件名，直接包含即可。  话不多说，看题<a href="https://chybeta.github.io/2017/08/22/XMAN%E5%A4%8F%E4%BB%A4%E8%90%A5-2017-babyweb-writeup/">时间竞争临时文件</a></p>
-<h3 id="远程文件包含（RFI）"><a href="#远程文件包含（RFI）" class="headerlink" title="远程文件包含（RFI）"></a>远程文件包含（RFI）</h3><p>&emsp;&emsp;如果PHP的配置选项allow_url_include、allow_url_fopen状态为ON的话，则include&#x2F;require函数是可以加载远程文件的，这种漏洞被称为远程文件包含(RFI),这个需要自己有个web服务器，具体使用方法可以去CSDN看看大佬的blog</p>
-<h3 id="PHP伪协议"><a href="#PHP伪协议" class="headerlink" title="PHP伪协议"></a>PHP伪协议</h3><p>&emsp;&emsp;文件包含的重中之重，是一定需要掌握的。可以说，看见文件包含的题目就要想到伪协议。如下  </p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">file:</span><span class="comment">// — 访问本地文件系统</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">// — 访问 HTTP(s) 网址</span></span><br><span class="line"><span class="symbol">ftp:</span><span class="comment">// — 访问 FTP(s) URLs</span></span><br><span class="line"><span class="symbol">php:</span><span class="comment">// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line"><span class="symbol">zlib:</span><span class="comment">// — 压缩流</span></span><br><span class="line"><span class="symbol">data:</span><span class="comment">// — 数据（RFC 2397）</span></span><br><span class="line"><span class="symbol">glob:</span><span class="comment">// — 查找匹配的文件路径模式</span></span><br><span class="line"><span class="symbol">phar:</span><span class="comment">// — PHP 归档</span></span><br><span class="line"><span class="symbol">ssh2:</span><span class="comment">// — Secure Shell 2</span></span><br><span class="line"><span class="symbol">rar:</span><span class="comment">// — RAR</span></span><br><span class="line"><span class="symbol">ogg:</span><span class="comment">// — 音频流</span></span><br><span class="line"><span class="symbol">expect:</span><span class="comment">// — 处理交互式的流</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;需要熟练掌握的有  </p>
-<h4 id="php-filter"><a href="#php-filter" class="headerlink" title="php:&#x2F;&#x2F;filter"></a>php:&#x2F;&#x2F;filter</h4><p>&emsp;&emsp;是一种元封装器，类似readfile(),file()等，可以获取指定文件源码（要知道，通常来说不会有人直接把源码放出来的，除了打比赛），所以我们需要用它来完成获取，php:&#x2F;&#x2F;filter流会被当做php文件执行，所以我们一般对其进行编码，让其不执行。从而导致任意文件读取。<br>&emsp;&emsp;最常用也是最好用的payload  </p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/<span class="built_in">read</span>=<span class="built_in">convert</span>.base64-encode/resource=flag.php</span><br><span class="line">?<span class="built_in">file</span>=php://<span class="built_in">filter</span>/resource=index.php</span><br></pre></td></tr></table></figure>
-
-<h5 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h5><p>&emsp;&emsp;当我们无法读取到有用信息或者不知道读取哪个php文件时，我们可以利用流写入一句话木马进去，详情请转到<a href="/2024/07/14/php-filter-chain-generator/">php_filter_chain_generator</a>脚本参考</p>
-<h4 id="php-input"><a href="#php-input" class="headerlink" title="php:&#x2F;&#x2F;input"></a>php:&#x2F;&#x2F;input</h4><p>&emsp;&emsp;可以访问请求的原始数据的只读流,<strong>将post请求的数据当作php代码执行</strong>,当传入的参数作为文件名打开时，可以<strong>将参数设为php:&#x2F;&#x2F;input</strong>,同时<strong>post写入想要执行的php代码</strong>，php执行时会将post内容当作文件内容，从而导致任意代码执行。</p>
-<h4 id="data-text-plain"><a href="#data-text-plain" class="headerlink" title="data:&#x2F;&#x2F;text&#x2F;plain"></a>data:&#x2F;&#x2F;text&#x2F;plain</h4><p>&emsp;&emsp;在后面写入你想写入的数据给参数，例如<strong>data:&#x2F;&#x2F;text&#x2F;plain,<?php phpinfo();?></strong>,如果对特殊字符进行了过滤，可以进行base64编码，data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpPz4&#x3D; 这个不常用，有这条件可以用php:&#x2F;&#x2F;input（doge）</p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;剩下的伪协议不常见也不常考（至少我还没遇到( ͡°❥ ͡°)），能学到这已经很不错了，重点在于实操去做题，两个字：沉淀，这些知识点在网上有很多资料都可以查到，我写的很多都是网上照抄的（(ฅ•﹏•ฅ)），我写在blog里一来是为了引导学习路线，写的不详细或者看不懂的地方可以复制目录去搜索相关知识点，二来就是自己整理知识点，加强印象。希望各位师傅们能够在web道路上走得更快更远ヾ(❀╹◡╹)ﾉﾞ❀~</p>
-]]></content>
+    <title>文件上传</title>
+    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>文件包含</tag>
+        <tag>文件上传</tag>
       </tags>
   </entry>
 </search>
