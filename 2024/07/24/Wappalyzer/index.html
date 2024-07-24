@@ -21,28 +21,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"muxiahuo.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownBigOut"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有ctrl+U 查看源代码F12  查看js脚本robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径www.zip   压缩包，同上用法dirsearch   扫描文件，转至dirsearchBurpSuite  抓包找响应头，转至&emsp;&emsp;基">
+    <meta name="description" content="&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信息收集（CTF基础篇）">
-<meta property="og:url" content="https://muxiahuo.github.io/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/index.html">
+<meta property="og:title" content="Wappalyzer">
+<meta property="og:url" content="https://muxiahuo.github.io/2024/07/24/Wappalyzer/index.html">
 <meta property="og:site_name" content="一只鼍的博客 | Glory&#39;s blog">
-<meta property="og:description" content="&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有ctrl+U 查看源代码F12  查看js脚本robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径www.zip   压缩包，同上用法dirsearch   扫描文件，转至dirsearchBurpSuite  抓包找响应头，转至&emsp;&emsp;基">
+<meta property="og:description" content="&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-18T13:42:03.000Z">
-<meta property="article:modified_time" content="2024-07-23T12:47:12.808Z">
+<meta property="article:published_time" content="2024-07-24T13:14:53.000Z">
+<meta property="article:modified_time" content="2024-07-24T13:19:51.267Z">
 <meta property="article:author" content="muxiahuo">
-<meta property="article:tag" content="基础">
+<meta property="article:tag" content="工具|脚本 利用">
+<meta property="article:tag" content="信息收集">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://muxiahuo.github.io/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/">
+<link rel="canonical" href="https://muxiahuo.github.io/2024/07/24/Wappalyzer/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/","path":"2024/07/18/信息收集（CTF基础篇）/","title":"信息收集（CTF基础篇）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/07/24/Wappalyzer/","path":"2024/07/24/Wappalyzer/","title":"Wappalyzer"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>信息收集（CTF基础篇） | 一只鼍的博客 | Glory's blog</title>
+<title>Wappalyzer | 一只鼍的博客 | Glory's blog</title>
   
 
 
@@ -167,7 +168,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/24/Wappalyzer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -180,12 +181,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="信息收集（CTF基础篇） | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="name" content="Wappalyzer | 一只鼍的博客 | Glory's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          信息收集（CTF基础篇）
+          Wappalyzer
         </h1>
 
         <div class="post-meta-container">
@@ -195,15 +196,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2024-07-18 21:42:03" itemprop="dateCreated datePublished" datetime="2024-07-18T21:42:03+08:00">2024-07-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-23 20:47:12" itemprop="dateModified" datetime="2024-07-23T20:47:12+08:00">2024-07-23</time>
+      <time title="创建时间：2024-07-24 21:14:53 / 修改时间：21:19:51" itemprop="dateCreated datePublished" datetime="2024-07-24T21:14:53+08:00">2024-07-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -229,7 +224,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>214</span>
+      <span>195</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -246,7 +241,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
 
     </div>
 
@@ -256,21 +251,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7-%E8%84%9A%E6%9C%AC-%E5%88%A9%E7%94%A8/" rel="tag"># 工具|脚本 利用</a>
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="tag"># 信息收集</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/07/17/eregi/" rel="prev" title="eregi">
-                  <i class="fa fa-angle-left"></i> eregi
+                <a href="/2024/07/23/dirsearch/" rel="prev" title="dirsearch">
+                  <i class="fa fa-angle-left"></i> dirsearch
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="next" title="文件上传">
-                  文件上传 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
