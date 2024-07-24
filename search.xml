@@ -50,21 +50,6 @@
       </tags>
   </entry>
   <entry>
-    <title>in_array</title>
-    <url>/2024/07/13/in-array/</url>
-    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
-<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>fenjing</title>
     <url>/2024/06/05/fenjing/</url>
     <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
@@ -103,16 +88,12 @@
       </tags>
   </entry>
   <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+    <title>in_array</title>
+    <url>/2024/07/13/in-array/</url>
+    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
+<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -132,6 +113,25 @@
 
 <h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
 <h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -255,6 +255,18 @@
       </tags>
   </entry>
   <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>preg_replace</title>
     <url>/2024/07/12/preg-replace/</url>
     <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
@@ -272,55 +284,6 @@
       </categories>
       <tags>
         <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>tplmap</title>
-    <url>/2024/06/06/tplmap/</url>
-    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
-<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
-<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SSTI</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -417,6 +380,43 @@
       </categories>
       <tags>
         <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tplmap</title>
+    <url>/2024/06/06/tplmap/</url>
+    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
+<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
+<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SSTI</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
