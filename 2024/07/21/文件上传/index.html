@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://muxiahuo.github.io/images/GIF%E6%9C%A8%E9%A9%AC.png">
 <meta property="article:published_time" content="2024-07-21T13:29:08.000Z">
-<meta property="article:modified_time" content="2024-07-24T13:44:45.959Z">
+<meta property="article:modified_time" content="2024-07-25T12:42:11.649Z">
 <meta property="article:author" content="muxiahuo">
 <meta property="article:tag" content="文件上传">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-24 21:44:45" itemprop="dateModified" datetime="2024-07-24T21:44:45+08:00">2024-07-24</time>
+      <time title="修改时间：2024-07-25 20:42:11" itemprop="dateModified" datetime="2024-07-25T20:42:11+08:00">2024-07-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,7 +252,7 @@
 <h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
 <ul>
 <li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
-<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至</li>
+<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
 </ul>
 <h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
 <h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
