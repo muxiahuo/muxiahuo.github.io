@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>BurpSuite</title>
+    <url>/2024/07/25/BurpSuite/</url>
+    <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
+<h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
+<h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Wappalyzer</title>
     <url>/2024/07/24/Wappalyzer/</url>
     <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
@@ -28,25 +44,9 @@
         <category>WEB</category>
       </categories>
       <tags>
+        <tag>基础</tag>
         <tag>工具|脚本 利用</tag>
         <tag>信息收集</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BurpSuite</title>
-    <url>/2024/07/25/BurpSuite/</url>
-    <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
-<h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
-<h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -57,34 +57,6 @@
 <figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>in_array</title>
-    <url>/2024/07/13/in-array/</url>
-    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
-<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -119,6 +91,53 @@
       </tags>
   </entry>
   <entry>
+    <title>intval</title>
+    <url>/2024/07/12/intval/</url>
+    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
+<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
+<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>in_array</title>
+    <url>/2024/07/13/in-array/</url>
+    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
+<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>is_numberic</title>
     <url>/2024/07/13/is-numberic/</url>
     <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
@@ -138,22 +157,20 @@
       </tags>
   </entry>
   <entry>
-    <title>intval</title>
-    <url>/2024/07/12/intval/</url>
-    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+    <title>php入门</title>
+    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
+<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
+<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
 ]]></content>
       <categories>
-        <category>PHP</category>
+        <category>WEB</category>
       </categories>
       <tags>
-        <tag>绕过</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -209,43 +226,6 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php入门</title>
-    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
-<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
-<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>preg_replace</title>
-    <url>/2024/07/12/preg-replace/</url>
-    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
-<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
-<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
-<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -328,22 +308,30 @@
       </tags>
   </entry>
   <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+    <title>preg_replace</title>
+    <url>/2024/07/12/preg-replace/</url>
+    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
+<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
+<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
 ]]></content>
       <categories>
-        <category>WEB</category>
+        <category>PHP</category>
       </categories>
       <tags>
-        <tag>基础</tag>
+        <tag>绕过</tag>
       </tags>
   </entry>
   <entry>
     <title>sql注入</title>
     <url>/2024/07/27/sql%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<p>&emsp;&emsp; 当用户输入账号和密码的时候，web应用会向后台数据库进行一个匹配，如果账号密码正确就会登入。而这个数据库例如MySQL,Oracle等一系列用的语句叫做sql语句，那么我们在传数据的时候，使用sql语句上传就会改变一个原有的结构，从而获取或修改数据库中的数据，而这个，就叫做sql注入。</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;那么在做sql注入的时候，建议先看一下sql语句的基础语法，懂得基础才能理解得更加深刻,OK，在学这个之前，我们要搭配着靶场去使用，实践出来的效果更佳。点击<a href="https://blog.csdn.net/Joker_Dgh/article/details/123913722">靶场环境搭建</a>,当做一个游戏去玩，通关即为胜利（主要php版本要选择5.x版本）</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;那么在做sql注入的时候，建议先看一下sql语句的基础语法，懂得基础才能理解得更加深刻,OK，在学这个之前，我们要搭配着靶场去使用，实践出来的效果更佳。点击<a href="https://blog.csdn.net/Joker_Dgh/article/details/123913722">靶场环境搭建</a>,当做一个游戏去玩，通关即为胜利（注意php版本要选择5.x版本）</p>
 <h3 id="sql注入基础"><a href="#sql注入基础" class="headerlink" title="sql注入基础"></a>sql注入基础</h3><p>&emsp;&emsp;我们就直接讲思路什么的了，语法基础和逻辑自行去b站了解。</p>
 <h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>&emsp;&emsp;注入点分为数字型和字符型（输入字符默认为字符型）。两者的判断方式可以用id&#x3D;2-1来测试，<font color=blue>如果是数字型的，回显的样式应该是id&#x3D;1的情况，如果是字符型的，回显的样式应该是id&#x3D;2的情况。</font><br><img data-src="/images/sql/sql1-1.png" alt="sql1-1"><br>&emsp;&emsp;这是id为1时的name和password<br><img data-src="/images/sql/sql1-2.png" alt="sql1-2"><br>&emsp;&emsp;这是id为2时的name和password<br><img data-src="/images/sql/sql1-2-1.png" alt="sql1-2-1"><br>&emsp;&emsp;这是id为2-1的name和password，很明显，和2的情况是一样的，所以这是字符型。</p>
 <h4 id="判断闭合方式"><a href="#判断闭合方式" class="headerlink" title="判断闭合方式"></a>判断闭合方式</h4><p>&emsp;&emsp;根据语法，既然我们要重新构造一个语句，我们就得把后面的原本语句注释掉，因此我们数字后面需要添加闭合符，语句结尾需要添加注释符。闭合方式有<br><img data-src="/images/sql/%E6%95%B0%E5%80%BC%E9%97%AD%E5%90%88.png" alt="数值闭合"><br><img data-src="/images/sql/%E5%AD%97%E7%AC%A6%E9%97%AD%E5%90%88.png" alt="字符闭合"><br>&emsp;&emsp;然而注释符目前只找到–+(– q),#,%23这三种，判断的方法也很简单，如果<font color=red>所使用的闭合方式结果一样，那么说明不是该闭合方式。反之就是</font>打个比方，如果输入1”and 1&#x3D;1– q 和 1”and 1&#x3D;2 –q 两次的回显结果一样，说明闭合方式不是双引号，其他同理。原理就不用多讲了吧，如果真是闭合符的话，and后面一真一假，后者肯定报错。<br><img data-src="/images/sql/and1=1.png" alt="and1=1"><br><img data-src="/images/sql/and1=2.png" alt="and1=2"><br>&emsp;&emsp;回显不一样，闭合符号为’（可以试试双引号是否回显是一样）</p>
@@ -366,6 +354,18 @@
       </categories>
       <tags>
         <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
