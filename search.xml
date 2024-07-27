@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Wappalyzer</title>
-    <url>/2024/07/24/Wappalyzer/</url>
-    <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BurpSuite</title>
     <url>/2024/07/25/BurpSuite/</url>
     <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
@@ -25,8 +12,8 @@
         <category>WEB</category>
       </categories>
       <tags>
-        <tag>工具|脚本 利用</tag>
         <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -44,25 +31,22 @@
         <category>WEB</category>
       </categories>
       <tags>
+        <tag>基础</tag>
         <tag>工具|脚本 利用</tag>
         <tag>信息收集</tag>
-        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
-    <title>eregi</title>
-    <url>/2024/07/17/eregi/</url>
-    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
-<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+    <title>Wappalyzer</title>
+    <url>/2024/07/24/Wappalyzer/</url>
+    <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
 ]]></content>
       <categories>
-        <category>PHP</category>
+        <category>WEB</category>
       </categories>
       <tags>
-        <tag>绕过</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
       </tags>
   </entry>
   <entry>
@@ -91,6 +75,22 @@
       </tags>
   </entry>
   <entry>
+    <title>eregi</title>
+    <url>/2024/07/17/eregi/</url>
+    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
+<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hackbar</title>
     <url>/2024/07/13/hackbar/</url>
     <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
@@ -99,8 +99,8 @@
         <category>WEB</category>
       </categories>
       <tags>
-        <tag>工具|脚本 利用</tag>
         <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -291,6 +291,30 @@
       </tags>
   </entry>
   <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tplmap</title>
     <url>/2024/06/06/tplmap/</url>
     <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
@@ -313,70 +337,6 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传</title>
-    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
-<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
-<ul>
-<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
-<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
-</ul>
-<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
-<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
-<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
-<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
-<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
-<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
-</ul>
-<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
-
-<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
-<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
-<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"><br>&emsp;&emsp;这里以图片的形式弄出来，不让表现出来，不然删我的了（后面的木马篇估计也是以图片的形式），所以说你们也可以把这些木马放到虚拟机里面去。一些木马你们可以去查到的，都一样的。</p>
-<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
-<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>文件上传</tag>
       </tags>
   </entry>
   <entry>
@@ -513,6 +473,47 @@
       </categories>
       <tags>
         <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文件上传</title>
+    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
+<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
+<ul>
+<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
+<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
+</ul>
+<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
+<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
+<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
+<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
+<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
+<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
+</ul>
+<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
+<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
+
+<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
+<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
+<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"><br>&emsp;&emsp;这里以图片的形式弄出来，不让表现出来，不然删我的了（后面的木马篇估计也是以图片的形式），所以说你们也可以把这些木马放到虚拟机里面去。一些木马你们可以去查到的，都一样的。</p>
+<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
+<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>文件上传</tag>
       </tags>
   </entry>
 </search>
