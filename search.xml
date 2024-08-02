@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>BurpSuite</title>
+    <url>/2024/07/25/BurpSuite/</url>
+    <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
+<h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
+<h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Wappalyzer</title>
     <url>/2024/07/24/Wappalyzer/</url>
     <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
@@ -14,19 +30,23 @@
       </tags>
   </entry>
   <entry>
-    <title>BurpSuite</title>
-    <url>/2024/07/25/BurpSuite/</url>
-    <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
-<h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
-<h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
+    <title>dirsearch</title>
+    <url>/2024/07/23/dirsearch/</url>
+    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;安装完之后就是安装依赖</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;之后执行dirsearch.py</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
 ]]></content>
       <categories>
         <category>WEB</category>
       </categories>
       <tags>
-        <tag>工具|脚本 利用</tag>
         <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
       </tags>
   </entry>
   <entry>
@@ -37,6 +57,38 @@
 <figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intval</title>
+    <url>/2024/07/12/intval/</url>
+    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
+<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
+<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -71,39 +123,6 @@
       </tags>
   </entry>
   <entry>
-    <title>dirsearch</title>
-    <url>/2024/07/23/dirsearch/</url>
-    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;安装完之后就是安装依赖</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;之后执行dirsearch.py</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>in_array</title>
     <url>/2024/07/13/in-array/</url>
     <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
@@ -129,25 +148,6 @@
 <p>&emsp;&emsp;都可以绕过判断</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>intval</title>
-    <url>/2024/07/12/intval/</url>
-    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -271,6 +271,18 @@
       </tags>
   </entry>
   <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>preg_replace</title>
     <url>/2024/07/12/preg-replace/</url>
     <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
@@ -291,47 +303,22 @@
       </tags>
   </entry>
   <entry>
-    <title>tplmap</title>
-    <url>/2024/06/06/tplmap/</url>
-    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
-<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
-<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
 ]]></content>
       <categories>
-        <category>SSTI</category>
+        <category>WEB</category>
       </categories>
       <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
     <title>sql注入</title>
     <url>/2024/07/27/sql%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<p>&emsp;&emsp; 当用户输入账号和密码的时候，web应用会向后台数据库进行一个匹配，如果账号密码正确就会登入。而这个数据库例如MySQL,Oracle等一系列用的语句叫做sql语句，那么我们在传数据的时候，使用sql语句上传就会改变一个原有的结构，从而获取或修改数据库中的数据，而这个，就叫做sql注入。</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;那么在做sql注入的时候，建议先看一下sql语句的基础语法，懂得基础才能理解得更加深刻,OK，在学这个之前，我们要搭配着靶场去使用，实践出来的效果更佳。点击<a href="https://blog.csdn.net/Joker_Dgh/article/details/123913722">靶场环境搭建</a>,当做一个游戏去玩，通关即为胜利（注意php版本要选择5.x版本）</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;那么在做sql注入的时候，建议先看一下sql语句的基础语法，懂得基础才能理解得更加深刻,OK，在学这个之前，我们要搭配着靶场去使用，实践出来的效果更佳。点击<a href="https://blog.csdn.net/Joker_Dgh/article/details/123913722">靶场环境搭建</a>,当做一个游戏去玩，通关即为胜利（注意php版本要选择5.x版本）</p>
 <h3 id="sql注入基础"><a href="#sql注入基础" class="headerlink" title="sql注入基础"></a>sql注入基础</h3><p>&emsp;&emsp;我们就直接讲思路什么的了，语法基础和逻辑自行去b站了解。</p>
 <h2 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h2><h4 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h4><p>&emsp;&emsp;注入点分为数字型和字符型（输入字符默认为字符型）。两者的判断方式可以<font color=blue>用id&#x3D;2-1来测试，如果是数字型的，回显的样式应该是id&#x3D;1的情况，如果是字符型的，回显的样式应该是id&#x3D;2的情况。</font><br><img data-src="/images/sql/sql1-1.png" alt="sql1-1"><br>&emsp;&emsp;这是id为1时的name和password<br><img data-src="/images/sql/sql1-2.png" alt="sql1-2"><br>&emsp;&emsp;这是id为2时的name和password<br><img data-src="/images/sql/sql1-2-1.png" alt="sql1-2-1"><br>&emsp;&emsp;这是id为2-1的name和password，很明显，和2的情况是一样的，所以这是字符型。</p>
 <h4 id="判断闭合方式"><a href="#判断闭合方式" class="headerlink" title="判断闭合方式"></a>判断闭合方式</h4><p>&emsp;&emsp;如果是字符型的话，根据语法，既然我们要重新构造一个语句，我们就得把后面的原本语句注释掉，因此我们数值后面需要添加闭合符，语句结尾需要添加注释符。闭合方式有<br><img data-src="/images/sql/%E6%95%B0%E5%80%BC%E9%97%AD%E5%90%88.png" alt="数值闭合"><br><img data-src="/images/sql/%E5%AD%97%E7%AC%A6%E9%97%AD%E5%90%88.png" alt="字符闭合"><br>&emsp;&emsp;然而注释符目前只找到–+(– q),#,%23这三种，判断的方法也很简单，如果<font color=red>所使用的闭合方式结果一样，那么说明不是该闭合方式。反之就是(同时还应判断是否需要添加括号)</font>打个比方，如果输入1”and 1&#x3D;1– q 和 1”and 1&#x3D;2 –q 两次的回显结果一样，说明闭合方式不是双引号，其他同理。原理就不用多讲了吧，如果真是闭合符的话，and后面一真一假，后者肯定报错。<br><img data-src="/images/sql/and1=1.png" alt="and1=1"><br><img data-src="/images/sql/and1=2.png" alt="and1=2"><br>&emsp;&emsp;回显不一样，闭合符号为’（可以试试双引号是否回显是一样）</p>
@@ -388,15 +375,28 @@
       </tags>
   </entry>
   <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+    <title>tplmap</title>
+    <url>/2024/06/06/tplmap/</url>
+    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
+<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
+<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
-        <category>WEB</category>
+        <category>SSTI</category>
       </categories>
       <tags>
-        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
