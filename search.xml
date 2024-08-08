@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>BurpSuite</title>
+    <url>/2024/07/25/BurpSuite/</url>
+    <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
+<h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
+<h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitHack</title>
     <url>/2024/08/03/GitHack/</url>
     <content><![CDATA[<p>&emsp;&emsp;GitHack针对于git泄露题目，通常先用dirsearch扫描出大量git推出为git泄露，就可以用此脚本进行源码获取，实用指数:⭐⭐⭐,安装方式挺简单，kali:</p>
@@ -18,19 +34,23 @@
       </tags>
   </entry>
   <entry>
-    <title>BurpSuite</title>
-    <url>/2024/07/25/BurpSuite/</url>
-    <content><![CDATA[<p>&emsp;&emsp;BurpSuite做web手要非常熟练的一个工具,实用指数:⭐⭐⭐⭐⭐。关于工具|脚本这一模块我这里就不详细的说明使用方法了，重点是下了自己去试一下，多练（绝对不是因为我懒(っ◞‸◟c)）</p>
-<h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
-<h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
+    <title>dirsearch</title>
+    <url>/2024/07/23/dirsearch/</url>
+    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;安装完之后就是安装依赖</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;之后执行dirsearch.py</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
 ]]></content>
       <categories>
         <category>WEB</category>
       </categories>
       <tags>
-        <tag>工具|脚本 利用</tag>
         <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
       </tags>
   </entry>
   <entry>
@@ -125,39 +145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>dirsearch</title>
-    <url>/2024/07/23/dirsearch/</url>
-    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;安装完之后就是安装依赖</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;之后执行dirsearch.py</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>in_array</title>
     <url>/2024/07/13/in-array/</url>
     <content><![CDATA[<p>&emsp;&emsp;in_array函数的功能用于检查数组是否存在某个值或者是不是数组。定义：布尔型函数，参数为（$needle,$haystack,[$strict &#x3D; FALSE]）,在$haystack中搜索$needle,如果第三个参数$strict的值为TRUE(没有默认为FALSE),则该函数会进行强检查（相等于&#x3D;&#x3D;&#x3D;），检查$needle的类型是否和$haystack中的相同。<font color=red>如果找到$haystack，则返回TRUE,否则返回FALSE。</font></p>
@@ -170,6 +157,19 @@
       </categories>
       <tags>
         <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -252,20 +252,6 @@
       </tags>
   </entry>
   <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php入门</title>
     <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
@@ -283,23 +269,17 @@
       </tags>
   </entry>
   <entry>
-    <title>preg_replace</title>
-    <url>/2024/07/12/preg-replace/</url>
-    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
-<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
-<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
-<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
 ]]></content>
       <categories>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>函数绕过</tag>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -345,6 +325,26 @@
       </tags>
   </entry>
   <entry>
+    <title>preg_replace</title>
+    <url>/2024/07/12/preg-replace/</url>
+    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
+<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
+<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>sqlmap</title>
     <url>/2024/08/03/sqlmap/</url>
     <content><![CDATA[<p>&emsp;&emsp;sqlmap是kali自带的一种工具，通常对网站进行sql注入，首先就要做的是找到注入点，找到后就可以使用sqlmap一把梭了。同时它也具备了一些脚本去使用，也可以搭配自定义脚本，理论上sql题目可以通杀的，看你的掌握度如何。常规指令有如下，实用指数:⭐⭐⭐⭐<br><img data-src="/images/sqlmap.png" alt="sqlmap"><br>&emsp;&emsp;经典一把梭</p>
@@ -356,18 +356,6 @@
       <tags>
         <tag>工具|脚本 利用</tag>
         <tag>sql注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>print&amp;print_r</title>
-    <url>/2024/07/13/print-print-r/</url>
-    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>区别</tag>
       </tags>
   </entry>
   <entry>
@@ -445,6 +433,18 @@
       <tags>
         <tag>注入</tag>
         <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>print&amp;print_r</title>
+    <url>/2024/07/13/print-print-r/</url>
+    <content><![CDATA[<p>&emsp;&emsp;print()只能打印出简单类型变量的值（如int,string），输出一个字符串。<br>&emsp;&emsp;print_r()可以打印出复杂类型变量的值（如数组，对象），打印关于变量的易于理解的信息。通常打比赛的时候经常使用的是它。<br>&emsp;&emsp;建议实践，方便理解。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>区别</tag>
       </tags>
   </entry>
   <entry>
@@ -626,18 +626,6 @@
       </tags>
   </entry>
   <entry>
-    <title>蚁剑</title>
-    <url>/2024/08/03/%E8%9A%81%E5%89%91/</url>
-    <content><![CDATA[<p>&emsp;&emsp;蚁剑是一个shell控制端软件，最核心的功能就是获取网站的源码和执行shell，同时具备插件的功能，功能性很强大的一款，同时搭配木马上传使用，上传一句话木马，如何用蚁剑连接。链接如下:<a href="https://blog.csdn.net/weixin_42474304/article/details/116376746">蚁剑下载和安装</a>,实用指数:⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>文件包含</title>
     <url>/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
     <content><![CDATA[<p>&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）<br>&emsp;&emsp;<strong>include和require语句是相同的，除了错误处理方面</strong></p>
@@ -675,6 +663,18 @@
       </categories>
       <tags>
         <tag>文件包含</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蚁剑</title>
+    <url>/2024/08/03/%E8%9A%81%E5%89%91/</url>
+    <content><![CDATA[<p>&emsp;&emsp;蚁剑是一个shell控制端软件，最核心的功能就是获取网站的源码和执行shell，同时具备插件的功能，功能性很强大的一款，同时搭配木马上传使用，上传一句话木马，如何用蚁剑连接。链接如下:<a href="https://blog.csdn.net/weixin_42474304/article/details/116376746">蚁剑下载和安装</a>,实用指数:⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
 </search>
