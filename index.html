@@ -194,7 +194,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2024-09-19 20:03:27 / 修改时间：21:45:19" itemprop="dateCreated datePublished" datetime="2024-09-19T20:03:27+08:00">2024-09-19</time>
+      <time title="创建时间：2024-09-19 20:03:27 / 修改时间：21:47:00" itemprop="dateCreated datePublished" datetime="2024-09-19T20:03:27+08:00">2024-09-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -231,48 +231,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="序列化初识"><a href="#序列化初识" class="headerlink" title="序列化初识"></a>序列化初识</h3><p>&emsp;&emsp;序列化是<font color=red>将对象或者数组转化为可储存&#x2F;传输的字符串</font>。在php中使用serialize()来将对象或者数组进行序列化，并返回一个包含字节流的字符串来表示。进行序列化的时候需要注意的是:  </p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>类名不区分大小写</span><br><span class="line"><span class="number">2.</span>序列化可以自己创建变量和函数</span><br><span class="line"><span class="number">3.</span>私有和保护属性的序列方式<span class="comment">(url绕过)</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;基础参考b站橙子科技。</p>
-<h3 id="PHP原生类"><a href="#PHP原生类" class="headerlink" title="PHP原生类"></a>PHP原生类</h3><p>&emsp;&emsp;当我们不知道flag所在的位置，没有pop链的思路和可利用反序列化的函数的时候，一般就是需要用原生类了。例如:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="keyword">new</span> <span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>](<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]);</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;类似于这样的，我们可以使用原生类进行遍历读取。详情可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_63231007/article/details/124740776">php原生类</a></p>
-<h4 id="Directorylterator类"><a href="#Directorylterator类" class="headerlink" title="Directorylterator类"></a>Directorylterator类</h4><p>&emsp;&emsp;DirectoryIterator类会创建一个指定目录的迭代器。当执行到echo函数时，会触发DirectoryIterator类中的 __toString() 方法，输出指定目录里面经过排序之后的第一个文件名。</p>
-<h4 id="利用Globlterator类测文件路径"><a href="#利用Globlterator类测文件路径" class="headerlink" title="利用Globlterator类测文件路径"></a>利用Globlterator类测文件路径</h4><p>&emsp;&emsp;GlobIterator类也可以遍历一个文件目录，行为类似于 glob()函数，可以通过模式匹配来寻找文件路径。</p>
-<h4 id="确定文件目录后，用SplFileObject类进行文件读取"><a href="#确定文件目录后，用SplFileObject类进行文件读取" class="headerlink" title="确定文件目录后，用SplFileObject类进行文件读取"></a>确定文件目录后，用SplFileObject类进行文件读取</h4><p>&emsp;&emsp;用new创建后形参为flag或者伪协议。</p>
-<h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><p>&emsp;&emsp;魔术方法在特定条件下自动调用相关方法，最终导致触发代码。是我们pop链利用的关键。</p>
-<h4 id="construct"><a href="#construct" class="headerlink" title="__construct()"></a>__construct()</h4><p>&emsp;&emsp;构造函数，在实例化一个对象的时候，首先会去自动执行的一个方法。触发条件（以下例子对象中默认存在该魔法方法）:  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br></pre></td></tr></table></figure>
-
-<h4 id="destruct"><a href="#destruct" class="headerlink" title="__destruct()"></a>__destruct()</h4><p>&emsp;&emsp;析构函数，在对象的所以引用被删除或者当对象被显示销毁时执行的魔术方法。触发条件：  </p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unserialize</span>($a);</span><br></pre></td></tr></table></figure>
-
-<h4 id="sleep"><a href="#sleep" class="headerlink" title="__sleep()"></a>__sleep()</h4><p>&emsp;&emsp;用于清理对象，并返回一个包含对象中所有应被序列化的变量名称的数组。触发条件:  </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>); <span class="comment">//序列化之前执行</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="wakeup"><a href="#wakeup" class="headerlink" title="__wakeup()"></a>__wakeup()</h4><p>&emsp;&emsp;预先准备对象资源，返回void，常用于反序列化操作中重新建立数据库连接或执行其他初始化操作。触发条件：  </p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unserialize</span>($a); <span class="comment">//反序列化之前执行</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="__toString()"></a>__toString()</h4><p>&emsp;&emsp;把对象当成字符串调用。触发条件:  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br><span class="line">echo <span class="variable">$a</span>; <span class="comment">//调用对象可以使用print_r或者var_dump</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="invoke"><a href="#invoke" class="headerlink" title="__invoke()"></a>__invoke()</h4><p>&emsp;&emsp;把对象当成函数调用。触发条件：  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br><span class="line">echo <span class="variable">$a</span>()-&gt;b; </span><br></pre></td></tr></table></figure>
-
-<h4 id="call"><a href="#call" class="headerlink" title="__call()"></a>__call()</h4><p>&emsp;&emsp;调用一个不存在的方法。触发条件：  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;ctf(<span class="string">&#x27;hahaha&#x27;</span>);  <span class="comment">//不存在ctf这个函数方法，此时ctf作为__call的第一个形参，&#x27;hahaha&#x27;作为第二个形参。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="get"><a href="#get" class="headerlink" title="__get()"></a>__get()</h4><p>&emsp;&emsp;调用的成员属性不存在。触发条件：  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;ctf; <span class="comment">//这个是变量也就是成员属性不存在，ctf作为__get的形参。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="set"><a href="#set" class="headerlink" title="__set()"></a>__set()</h4><p>&emsp;&emsp;给不存在的成员属性赋值。触发条件：  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;ctf = <span class="number">1</span>;  <span class="comment">//同上，若都有，先出发get()，ctf作为__set的一个形参，1作为第二个形参。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="isset"><a href="#isset" class="headerlink" title="__isset()"></a>__isset()</h4><p>&emsp;&emsp;对不可访问属性使用isset()或者empty()时，__isset()会被调用。触发条件：  </p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="type">CTF</span>();</span><br><span class="line">isset(<span class="variable">$a</span>-&gt;ctf);  <span class="comment">//ctf是私有或保护属性，调用执行里面的__isset()，ctf作为__isset的形参。__unset()同理。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>&emsp;&emsp;直接放图，自己看。ヾ(❀╹◡╹)ﾉﾞ❀~<br><img data-src="/images/pop1.png" alt="pop1"><br><img data-src="/images/pop2.png" alt="pop2"></p>
-
+          <p> </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/09/19/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
