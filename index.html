@@ -127,18 +127,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -155,6 +155,248 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/09/26/CVE-2008-4250-445-RPC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="muxiahuo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="做一只自由的鼍">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/09/26/CVE-2008-4250-445-RPC/" class="post-title-link" itemprop="url">CVE-2008-4250(445 RPC)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-09-26 21:19:17 / 修改时间：21:20:09" itemprop="dateCreated datePublished" datetime="2024-09-26T21:19:17+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">渗透</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>303</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="CVE-2008-4250"><a href="#CVE-2008-4250" class="headerlink" title="CVE-2008-4250"></a>CVE-2008-4250</h4><h4 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h4><p>​     <strong>MS08-067漏洞全称是“Windows Server服务<strong><strong>RPC</strong></strong>请求缓冲区溢出漏洞”，攻击者利用受害者主机默认开放的<strong><strong>SMB</strong></strong>服务端口445，发送特殊RPC（<strong><strong>Remote Procedure Call</strong></strong>，<strong><strong>远程过程调用</strong></strong>）请求，造成栈缓冲区<strong><strong>内存</strong></strong>错误，从而被利用实施<strong><strong>远程代码执行</strong></strong>。同样也是利用RPC，这里是利用缓存区</strong></p>
+<h4 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h4><ul>
+<li>Windows 2000</li>
+<li>Windows XP</li>
+<li>Windows Server 2003</li>
+</ul>
+<h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=MWMzNmM2NjU5NGY4MmNmNjJhNGY4MDg4ZjMwMjRjNGRfTDhIZVRxakx0UHNUQnQyZmgzUXQ0WE9aZVV4dVdsNDZfVG9rZW46SEZPbmJQRDNHb252cnJ4ckxwa2NjendibnZXXzE3MjczNTY3OTQ6MTcyNzM2MDM5NF9WNA" alt="img"></p>
+<p>   老样子扫一扫，确定445端口打开，多的不重复，就是进入msf，搜索ms08_067，进入设置IP和端口即可</p>
+<p>   set payload generic&#x2F;shell_bind_tcp</p>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmMxZjI2MjIyOWE4ZDViZDEwMmU5M2UzNzlkYTg3MGJfejB3SGxBZ2d6VVFZUGNRRXhjTVZrcFZScVZzaEVFcXZfVG9rZW46VDVSNGJYZ1dHb2d2MHN4Y3RFNmNrbVptbnNjXzE3MjczNTY3OTQ6MTcyNzM2MDM5NF9WNA" alt="img"></p>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=NTFmNjQ4NjU5YmNmMzI3MWNjMjI3MDI4ODNmNDYxNjlfb1hnUFM2aktVYk8wRkRlMmZUTEJOWHlRZzlQY092T2xfVG9rZW46U201YmI2WmdPb3k1aXB4RUxOYmNSaldZblhiXzE3MjczNTY3OTQ6MTcyNzM2MDM5NF9WNA" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/09/26/CVE-2003-0352-135-RPC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="muxiahuo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="做一只自由的鼍">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/09/26/CVE-2003-0352-135-RPC/" class="post-title-link" itemprop="url">CVE-2003-0352(135 RPC)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-09-26 21:05:29 / 修改时间：21:08:40" itemprop="dateCreated datePublished" datetime="2024-09-26T21:05:29+08:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">渗透</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>888</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h4><p>​     Microsoft的RPC(远程调用协议)部分在通过TCP&#x2F;IP处理信息交换时存在问题，远程攻击者可以利用这个漏洞以本地系统权限在系统上执行任意指令。</p>
+<h4 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h4><p>​    	Microsoft Windows XP Professional SP1</p>
+<p>​            Microsoft Windows XP Professional</p>
+<p>​            Microsoft Windows XP Home SP1</p>
+<p>​    	Microsoft Windows XP Home</p>
+<p>​    	Microsoft Windows XP</p>
+<p>​    	Microsoft Windows NT 4.0SP6a</p>
+<p>​    	Microsoft Windows NT 4.0SP6</p>
+<p>​    	Microsoft Windows NT 4.0SP5</p>
+<p>​    	Microsoft Windows NT 4.0SP4</p>
+<p>​    	Microsoft Windows NT 4.0SP3</p>
+<p>​    	Microsoft Windows NT 4.0SP2</p>
+<p>​    	Microsoft Windows NT 4.0SP1</p>
+<pre><code>    Microsoft Windows NT 4.0
+</code></pre>
+<p>​    	Microsoft Windows 2003</p>
+<p>​    	Microsoft Windows 2000SP3</p>
+<p>​    	Microsoft Windows 2000SP2</p>
+<p>​    	Microsoft Windows 2000SP1</p>
+<p>​    	Microsoft Windows 2000</p>
+<h4 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h4><p>​      微软修改dcerpc框架后形成自己的RPC框架来处理进程间的通信。微软的RPC框架在处理TCP&#x2F;IP信息交换过程中存在的畸形消息时，未正确处理，导致缓冲区溢出漏洞；此漏洞影响使用RPC框架的DCOM接口，DCOM接口用来处理客户端机器发送给服务器的DCOM对象激活请求，如UNC路径。</p>
+<h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p>​     </p>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=NzQ2NmMwNzI1N2JkMDRhYTcwNjg1NWRmNDZmYzI5NDJfbmRKWUd0a0kwMDd3N3NDMTlhZ3J1THZBUEZjRkNEZVNfVG9rZW46THczOGJjcDVab3JtcVh4Ynl6MmNRYmNPbm5nXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<pre><code>   先测试是否能ping通
+</code></pre>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=ZGE2MDE5MTUxZTQzNjI5MDc2NmM4YTQ2NGRkMjBhZGFfZ2ZRRmViU3NBVGxPT2p5Z2JxcFhrSXNERHQ2YTNEQzBfVG9rZW46VWFjUGJ0T2hFb1NJZHB4Sk5hVWNYa1dYbndnXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<p>​    	扫描发现RPC服务开放，优先攻击1024以下的，也就是135端口</p>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=NDE0NGY1YWI0ZTE2ZmIxNTJjNGY5N2M5MDE0NWEwZmVfMTlHQzBKTVVhUVRVUlN2STM1c0Fmdk92WEdwek16cVJfVG9rZW46UVNDUWJpMndpbzVUZDB4U0t1VGNmWkI0bkxmXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<pre><code>   使用msf模块，搜索RPC漏洞ms03_026_dcom
+</code></pre>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=N2IxZGQzZmQwYmJhMGY3MDRlZmY2N2YxMDYyZDliZDNfOURVVUZXdDZXUnpsTzAxSDJCSmJVZklxVGVNMjFBaWxfVG9rZW46SnBkSmI5aTVUb2wxTDl4Q0VjVWNwa3FybnhmXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<pre><code>  分别设置目标IP和端口
+</code></pre>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=NWI5ZTU2YTVkODc0NGVhYmM3MjgwMWIyMjg3N2ZiMDdfNFBtZ3JuVmtXazZ5eGZKUzZFbGtLc2loTGFZakhxUURfVG9rZW46WWxBN2JsV1dFb0xua0t4N3dOd2MzazRzblViXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<pre><code>   漏洞利用成功，但没有创建对话
+
+   推测可能不在同一个网段内（但能ping到）
+</code></pre>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=N2ZlNmM0YzNjM2QxYjRkN2FjM2JmZDY1MjIzOTA2M2FfSmRnS0FJY0NGR1ZMUUpCYWJWZmtiZ1dKUk1zYVdsTHdfVG9rZW46TkZHZWI5T3ZUb0NncVB4TmJvb2NGb3Y2bkxjXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<pre><code>   也不行
+</code></pre>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjliZjljNmJiNThiY2JiNzZlYmRkNjlmNjQ0YTc5MzRfTXJPNnNXV3NzdUhYNDN1R2lSampvTlZGcGJZdTMyUldfVG9rZW46VFJwOWJPNE11b2NlNDN4SFdmZGNpS0w2bnRXXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<p>​	切换payload试一下，果然行了   set payload generic&#x2F;shell_bind_tcp</p>
+<p><img data-src="https://hynuxtsec.feishu.cn/space/api/box/stream/download/asynccode/?code=ZTM0YjIzOWUxNDM2ZjgwMmRjMjk1NDM2ZjE4MDU5NDNfNkNLUEpydlZiN0hVYWlqMm1lbWtBNFlOMmR2dmdFajdfVG9rZW46S0IyZmJrQmNBbzhSRnh4T2tCaWNQbDFabjNkXzE3MjczNTYwMjI6MTcyNzM1OTYyMl9WNA" alt="img"></p>
+<p>​	用type看flag.txt ,不然会是乱码</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -961,219 +1203,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/23/dirsearch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="muxiahuo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="做一只自由的鼍">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/23/dirsearch/" class="post-title-link" itemprop="url">dirsearch</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-23 20:26:53" itemprop="dateCreated datePublished" datetime="2024-07-23T20:26:53+08:00">2024-07-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-24 21:11:59" itemprop="dateModified" datetime="2024-07-24T21:11:59+08:00">2024-07-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>348</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;安装完之后就是安装依赖</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;之后执行dirsearch.py</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="muxiahuo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="做一只自由的鼍">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="post-title-link" itemprop="url">文件上传</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-21 21:29:08" itemprop="dateCreated datePublished" datetime="2024-07-21T21:29:08+08:00">2024-07-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-27 21:14:57" itemprop="dateModified" datetime="2024-07-27T21:14:57+08:00">2024-07-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1197,13 +1226,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">58k</span>
+    <span title="站点总字数">60k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
