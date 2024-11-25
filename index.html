@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -155,6 +155,89 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/11/25/CVE-2021-43798-Grafana/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="muxiahuo">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="做一只自由的鼍">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/25/CVE-2021-43798-Grafana/" class="post-title-link" itemprop="url">CVE-2021-43798(Grafana)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-25 19:58:30" itemprop="dateCreated datePublished" datetime="2024-11-25T19:58:30+08:00">2024-11-25</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>0</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1063,100 +1146,6 @@
 <h3 id="BP的下载"><a href="#BP的下载" class="headerlink" title="BP的下载"></a>BP的下载</h3><p>&emsp;&emsp;直接给链接了:<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63100066/article/details/128355365">BurpSuite</a></p>
 <h3 id="BP的使用"><a href="#BP的使用" class="headerlink" title="BP的使用"></a>BP的使用</h3><p>&emsp;&emsp;还是那句话，自己去找题目抓几个包试一下，推荐blog：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Javachichi/article/details/135837378">BP使用</a>,可以自己去网上找合适的，这里着重强调需要掌握的方法，<font color=red>抓的包会放在代理模块中(proxy)，要进行修改数据要<code>右击点击发送到Repeater</code>也就是响应模块中，要进行爆破需要<code>右击点击发送到Intruder</code>也就是重复模块中，在然后就是在各个模块中的一些基操，比如在Repeater模块中变更请求方法，在Intruder模块中设置载荷选项。</font>推荐不是中文的找个中文版的用用。其次呢<font color=blue>文章中提到了Proxy SwitchyOmega扩展要安装好，我就不单独出一篇了，安装方法和hackbar一样的去扩展搜一下就行，因为方便切换代理，比如BP默认8080，猫默认7890，后续有了更多的端口后，这个扩展就显得尤其方便。</font><font color=pink>最后要知道HTTP的各类状态码，在面对Intruder模块中能更快找到请求成功的页面。</font></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1xx（信息性状态码）：表示接收的请求正在处理。</span><br><span class="line">2xx（成功状态码）：表示请求正常处理完毕。</span><br><span class="line">3xx（重定向状态码）：需要后续操作才能完成这一请求。</span><br><span class="line">4xx（客户端错误状态码）：表示请求包含语法错误或无法完成。</span><br><span class="line">5xx（服务器错误状态码）：服务器在处理请求的过程中发生了错误。</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://muxiahuo.github.io/2024/07/24/Wappalyzer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="muxiahuo">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="做一只自由的鼍">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 一只鼍的博客 | Glory's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/24/Wappalyzer/" class="post-title-link" itemprop="url">Wappalyzer</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-07-24 21:14:53 / 修改时间：21:19:51" itemprop="dateCreated datePublished" datetime="2024-07-24T21:14:53+08:00">2024-07-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/WEB/" itemprop="url" rel="index"><span itemprop="name">WEB</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>195</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>&emsp;&emsp;Wappalyzer是一款开源的浏览器扩展，用于识别网站所使用的技术栈。它能够检测出使用的Web服务器、内容管理系统、编程语言、JavaScript库、框架等信息，并将其展示给用户。知道大体框架后，能为后面的查找和思路提供一些方便，闲着没事的时候就可以点一下，又没什么影响( ͡°❥ ͡°)。下载方法也很简单，同hackbar在扩展上搜索一下就是的啦。实用指数:⭐⭐⭐⭐</p>
 
       
     </div>
